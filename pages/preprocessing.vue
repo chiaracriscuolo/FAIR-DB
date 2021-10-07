@@ -26,32 +26,76 @@
         </div>
       </div>
     </div>
+    <!-- Protected attribute div -->
     <div class="container">
       <h4 class="ui horizontal divider header">
         <i class="bar chart icon" />
-        Input Paramenters
+        Protected attributes
       </h4>
-      <td class="collapsing">
-        <div class="ui fitted slider checkbox">
-          <tbody>
-            <tr>
-              <td class="two wide column">
-                <input type="checkbox">
-                <label />
-              </td>
-              <td>
-                Protected Attribute 1
-              </td>
-            </tr>
-            <input type="checkbox"> Protected Attribute 2<label />
-            <input type="checkbox"> Protected Attribute 3<label />
-            <input type="checkbox"> Target Class 1<label />
-            <input type="checkbox"> Target Class 2<label />
-          </tbody>
-        </div>
-      </td>
+      <table class="ui definition table">
+        <tbody>
+          <tr>
+            <td class="two wide column">
+              <input type="checkbox">
+            </td>
+            <td>
+              P attr 1
+            </td>
+          </tr>
+          <tr>
+            <td class="two wide column">
+              <input type="checkbox">
+            </td>
+            <td>
+              P attr 2
+            </td>
+          </tr>
+          <tr>
+            <td class="two wide column">
+              <input type="checkbox">
+            </td>
+            <td>
+              P attr 3
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
+
+    <!-- Protected attribute div -->
     <div class="container">
+      <h4 class="ui horizontal divider header">
+        <i class="bar chart icon" />
+        Select one target class
+      </h4>
+      <table class="ui definition table">
+        <tbody>
+          <tr>
+            <td class="two wide column">
+              <input type="checkbox">
+            </td>
+            <td>
+              Target class 1
+            </td>
+          </tr>
+          <tr>
+            <td class="two wide column">
+              <input type="checkbox">
+            </td>
+            <td>
+              Target Class 2
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- INPUT PARAMETERS CONTAINER -->
+    <div class="container">
+      <h4 class="ui horizontal divider header">
+        <i class="bar chart icon" />
+        Input Parameters
+      </h4>
       <table class="ui definition table">
         <tbody>
           <tr>

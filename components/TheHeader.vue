@@ -2,7 +2,7 @@
   <header class="header">
     <div class="header-content">
       <div class="title">
-        <h3>FAIR-DB</h3>
+        <h2>FAIR-DB</h2>
         <h5>A novel system to discover Data Bias</h5>
       </div>
       <!--<nav class="right">
@@ -46,7 +46,7 @@ export default {
 
 <style>
 .header {
-  height: 70px;
+  height: 90px;
   background: purple;
   color: white;
   display: flex;

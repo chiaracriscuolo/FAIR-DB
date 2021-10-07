@@ -19,24 +19,20 @@
     <table class="ui purple table">
       <thead>
         <th />
-        <tr>
+        <tr v-for="item in getHeaders(getTable()[0])" :key="item">
           <th />
-          <th>FD</th>
-          <th>Support</th>
-          <th>Confidence</th>
-          <th>Difference</th>
+          <th>{{ item }}</th>
         </tr>
       </thead><tbody>
-        <tr>
+        <tr v-for="el in getTable()" :key="el._id">
           <td class="collapsing">
             <div class="ui fitted slider checkbox">
               <input type="checkbox"> <label />
             </div>
           </td>
-          <td>Woman => Salary</td>
-          <td>0.8</td>
-          <td>0.95</td>
-          <td>0.1</td>
+          <div v-for="item in getHeaders(el)" :key="item._id">
+            <td>{{ el[item] }}</td>
+          </div>
         </tr>
       </tbody>
     </table>
@@ -44,13 +40,21 @@
 </template>
 
 <script>
-// import csvJSON from '~/middelware/csvJSON.js'
-export default {}
-// methods: {
-//  getTable () {
-//    this.table = csvJSON('~/static/preprocessedTitanic.csv')
-//  }
-// }}
+// import { csvJSON } from '~/middleware/csvJSON.js'
+export default {
+  methods: {
+    getHeaders (obj) {
+      // console.log(Object.keys(obj))
+      if (obj) { return Object.keys(obj) } else { return {} }
+    },
+    async getTable () {
+      const json = await this.$axios.get('/data.json')
+      console.log(JSON.parse(json)[0])
+      return JSON.parse(json)
+      // return csvJSON('csv')
+    }
+  }
+}
 </script>
 
 <style scoped>
