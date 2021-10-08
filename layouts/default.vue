@@ -44,4 +44,8 @@ img {
 button{
   transition: all 0.2s ease-in-out;
 }
+.fluid.ui.purple.button:hover{
+  background-color: lightsalmon;
+  color: white;
+}
 </style>

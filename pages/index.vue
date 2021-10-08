@@ -29,7 +29,7 @@ export default {}
 
 <style scoped>
 h2 {
-  color: purple;
+  color: #9627ba;
   margin-bottom: 30px;
 }
 h4 {
@@ -42,12 +42,16 @@ p {
   text-align: left;
 }
 a {
-  color: purple;
+  color: #9627ba;
   text-underline-position: below;
   text-align: left;
 }
 button{
-  color: purple;
+  color: #9627ba;
   transition: all 0.2s ease-in-out;
+}
+.fluid.ui.purple.button:hover{
+  background-color: lightsalmon;
+  color: white;
 }
 </style>

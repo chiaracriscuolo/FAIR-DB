@@ -43,8 +43,8 @@ export default {
 
 <style>
 .footer {
-  height: 60px;
-  background: purple;
+  height: 50px;
+  background: #9627ba;
   color: black;
   display: flex;
   justify-content: space-between;
@@ -63,8 +63,8 @@ export default {
   margin: auto;
   max-width: 50%;
 }
-.title {
-  font-size: 1.3rem;
-  margin-bottom: 5px;
+.h5{
+  margin-bottom: 2px;
+  font-weight: 300;
 }
 </style>

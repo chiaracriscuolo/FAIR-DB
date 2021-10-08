@@ -19,12 +19,12 @@
     <table class="ui purple table">
       <thead>
         <th />
-        <tr v-for="item in getHeaders(getTable()[0])" :key="item">
+        <tr v-for="item in getHeaders()" :key="item">
           <th />
           <th>{{ item }}</th>
         </tr>
       </thead><tbody>
-        <tr v-for="el in getTable()" :key="el._id">
+        <!--<tr v-for="el in getContent(getTable())" :key="el._id">
           <td class="collapsing">
             <div class="ui fitted slider checkbox">
               <input type="checkbox"> <label />
@@ -33,24 +33,44 @@
           <div v-for="item in getHeaders(el)" :key="item._id">
             <td>{{ el[item] }}</td>
           </div>
-        </tr>
+        </tr>-->
       </tbody>
     </table>
   </div>
 </template>
 
 <script>
-// import { csvJSON } from '~/middleware/csvJSON.js'
+
 export default {
   methods: {
-    getHeaders (obj) {
+    async getHeaders () {
+      const json = await this.$axios.get('/dataTitanic.json')
       // console.log(Object.keys(obj))
-      if (obj) { return Object.keys(obj) } else { return {} }
+      // if (obj) { return Object.keys(obj) } else { return {} }
+      const obj = JSON.parse(json.data)
+      console.log(obj.columns)
+      return obj.columns
+    },
+    getContent (obj) {
+      // console.log(Object.keys(obj))
+      // if (obj) { return Object.keys(obj) } else { return {} }
+      // console.log(Object.keys(obj))
+      return obj.data
     },
     async getTable () {
-      const json = await this.$axios.get('/data.json')
-      console.log(JSON.parse(json)[0])
-      return JSON.parse(json)
+      const json = await this.$axios.get('/dataTitanic.json')
+      // import VuePapaParse from 'vue-papa-parse'
+      // Vue.use(VuePapaParse)
+      // const csvData = await this.$axios.get('/preprocessingTitanic.csv')
+      // var blob = new Blob([Papa.unparse(jsonData)], { type: 'csvData/csv;charset=utf-8;' });
+      const data = JSON.parse(json.data)
+      // console.log('KEYS:\n')
+      // console.log(data.data)
+      // console.log(Object.keys(data[0]))
+      console.log(data.columns)
+      // console.log(data.data)
+      return data
+      // return JSON.parse(json.data)
       // return csvJSON('csv')
     }
   }
@@ -77,4 +97,7 @@ th {
   border-bottom: 1px solid #d4d4d4;
 }
 
+.ui.selection.dropdown {
+    height: 45px;
+}
 </style>

@@ -1,8 +1,14 @@
 .<template>
   <main class="container">
-    Show Table
+    <h4 class="ui horizontal divider header">
+      <i class="table icon" />
+      Input Table
+    </h4>
     <div class="container">
-      Statistics Distribution
+      <h4 class="ui horizontal divider header">
+        <i class="chart area icon" />
+        Data Visualization
+      </h4>
       <div class="ui grid">
         <div class="four wide column">
           <button class="ui purple button">
@@ -30,8 +36,11 @@
     <div class="container">
       <h4 class="ui horizontal divider header">
         <i class="bar chart icon" />
-        Protected attributes
+        Select one or more protected attributes
       </h4>
+      <p>
+        A protected attribute is a ..
+      </p>
       <table class="ui definition table">
         <tbody>
           <tr>
@@ -39,7 +48,7 @@
               <input type="checkbox">
             </td>
             <td>
-              P attr 1
+              Protected attribute 1
             </td>
           </tr>
           <tr>
@@ -47,7 +56,7 @@
               <input type="checkbox">
             </td>
             <td>
-              P attr 2
+              Protected attribute 2
             </td>
           </tr>
           <tr>
@@ -55,18 +64,18 @@
               <input type="checkbox">
             </td>
             <td>
-              P attr 3
+              Protected attribute 3
             </td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <!-- Protected attribute div -->
+    <!-- Target class div -->
     <div class="container">
       <h4 class="ui horizontal divider header">
         <i class="bar chart icon" />
-        Select one target class
+        Select ONE binary target class
       </h4>
       <table class="ui definition table">
         <tbody>
@@ -83,7 +92,7 @@
               <input type="checkbox">
             </td>
             <td>
-              Target Class 2
+              Target class 2
             </td>
           </tr>
         </tbody>
@@ -96,6 +105,9 @@
         <i class="bar chart icon" />
         Input Parameters
       </h4>
+      <p>
+        The input paramters are ..
+      </p>
       <table class="ui definition table">
         <tbody>
           <tr>
@@ -116,7 +128,7 @@
           </tr>
           <tr>
             <td class="two wide column">
-              maxAntecendentSize
+              Maximum Antecendent Size
             </td>
             <td>
               <input type="text" placeholder="2">
@@ -146,4 +158,7 @@ export default {}
 </script>
 
 <style scoped>
+.header{
+  background-color: white;
+}
 </style>

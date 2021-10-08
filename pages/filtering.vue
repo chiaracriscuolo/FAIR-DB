@@ -10,12 +10,7 @@
 </template>
 
 <script>
-// import PrintTable from '~/components/PrintTable.vue'
-
 export default {
-  // components: {
-  //  PrintTable
-  // }
 }
 </script>
 

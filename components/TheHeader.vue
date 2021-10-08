@@ -2,8 +2,12 @@
   <header class="header">
     <div class="header-content">
       <div class="title">
-        <h2>FAIR-DB</h2>
-        <h5>A novel system to discover Data Bias</h5>
+        <h2>
+          <a href="/" aria-current="page" class="nuxt-link-exact-active nuxt-link-active">
+            FAIR-DB
+          </a>
+        </h2>
+        <h4>A novel system to discover Data Bias</h4>
       </div>
       <!--<nav class="right">
         <div
@@ -47,7 +51,7 @@ export default {
 <style>
 .header {
   height: 90px;
-  background: purple;
+  background: #9627ba;
   color: white;
   display: flex;
   justify-content: space-between;
@@ -69,5 +73,10 @@ export default {
 .title {
   font-size: 1.3rem;
   margin-bottom: 5px;
+}
+.nuxt-link-exact-active.nuxt-link-active:hover{
+  background-color:white;
+  color:#9627ba;
+  border-radius: 1rem;
 }
 </style>
