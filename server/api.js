@@ -15,9 +15,10 @@ function init () {
         'https://wordstream-files-prod.s3.amazonaws.com/s3fs-public/styles/simple_image/public/images/media/images/google-display-ads-example-2-final.png?oV7qevVB2XtFyF_O64TG6L27AFM3M2oL&itok=TBfuuTM_'
     })
   })
-  app.post('/api/postParams', (req, res) => {
+  app.post('/postParams', (req, res) => {
     return res.send(req.body)
   })
+  console.log('rotte: ', app.routes)
 }
 
 init()

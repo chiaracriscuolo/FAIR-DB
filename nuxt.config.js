@@ -62,6 +62,12 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios'
   ],
+  serverMiddleware: [
+    {
+      path: '/api',
+      handler: '~/server/api.js'
+    }
+  ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
@@ -70,6 +76,7 @@ export default {
   options: {
     fix: true
   },
+
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {}
 }
