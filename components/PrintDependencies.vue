@@ -1,17 +1,43 @@
 <template>
   <div class="container">
+    <div class="container">
+      <h4>Choose the ordering criterion</h4>
+      <select class="ui selection dropdown">
+        <option value="">
+          Support
+        </option>
+        <option value="0">
+          Confidence
+        </option>
+        <option value="1">
+          Difference
+        </option>
+      </select>
+    </div>
+
+    <h4>Table of Functional Dependencies</h4>
     <table class="ui purple table">
       <thead>
         <tr>
+          <th />
           <th v-for="item in headers" :key="item">
             {{ item }}
           </th>
         </tr>
       </thead><tbody>
         <tr v-for="el in data" :key="el">
+          <td class="collapsing">
+            <div class="ui fitted checkbox">
+              <input type="checkbox"> <label />
+            </div>
+          </td>
           <td v-for="i in el" :key="i">
             {{ i }}
           </td>
+
+        <!--<div v-for="item in getHeaders(el)" :key="item._id">
+            <td>{{ el[item] }}</td>
+          </div>-->
         </tr>
       </tbody>
     </table>
@@ -30,7 +56,7 @@ export default {
   async mounted () {
     const json = await this.$axios.get('/dataTitanic.json')
     const obj = JSON.parse(json.data)
-    this.data = obj.data.slice(0, 5)
+    this.data = obj.data.slice(0, 10)
     this.headers = obj.columns
   }
   /* methods: {

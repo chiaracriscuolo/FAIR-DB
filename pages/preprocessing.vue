@@ -4,6 +4,7 @@
       <i class="table icon" />
       Input Table
     </h4>
+    <PrintTable />
     <div class="container">
       <h4 class="ui horizontal divider header">
         <i class="chart area icon" />
@@ -41,34 +42,7 @@
       <p>
         A protected attribute is a ..
       </p>
-      <table class="ui definition table">
-        <tbody>
-          <tr>
-            <td class="two wide column">
-              <input type="checkbox">
-            </td>
-            <td>
-              Protected attribute 1
-            </td>
-          </tr>
-          <tr>
-            <td class="two wide column">
-              <input type="checkbox">
-            </td>
-            <td>
-              Protected attribute 2
-            </td>
-          </tr>
-          <tr>
-            <td class="two wide column">
-              <input type="checkbox">
-            </td>
-            <td>
-              Protected attribute 3
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <PrintAttributes />
     </div>
 
     <!-- Target class div -->
@@ -77,26 +51,7 @@
         <i class="bar chart icon" />
         Select ONE binary target class
       </h4>
-      <table class="ui definition table">
-        <tbody>
-          <tr>
-            <td class="two wide column">
-              <input type="checkbox">
-            </td>
-            <td>
-              Target class 1
-            </td>
-          </tr>
-          <tr>
-            <td class="two wide column">
-              <input type="checkbox">
-            </td>
-            <td>
-              Target class 2
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <PrintTarget />
     </div>
 
     <!-- INPUT PARAMETERS CONTAINER -->
@@ -106,7 +61,7 @@
         Input Parameters
       </h4>
       <p>
-        The input paramters are ..
+        The input parameters are ..
       </p>
       <table class="ui definition table">
         <tbody>
@@ -115,15 +70,15 @@
               Confidence
             </td>
             <td>
-              <input type="text" placeholder="0.8">
+              <input id="confidence" v-model="params.Confidence" type="text" placeholder="0.8">
             </td>
           </tr>
           <tr>
             <td class="two wide column">
-              Support
+              Support {{ params.Support }}
             </td>
             <td>
-              <input type="text" placeholder="0.1">
+              <input id="support" v-model="params.Support" type="text" placeholder="0.1">
             </td>
           </tr>
           <tr>
@@ -131,7 +86,7 @@
               Maximum Antecendent Size
             </td>
             <td>
-              <input type="text" placeholder="2">
+              <input id="maxAntSize" v-model="params.MaxAntSize" type="text" placeholder="2">
             </td>
           </tr>
           <tr>
@@ -139,22 +94,49 @@
               Difference
             </td>
             <td>
-              <input type="text" placeholder="0.1">
+              <input id="difference" v-model="params.Difference" type="text" placeholder="0.1">
             </td>
           </tr>
         </tbody>
       </table>
     </div>
     <div class="container">
-      <a href="/filtering" aria-current="page" class="nuxt-link-exact-active nuxt-link-active">
-        <button class="fluid ui purple button">Compute Dependencies!</button>
-      </a>
+      <!--<a href="/api/filtering" aria-current="page" class="nuxt-link-exact-active nuxt-link-active">
+          <button class="fluid ui purple button">Compute Dependencies!</button>
+        </a>-->
+      <button class="fluid ui purple button" @click="postParams()">
+        Compute Dependencies!
+      </button>
     </div>
   </main>
 </template>
 
 <script>
-export default {}
+import axios from 'axios'
+export default {
+
+  data () {
+    return {
+      params: {
+        Support: null,
+        Difference: null,
+        Confidence: null,
+        MaxAntSize: null
+      }
+    }
+  },
+  methods: {
+    postParams () {
+      // console.warn(this.params)
+      axios.post('/api/postParams', this.params)
+        .then(function (response) {
+          // Handle success
+          console.log('successo')
+        })
+    }
+
+  }
+}
 </script>
 
 <style scoped>

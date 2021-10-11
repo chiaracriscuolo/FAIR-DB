@@ -1,17 +1,30 @@
 <template>
   <div class="container">
-    <table class="ui purple table">
-      <thead>
-        <tr>
-          <th v-for="item in headers" :key="item">
-            {{ item }}
-          </th>
+    <!--<div class="ui form">
+      <div class="inline fields">
+        <tr v-for="item in headers" :key="item">
+          <div class="field">
+            <div class="ui radio checkbox">
+              <input type="radio" name="frequency">
+              <label>{{ item }}</label>
+            </div>
+          </div>
         </tr>
-      </thead><tbody>
-        <tr v-for="el in data" :key="el">
-          <td v-for="i in el" :key="i">
-            {{ i }}
-          </td>
+      </div>-->
+
+    <table class="ui definition table">
+      <tbody>
+        <tr v-for="item in headers" :key="item">
+          <div class="field">
+            <div type="ui radio checkbox">
+              <td class="two wide column">
+                <input type="radio" name="example2">
+              </td>
+              <td>
+                {{ item }}
+              </td>
+            </div>
+          </div>
         </tr>
       </tbody>
     </table>
@@ -23,14 +36,12 @@
 export default {
   data () {
     return {
-      headers: null,
-      data: null
+      headers: null
     }
   },
   async mounted () {
     const json = await this.$axios.get('/dataTitanic.json')
     const obj = JSON.parse(json.data)
-    this.data = obj.data.slice(0, 5)
     this.headers = obj.columns
   }
   /* methods: {
