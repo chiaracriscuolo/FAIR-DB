@@ -128,8 +128,8 @@ export default {
   methods: {
     postParams () {
       // console.warn(this.params)
-      console.log('successo 1')
-      axios.post('/api/postParams', this.params)
+      // axios.post('/api/postParams', this.params)
+      axios.get('/api/preprocessingApi')
         .then(function (response) {
           // Handle success
           console.log('successo')
