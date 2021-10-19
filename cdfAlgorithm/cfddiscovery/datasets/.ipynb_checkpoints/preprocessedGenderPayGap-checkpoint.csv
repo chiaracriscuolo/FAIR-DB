@@ -1,0 +1,1001 @@
+Gender,Age,PerfEval,Education,Dept,Seniority,Salary
+Female,18-29,5,College,Operations,2,<75K
+Male,18-29,5,College,Management,5,100K-125K
+Female,18-29,4,PhD,Administration,5,75K-100K
+Male,18-29,5,Masters,Sales,4,100K-125K
+Male,18-29,5,Masters,Engineering,5,100K-125K
+Female,18-29,5,PhD,Operations,4,75K-100K
+Female,18-29,5,College,Sales,4,75K-100K
+Male,18-29,4,PhD,Engineering,5,100K-125K
+Female,30-41,5,High School,Engineering,5,100K-125K
+Female,30-41,5,College,Engineering,5,100K-125K
+Male,18-29,5,PhD,Engineering,5,100K-125K
+Female,18-29,5,College,Management,3,<75K
+Female,18-29,5,College,Sales,3,75K-100K
+Female,30-41,5,Masters,Administration,5,75K-100K
+Female,30-41,5,PhD,Operations,4,100K-125K
+Female,18-29,5,PhD,Management,3,75K-100K
+Female,18-29,5,PhD,Administration,5,75K-100K
+Female,18-29,5,College,Administration,5,100K-125K
+Male,18-29,5,High School,Engineering,5,75K-100K
+Female,30-41,5,College,Engineering,5,100K-125K
+Male,30-41,5,PhD,Engineering,5,100K-125K
+Male,18-29,5,PhD,Sales,3,75K-100K
+Male,18-29,5,PhD,Sales,3,75K-100K
+Female,30-41,5,College,Management,1,75K-100K
+Male,18-29,4,PhD,Engineering,5,<125K
+Female,18-29,5,College,Engineering,2,75K-100K
+Male,18-29,5,Masters,Administration,4,100K-125K
+Male,30-41,5,PhD,Management,3,75K-100K
+Male,30-41,5,PhD,Engineering,4,100K-125K
+Female,30-41,5,College,Administration,5,100K-125K
+Male,18-29,5,Masters,Management,2,75K-100K
+Male,30-41,5,Masters,Management,5,100K-125K
+Female,18-29,5,PhD,Operations,4,75K-100K
+Female,18-29,5,High School,Engineering,3,75K-100K
+Female,42-53,5,PhD,Management,5,100K-125K
+Male,18-29,5,PhD,Management,4,100K-125K
+Male,18-29,5,High School,Management,4,100K-125K
+Male,30-41,5,High School,Operations,3,100K-125K
+Female,30-41,5,College,Management,4,75K-100K
+Male,18-29,5,College,Administration,4,75K-100K
+Male,18-29,5,PhD,Administration,5,100K-125K
+Male,30-41,5,PhD,Management,3,75K-100K
+Male,30-41,5,PhD,Sales,2,75K-100K
+Male,18-29,5,Masters,Engineering,2,<75K
+Male,18-29,5,Masters,Sales,5,<125K
+Male,18-29,5,Masters,Management,3,75K-100K
+Female,18-29,5,PhD,Operations,3,75K-100K
+Female,18-29,5,PhD,Sales,3,75K-100K
+Male,18-29,5,College,Management,5,75K-100K
+Female,18-29,5,High School,Sales,4,100K-125K
+Male,18-29,4,Masters,Operations,5,100K-125K
+Male,18-29,4,Masters,Operations,4,75K-100K
+Female,30-41,5,PhD,Engineering,5,100K-125K
+Female,30-41,5,Masters,Sales,2,75K-100K
+Female,18-29,4,Masters,Operations,3,75K-100K
+Female,18-29,4,College,Administration,4,75K-100K
+Female,30-41,5,High School,Engineering,2,<75K
+Male,30-41,5,PhD,Management,4,100K-125K
+Female,42-53,5,College,Operations,3,75K-100K
+Female,18-29,5,Masters,Administration,4,75K-100K
+Male,18-29,5,PhD,Engineering,4,100K-125K
+Male,30-41,5,Masters,Management,3,75K-100K
+Female,30-41,5,College,Operations,2,75K-100K
+Male,18-29,5,PhD,Administration,3,75K-100K
+Male,30-41,5,College,Management,4,75K-100K
+Female,30-41,5,High School,Engineering,3,75K-100K
+Female,42-53,5,College,Engineering,5,<125K
+Male,18-29,5,High School,Administration,1,75K-100K
+Male,18-29,5,PhD,Administration,4,<75K
+Male,18-29,5,High School,Operations,2,<75K
+Male,18-29,5,College,Engineering,5,<125K
+Female,30-41,5,College,Management,1,<75K
+Female,30-41,4,PhD,Operations,5,100K-125K
+Female,42-53,5,College,Engineering,5,100K-125K
+Male,18-29,4,High School,Management,2,<75K
+Female,18-29,5,PhD,Administration,3,<75K
+Female,30-41,4,College,Management,3,75K-100K
+Female,30-41,5,College,Sales,5,100K-125K
+Female,30-41,5,College,Engineering,2,75K-100K
+Male,18-29,5,Masters,Management,3,75K-100K
+Male,18-29,5,Masters,Engineering,5,100K-125K
+Female,18-29,3,Masters,Engineering,4,75K-100K
+Male,18-29,5,PhD,Management,1,<75K
+Male,18-29,5,High School,Engineering,2,<75K
+Male,18-29,4,PhD,Engineering,5,<125K
+Female,30-41,5,PhD,Engineering,1,<75K
+Female,42-53,5,PhD,Operations,3,75K-100K
+Female,30-41,5,Masters,Administration,5,<125K
+Male,30-41,5,PhD,Engineering,1,75K-100K
+Male,18-29,4,PhD,Sales,5,<125K
+Male,18-29,5,PhD,Operations,2,75K-100K
+Female,30-41,5,Masters,Administration,3,100K-125K
+Female,30-41,5,Masters,Engineering,1,<75K
+Male,42-53,5,High School,Sales,4,100K-125K
+Male,18-29,5,College,Operations,3,75K-100K
+Female,18-29,4,Masters,Sales,4,75K-100K
+Female,42-53,5,High School,Sales,5,<125K
+Female,18-29,4,Masters,Administration,4,100K-125K
+Male,18-29,5,High School,Management,1,75K-100K
+Male,54-65,5,College,Management,5,<125K
+Female,30-41,5,High School,Sales,5,100K-125K
+Female,42-53,5,College,Management,5,100K-125K
+Female,42-53,5,PhD,Management,3,<125K
+Female,30-41,5,High School,Engineering,5,100K-125K
+Female,18-29,4,Masters,Operations,4,100K-125K
+Female,18-29,4,Masters,Operations,4,100K-125K
+Male,18-29,5,PhD,Administration,1,<75K
+Male,18-29,5,High School,Engineering,1,<75K
+Male,42-53,5,PhD,Sales,1,75K-100K
+Female,18-29,4,Masters,Administration,5,75K-100K
+Male,30-41,4,PhD,Engineering,4,75K-100K
+Male,18-29,5,College,Engineering,4,100K-125K
+Female,42-53,5,High School,Management,3,75K-100K
+Female,30-41,5,Masters,Administration,3,<75K
+Female,42-53,5,Masters,Engineering,2,75K-100K
+Female,18-29,4,Masters,Administration,4,75K-100K
+Female,30-41,5,Masters,Administration,2,<75K
+Female,18-29,4,Masters,Engineering,4,<75K
+Female,18-29,4,PhD,Operations,3,75K-100K
+Male,30-41,5,College,Management,2,100K-125K
+Female,18-29,4,Masters,Administration,2,<75K
+Female,18-29,4,College,Management,3,<75K
+Male,42-53,5,PhD,Operations,4,100K-125K
+Male,54-65,5,PhD,Administration,4,<125K
+Male,42-53,5,Masters,Operations,2,75K-100K
+Female,18-29,5,College,Administration,2,<75K
+Male,54-65,5,High School,Engineering,5,<125K
+Female,42-53,5,College,Management,3,100K-125K
+Female,18-29,4,High School,Administration,4,75K-100K
+Male,30-41,5,College,Administration,5,100K-125K
+Male,42-53,5,PhD,Management,5,<125K
+Male,42-53,5,High School,Engineering,4,100K-125K
+Male,18-29,4,High School,Engineering,5,75K-100K
+Female,42-53,5,High School,Sales,1,<75K
+Male,30-41,5,Masters,Management,3,75K-100K
+Male,18-29,5,PhD,Administration,1,<75K
+Male,30-41,5,Masters,Engineering,3,100K-125K
+Male,18-29,4,College,Operations,4,100K-125K
+Male,18-29,5,High School,Administration,1,75K-100K
+Female,18-29,4,High School,Administration,5,100K-125K
+Female,30-41,5,PhD,Operations,1,100K-125K
+Female,30-41,4,High School,Operations,5,75K-100K
+Female,30-41,4,Masters,Engineering,3,75K-100K
+Male,42-53,5,Masters,Administration,4,<125K
+Female,42-53,5,High School,Sales,5,100K-125K
+Male,42-53,5,PhD,Management,2,75K-100K
+Female,18-29,3,PhD,Engineering,4,100K-125K
+Male,30-41,5,College,Management,1,75K-100K
+Male,18-29,4,High School,Engineering,3,100K-125K
+Female,18-29,4,College,Sales,2,<75K
+Female,54-65,5,PhD,Sales,4,<125K
+Female,54-65,5,High School,Engineering,3,100K-125K
+Male,18-29,4,Masters,Administration,5,100K-125K
+Female,42-53,5,College,Administration,1,<75K
+Female,42-53,5,Masters,Management,1,100K-125K
+Female,54-65,5,PhD,Administration,2,75K-100K
+Male,30-41,4,Masters,Sales,5,100K-125K
+Female,42-53,5,Masters,Engineering,5,<125K
+Male,42-53,5,Masters,Operations,3,75K-100K
+Male,18-29,4,Masters,Administration,4,75K-100K
+Female,30-41,4,PhD,Sales,1,75K-100K
+Female,42-53,5,College,Operations,3,100K-125K
+Female,42-53,5,High School,Sales,3,100K-125K
+Male,30-41,4,College,Management,5,100K-125K
+Male,18-29,4,Masters,Management,1,75K-100K
+Male,42-53,5,Masters,Administration,5,<125K
+Male,18-29,5,High School,Administration,1,<75K
+Female,30-41,5,High School,Operations,2,<75K
+Male,30-41,5,Masters,Operations,1,75K-100K
+Female,18-29,5,High School,Management,1,<75K
+Male,30-41,5,High School,Engineering,4,100K-125K
+Male,18-29,4,Masters,Sales,1,<75K
+Male,54-65,5,Masters,Engineering,1,100K-125K
+Female,18-29,3,PhD,Sales,5,<75K
+Female,18-29,4,Masters,Management,3,75K-100K
+Male,54-65,5,PhD,Administration,4,100K-125K
+Female,30-41,4,Masters,Engineering,2,75K-100K
+Female,42-53,5,College,Operations,2,75K-100K
+Female,42-53,4,Masters,Management,4,100K-125K
+Female,42-53,4,Masters,Engineering,5,100K-125K
+Female,42-53,5,PhD,Administration,5,<125K
+Male,54-65,5,College,Sales,4,<125K
+Male,18-29,4,PhD,Administration,1,75K-100K
+Female,30-41,5,High School,Engineering,1,<75K
+Male,30-41,4,High School,Sales,4,100K-125K
+Male,54-65,5,PhD,Sales,2,<125K
+Female,18-29,3,Masters,Operations,5,75K-100K
+Female,30-41,4,PhD,Administration,3,75K-100K
+Male,42-53,5,High School,Operations,2,100K-125K
+Male,30-41,5,PhD,Administration,2,75K-100K
+Male,54-65,5,PhD,Administration,5,<125K
+Female,42-53,5,High School,Engineering,2,100K-125K
+Male,30-41,5,Masters,Sales,4,100K-125K
+Male,42-53,4,PhD,Management,5,100K-125K
+Male,18-29,5,High School,Operations,2,<75K
+Female,42-53,4,Masters,Operations,5,<125K
+Male,42-53,5,Masters,Administration,2,100K-125K
+Male,18-29,4,Masters,Sales,3,100K-125K
+Female,42-53,5,College,Operations,1,75K-100K
+Male,18-29,4,PhD,Engineering,2,75K-100K
+Male,42-53,5,College,Administration,2,<75K
+Male,42-53,5,College,Management,4,100K-125K
+Male,18-29,4,College,Administration,2,75K-100K
+Female,42-53,4,High School,Administration,4,100K-125K
+Male,18-29,3,Masters,Engineering,2,75K-100K
+Female,30-41,4,College,Management,4,75K-100K
+Male,18-29,4,High School,Management,4,75K-100K
+Female,54-65,5,High School,Sales,2,100K-125K
+Female,30-41,4,College,Engineering,4,75K-100K
+Male,18-29,4,Masters,Sales,2,<75K
+Female,54-65,5,PhD,Sales,2,100K-125K
+Female,30-41,4,PhD,Operations,5,<125K
+Male,18-29,4,College,Sales,2,100K-125K
+Female,30-41,5,College,Operations,1,75K-100K
+Female,30-41,4,Masters,Engineering,2,100K-125K
+Female,30-41,4,PhD,Management,3,75K-100K
+Male,18-29,4,High School,Management,4,75K-100K
+Male,54-65,5,High School,Management,3,<125K
+Male,30-41,5,PhD,Engineering,4,100K-125K
+Female,54-65,5,PhD,Sales,5,<125K
+Female,42-53,4,High School,Management,5,<125K
+Male,42-53,5,Masters,Administration,3,100K-125K
+Male,42-53,5,High School,Engineering,4,100K-125K
+Female,18-29,4,High School,Management,1,<75K
+Male,42-53,5,Masters,Engineering,1,75K-100K
+Female,42-53,4,Masters,Management,5,<125K
+Female,30-41,5,College,Operations,1,<75K
+Female,18-29,4,High School,Administration,5,75K-100K
+Male,18-29,4,High School,Sales,4,75K-100K
+Female,30-41,4,College,Engineering,2,75K-100K
+Female,18-29,4,High School,Operations,1,<75K
+Male,18-29,3,Masters,Management,2,<75K
+Female,30-41,5,Masters,Administration,1,75K-100K
+Male,54-65,5,College,Administration,5,<125K
+Male,18-29,4,High School,Operations,1,<75K
+Male,18-29,4,High School,Engineering,3,<75K
+Male,30-41,5,High School,Sales,2,75K-100K
+Male,30-41,4,College,Administration,5,75K-100K
+Female,54-65,5,College,Operations,2,100K-125K
+Male,30-41,4,College,Administration,5,100K-125K
+Male,18-29,4,Masters,Engineering,1,<75K
+Male,30-41,4,PhD,Operations,5,100K-125K
+Male,18-29,4,College,Engineering,3,75K-100K
+Male,30-41,4,Masters,Engineering,5,<125K
+Male,18-29,3,High School,Engineering,3,75K-100K
+Male,42-53,5,College,Operations,4,100K-125K
+Female,42-53,4,College,Administration,4,100K-125K
+Female,18-29,4,College,Sales,4,75K-100K
+Male,18-29,4,College,Sales,5,100K-125K
+Male,18-29,3,PhD,Engineering,5,100K-125K
+Male,18-29,3,Masters,Engineering,4,75K-100K
+Male,18-29,4,Masters,Administration,1,75K-100K
+Female,54-65,5,Masters,Management,2,100K-125K
+Male,42-53,5,High School,Operations,2,100K-125K
+Male,18-29,4,High School,Management,3,75K-100K
+Female,30-41,4,High School,Operations,2,<75K
+Male,18-29,4,High School,Engineering,1,75K-100K
+Female,42-53,5,PhD,Sales,3,100K-125K
+Male,42-53,4,College,Sales,5,100K-125K
+Female,30-41,3,High School,Engineering,5,100K-125K
+Female,42-53,5,Masters,Management,1,75K-100K
+Female,18-29,4,Masters,Operations,1,<75K
+Male,42-53,5,High School,Engineering,3,<125K
+Male,42-53,5,College,Sales,1,<75K
+Male,42-53,5,High School,Management,2,100K-125K
+Female,18-29,4,High School,Engineering,3,75K-100K
+Female,18-29,4,High School,Operations,1,<75K
+Male,18-29,3,PhD,Operations,3,<75K
+Male,18-29,4,High School,Operations,3,<75K
+Female,30-41,4,High School,Operations,2,<75K
+Female,54-65,4,PhD,Sales,3,100K-125K
+Female,30-41,5,High School,Operations,3,100K-125K
+Male,30-41,4,PhD,Operations,3,75K-100K
+Female,30-41,3,High School,Sales,4,100K-125K
+Male,54-65,5,Masters,Sales,5,100K-125K
+Female,30-41,4,Masters,Administration,5,100K-125K
+Male,30-41,4,High School,Management,3,75K-100K
+Male,18-29,4,High School,Administration,5,100K-125K
+Female,42-53,4,College,Administration,2,100K-125K
+Male,42-53,4,High School,Sales,4,100K-125K
+Male,18-29,4,Masters,Sales,2,<75K
+Male,42-53,5,PhD,Operations,1,75K-100K
+Male,30-41,5,Masters,Operations,1,75K-100K
+Female,18-29,4,Masters,Sales,1,<75K
+Male,54-65,4,Masters,Management,4,<125K
+Male,18-29,4,High School,Operations,2,<75K
+Female,54-65,5,Masters,Administration,4,<125K
+Female,42-53,4,PhD,Engineering,2,100K-125K
+Male,18-29,3,PhD,Management,4,100K-125K
+Female,30-41,4,PhD,Operations,2,75K-100K
+Male,30-41,3,Masters,Operations,5,100K-125K
+Female,30-41,4,Masters,Operations,5,100K-125K
+Female,18-29,2,College,Engineering,5,75K-100K
+Male,42-53,4,High School,Administration,4,75K-100K
+Male,30-41,4,PhD,Management,3,75K-100K
+Male,54-65,5,College,Sales,4,<125K
+Male,30-41,4,Masters,Sales,1,75K-100K
+Female,18-29,4,High School,Sales,4,75K-100K
+Female,54-65,5,High School,Operations,4,<125K
+Female,30-41,3,Masters,Management,2,100K-125K
+Male,54-65,5,College,Operations,3,100K-125K
+Female,30-41,4,High School,Sales,1,<75K
+Female,30-41,4,Masters,Sales,2,<75K
+Female,42-53,4,Masters,Sales,4,<125K
+Female,18-29,3,PhD,Sales,3,100K-125K
+Male,30-41,4,PhD,Operations,3,75K-100K
+Male,42-53,4,High School,Operations,2,75K-100K
+Male,30-41,3,Masters,Engineering,2,75K-100K
+Male,54-65,5,Masters,Operations,5,<125K
+Male,42-53,4,Masters,Administration,5,<125K
+Female,42-53,4,College,Administration,2,75K-100K
+Female,30-41,3,College,Administration,5,100K-125K
+Male,18-29,4,Masters,Operations,2,<75K
+Male,18-29,2,Masters,Engineering,5,100K-125K
+Female,18-29,3,PhD,Operations,2,<75K
+Female,18-29,4,College,Operations,1,<75K
+Female,18-29,2,Masters,Sales,4,75K-100K
+Male,54-65,5,High School,Operations,2,100K-125K
+Male,54-65,5,College,Sales,3,100K-125K
+Female,18-29,2,High School,Sales,5,75K-100K
+Male,54-65,4,Masters,Engineering,4,<125K
+Male,30-41,5,Masters,Sales,1,75K-100K
+Female,42-53,5,PhD,Administration,1,75K-100K
+Female,18-29,4,PhD,Sales,1,<75K
+Male,18-29,3,College,Engineering,5,75K-100K
+Female,54-65,5,Masters,Operations,3,100K-125K
+Male,42-53,4,College,Management,1,100K-125K
+Female,54-65,4,Masters,Sales,4,<125K
+Male,54-65,5,PhD,Management,2,100K-125K
+Female,18-29,3,High School,Management,4,75K-100K
+Male,30-41,5,College,Engineering,2,75K-100K
+Male,54-65,4,College,Management,4,<125K
+Female,18-29,3,College,Sales,4,75K-100K
+Female,54-65,4,PhD,Management,4,<125K
+Female,30-41,4,High School,Administration,5,<125K
+Female,54-65,4,Masters,Operations,1,75K-100K
+Female,54-65,4,College,Management,2,75K-100K
+Male,54-65,4,High School,Administration,5,<125K
+Male,18-29,2,College,Administration,5,75K-100K
+Female,30-41,3,High School,Operations,3,75K-100K
+Male,42-53,4,PhD,Sales,4,<125K
+Female,54-65,4,High School,Sales,5,<125K
+Female,30-41,4,PhD,Sales,1,75K-100K
+Female,18-29,3,College,Operations,2,<75K
+Male,54-65,5,Masters,Operations,5,<125K
+Male,18-29,3,Masters,Administration,1,<75K
+Male,54-65,5,PhD,Operations,4,<125K
+Female,18-29,3,College,Engineering,5,100K-125K
+Female,18-29,4,PhD,Operations,1,<75K
+Female,54-65,4,PhD,Engineering,1,75K-100K
+Male,54-65,4,High School,Management,5,<125K
+Male,42-53,4,PhD,Operations,4,100K-125K
+Male,54-65,5,College,Management,1,75K-100K
+Male,54-65,4,PhD,Sales,5,<125K
+Female,42-53,3,Masters,Sales,5,<125K
+Male,18-29,3,College,Engineering,2,<75K
+Male,54-65,5,PhD,Management,1,100K-125K
+Female,54-65,4,PhD,Management,3,<125K
+Female,18-29,3,PhD,Sales,3,75K-100K
+Female,30-41,4,College,Sales,3,75K-100K
+Female,30-41,4,Masters,Management,2,75K-100K
+Male,30-41,4,College,Administration,4,75K-100K
+Female,30-41,3,Masters,Management,2,75K-100K
+Female,54-65,4,High School,Management,1,75K-100K
+Female,18-29,2,College,Sales,2,75K-100K
+Male,54-65,5,Masters,Engineering,1,75K-100K
+Male,54-65,5,PhD,Engineering,3,<125K
+Female,30-41,3,Masters,Engineering,2,<75K
+Female,42-53,4,College,Sales,4,100K-125K
+Male,30-41,4,College,Engineering,3,75K-100K
+Female,18-29,3,PhD,Operations,4,<75K
+Male,30-41,3,High School,Operations,4,100K-125K
+Male,18-29,3,Masters,Administration,5,<125K
+Female,30-41,2,High School,Management,5,75K-100K
+Male,54-65,5,Masters,Sales,1,<125K
+Female,42-53,5,College,Administration,1,<75K
+Male,42-53,3,High School,Operations,4,75K-100K
+Female,54-65,4,College,Operations,3,75K-100K
+Female,42-53,3,College,Engineering,4,75K-100K
+Female,30-41,2,PhD,Management,5,100K-125K
+Male,18-29,3,College,Operations,4,<75K
+Female,30-41,3,High School,Administration,3,75K-100K
+Male,54-65,5,High School,Operations,3,100K-125K
+Female,18-29,3,PhD,Administration,3,<75K
+Male,18-29,3,High School,Sales,2,<75K
+Female,18-29,3,High School,Management,1,<75K
+Male,42-53,4,Masters,Administration,5,<125K
+Male,18-29,2,PhD,Management,5,75K-100K
+Female,42-53,3,College,Administration,4,100K-125K
+Male,30-41,4,PhD,Management,3,100K-125K
+Female,42-53,3,Masters,Engineering,1,75K-100K
+Female,42-53,5,High School,Operations,1,75K-100K
+Male,18-29,2,College,Administration,5,<125K
+Female,42-53,4,PhD,Operations,5,100K-125K
+Female,42-53,4,College,Engineering,1,75K-100K
+Male,42-53,3,Masters,Engineering,5,100K-125K
+Female,18-29,2,Masters,Operations,4,100K-125K
+Male,18-29,3,PhD,Operations,3,75K-100K
+Male,42-53,5,College,Operations,3,75K-100K
+Male,54-65,5,High School,Engineering,4,<125K
+Male,18-29,4,College,Management,1,<75K
+Male,18-29,3,College,Operations,1,<75K
+Male,54-65,5,PhD,Operations,1,75K-100K
+Female,18-29,3,High School,Engineering,1,<75K
+Female,42-53,4,College,Operations,2,75K-100K
+Female,30-41,3,High School,Sales,5,75K-100K
+Male,54-65,4,High School,Operations,4,<125K
+Male,42-53,4,College,Management,1,<125K
+Female,18-29,3,High School,Operations,3,<75K
+Male,18-29,3,Masters,Sales,3,75K-100K
+Female,30-41,4,High School,Sales,2,75K-100K
+Male,42-53,3,PhD,Management,2,<125K
+Female,30-41,3,PhD,Sales,3,75K-100K
+Male,42-53,3,PhD,Administration,5,<125K
+Female,18-29,2,Masters,Administration,2,75K-100K
+Male,18-29,4,PhD,Sales,1,<75K
+Male,54-65,5,PhD,Management,1,75K-100K
+Male,30-41,3,College,Sales,4,75K-100K
+Male,30-41,3,Masters,Management,5,<125K
+Male,18-29,3,Masters,Operations,2,75K-100K
+Female,42-53,4,College,Administration,4,100K-125K
+Female,42-53,5,High School,Sales,2,100K-125K
+Male,42-53,3,College,Management,5,<125K
+Female,30-41,4,College,Administration,1,<75K
+Female,42-53,3,PhD,Management,3,75K-100K
+Male,54-65,4,College,Management,5,<125K
+Male,18-29,2,PhD,Operations,3,75K-100K
+Female,18-29,2,Masters,Administration,5,100K-125K
+Male,18-29,2,PhD,Operations,4,100K-125K
+Male,54-65,4,Masters,Sales,5,<125K
+Male,54-65,4,College,Sales,4,<125K
+Female,42-53,3,College,Engineering,2,75K-100K
+Male,30-41,4,High School,Engineering,2,<75K
+Female,54-65,4,PhD,Sales,3,100K-125K
+Male,54-65,4,Masters,Administration,4,<125K
+Male,54-65,5,PhD,Engineering,1,100K-125K
+Male,54-65,5,College,Operations,2,<125K
+Male,18-29,3,High School,Sales,3,75K-100K
+Female,42-53,2,High School,Management,5,<125K
+Female,42-53,4,PhD,Sales,2,75K-100K
+Male,54-65,5,High School,Sales,1,75K-100K
+Male,18-29,2,PhD,Engineering,4,75K-100K
+Male,42-53,4,High School,Operations,2,75K-100K
+Male,54-65,4,High School,Engineering,1,100K-125K
+Female,54-65,4,PhD,Engineering,3,<125K
+Male,18-29,3,High School,Sales,3,75K-100K
+Male,54-65,3,PhD,Management,5,<125K
+Female,30-41,3,Masters,Sales,3,75K-100K
+Male,54-65,5,Masters,Operations,1,<125K
+Male,30-41,3,PhD,Administration,2,<75K
+Female,30-41,3,College,Engineering,3,75K-100K
+Female,54-65,3,College,Sales,5,<125K
+Female,18-29,2,College,Operations,5,75K-100K
+Male,30-41,3,College,Operations,1,75K-100K
+Male,30-41,3,Masters,Administration,4,100K-125K
+Male,18-29,3,High School,Operations,1,75K-100K
+Female,54-65,3,Masters,Administration,4,<125K
+Male,30-41,4,PhD,Administration,1,<75K
+Male,30-41,3,College,Administration,1,75K-100K
+Female,42-53,3,College,Administration,3,100K-125K
+Male,42-53,4,Masters,Operations,2,75K-100K
+Male,42-53,3,College,Administration,5,100K-125K
+Male,54-65,4,Masters,Engineering,5,<125K
+Male,54-65,4,High School,Operations,3,100K-125K
+Male,30-41,2,High School,Management,2,100K-125K
+Female,18-29,3,High School,Engineering,2,<75K
+Male,42-53,3,Masters,Engineering,5,<125K
+Male,30-41,2,Masters,Engineering,5,100K-125K
+Male,30-41,4,PhD,Management,1,75K-100K
+Male,30-41,3,PhD,Engineering,2,100K-125K
+Female,30-41,3,PhD,Administration,1,75K-100K
+Male,30-41,3,PhD,Sales,4,100K-125K
+Female,18-29,3,High School,Engineering,3,<75K
+Female,42-53,4,High School,Operations,3,100K-125K
+Male,42-53,3,PhD,Operations,4,100K-125K
+Male,30-41,2,College,Administration,5,75K-100K
+Male,42-53,4,Masters,Sales,1,100K-125K
+Female,42-53,4,High School,Operations,3,<125K
+Male,54-65,5,Masters,Sales,1,75K-100K
+Female,54-65,4,Masters,Operations,1,100K-125K
+Male,18-29,1,Masters,Management,5,100K-125K
+Female,30-41,3,High School,Administration,4,75K-100K
+Female,54-65,3,PhD,Management,4,<125K
+Male,54-65,4,PhD,Administration,3,<125K
+Male,54-65,4,College,Sales,2,75K-100K
+Female,30-41,3,College,Engineering,2,<75K
+Male,54-65,4,College,Management,4,<125K
+Female,42-53,4,Masters,Sales,3,75K-100K
+Male,30-41,3,College,Management,3,75K-100K
+Female,18-29,1,PhD,Operations,5,100K-125K
+Male,18-29,3,PhD,Administration,2,75K-100K
+Male,42-53,3,PhD,Operations,4,100K-125K
+Male,54-65,4,Masters,Engineering,2,100K-125K
+Male,54-65,4,PhD,Engineering,1,100K-125K
+Female,18-29,1,PhD,Management,4,75K-100K
+Male,18-29,3,College,Management,3,75K-100K
+Male,30-41,4,Masters,Sales,3,75K-100K
+Male,54-65,4,Masters,Operations,3,<125K
+Female,42-53,4,High School,Operations,1,75K-100K
+Male,54-65,5,High School,Sales,2,<125K
+Male,54-65,5,High School,Operations,1,75K-100K
+Female,30-41,3,PhD,Management,3,75K-100K
+Male,42-53,3,Masters,Management,3,100K-125K
+Male,30-41,3,Masters,Engineering,4,100K-125K
+Male,18-29,4,PhD,Administration,1,<75K
+Male,30-41,2,PhD,Sales,5,100K-125K
+Female,18-29,2,Masters,Management,5,75K-100K
+Female,54-65,3,College,Management,5,<125K
+Female,42-53,3,College,Sales,5,100K-125K
+Female,42-53,3,High School,Engineering,2,75K-100K
+Male,18-29,2,College,Management,4,75K-100K
+Female,18-29,2,Masters,Sales,2,<75K
+Male,54-65,4,College,Sales,2,<125K
+Female,42-53,3,PhD,Operations,2,75K-100K
+Female,30-41,2,College,Engineering,4,75K-100K
+Male,18-29,3,College,Administration,1,75K-100K
+Male,42-53,3,PhD,Operations,1,100K-125K
+Male,30-41,2,Masters,Management,3,100K-125K
+Female,30-41,2,Masters,Management,3,100K-125K
+Female,42-53,3,Masters,Management,4,100K-125K
+Male,42-53,3,PhD,Engineering,5,<125K
+Male,30-41,3,PhD,Sales,3,75K-100K
+Male,54-65,3,Masters,Engineering,4,<125K
+Male,42-53,4,Masters,Management,2,100K-125K
+Female,54-65,4,PhD,Sales,1,75K-100K
+Male,30-41,3,College,Management,3,75K-100K
+Male,42-53,3,Masters,Operations,5,<125K
+Male,18-29,3,College,Sales,3,100K-125K
+Male,54-65,4,College,Management,3,<125K
+Female,30-41,3,PhD,Management,1,100K-125K
+Male,18-29,2,PhD,Engineering,4,100K-125K
+Male,54-65,4,High School,Engineering,3,100K-125K
+Male,30-41,3,High School,Administration,2,75K-100K
+Female,54-65,4,High School,Administration,2,75K-100K
+Female,18-29,1,College,Management,3,<75K
+Female,30-41,2,High School,Management,3,<75K
+Female,30-41,2,PhD,Management,2,100K-125K
+Female,42-53,3,PhD,Engineering,4,<125K
+Male,18-29,3,PhD,Operations,2,75K-100K
+Female,42-53,3,College,Engineering,4,<125K
+Male,30-41,1,College,Engineering,5,100K-125K
+Male,30-41,2,College,Administration,4,75K-100K
+Male,54-65,3,PhD,Engineering,4,<125K
+Male,18-29,3,College,Engineering,1,<75K
+Female,30-41,2,College,Sales,5,100K-125K
+Female,18-29,2,Masters,Management,3,75K-100K
+Male,42-53,3,PhD,Operations,4,100K-125K
+Male,54-65,4,College,Administration,3,100K-125K
+Male,30-41,2,College,Operations,5,100K-125K
+Female,30-41,2,College,Management,4,75K-100K
+Male,30-41,3,College,Administration,3,75K-100K
+Male,30-41,3,Masters,Engineering,2,<75K
+Male,30-41,4,Masters,Operations,1,75K-100K
+Male,54-65,4,College,Operations,4,<125K
+Male,54-65,3,High School,Management,3,100K-125K
+Female,30-41,3,High School,Sales,2,<75K
+Female,42-53,3,High School,Engineering,2,75K-100K
+Female,30-41,2,PhD,Engineering,2,100K-125K
+Male,54-65,4,College,Engineering,2,<125K
+Male,42-53,3,High School,Management,3,100K-125K
+Male,18-29,2,Masters,Operations,4,75K-100K
+Male,42-53,3,PhD,Sales,1,<75K
+Male,54-65,3,PhD,Operations,5,<125K
+Male,30-41,2,Masters,Management,4,75K-100K
+Female,30-41,3,College,Sales,1,75K-100K
+Male,18-29,2,High School,Sales,3,75K-100K
+Female,42-53,3,High School,Sales,3,100K-125K
+Female,18-29,2,College,Administration,5,100K-125K
+Male,18-29,1,PhD,Management,5,75K-100K
+Female,18-29,1,College,Management,4,75K-100K
+Male,18-29,2,Masters,Operations,3,100K-125K
+Female,54-65,4,College,Operations,2,100K-125K
+Female,30-41,3,College,Operations,1,<75K
+Female,18-29,3,College,Administration,2,<75K
+Male,54-65,3,Masters,Engineering,3,100K-125K
+Female,54-65,3,Masters,Operations,3,100K-125K
+Male,18-29,2,Masters,Engineering,3,100K-125K
+Male,18-29,2,College,Engineering,1,<75K
+Male,42-53,4,College,Sales,2,<125K
+Male,30-41,3,Masters,Management,1,<125K
+Female,42-53,3,College,Management,3,75K-100K
+Male,30-41,2,Masters,Management,2,75K-100K
+Male,42-53,2,College,Administration,3,100K-125K
+Male,42-53,3,College,Management,1,<75K
+Male,18-29,3,High School,Management,2,<75K
+Male,30-41,3,High School,Engineering,4,75K-100K
+Female,54-65,3,PhD,Operations,2,100K-125K
+Female,54-65,3,PhD,Operations,5,<125K
+Female,30-41,2,PhD,Administration,2,75K-100K
+Female,18-29,2,Masters,Sales,1,<75K
+Female,30-41,3,High School,Administration,2,<75K
+Female,18-29,3,High School,Management,3,<75K
+Female,42-53,2,PhD,Operations,5,<125K
+Male,42-53,3,PhD,Administration,3,100K-125K
+Male,18-29,2,Masters,Engineering,1,<75K
+Male,18-29,3,PhD,Operations,3,75K-100K
+Male,30-41,2,College,Administration,2,<125K
+Female,54-65,3,PhD,Engineering,5,100K-125K
+Female,54-65,4,College,Sales,5,100K-125K
+Male,54-65,3,PhD,Engineering,2,<125K
+Male,42-53,3,College,Sales,4,<125K
+Female,54-65,4,College,Management,3,100K-125K
+Female,30-41,3,High School,Operations,3,75K-100K
+Female,42-53,3,College,Operations,2,75K-100K
+Male,18-29,3,College,Sales,2,100K-125K
+Female,18-29,2,High School,Operations,2,<75K
+Male,18-29,1,PhD,Management,3,75K-100K
+Female,54-65,2,Masters,Sales,5,<125K
+Male,42-53,2,College,Management,1,100K-125K
+Male,54-65,4,Masters,Sales,5,<125K
+Male,54-65,2,Masters,Engineering,4,100K-125K
+Male,30-41,2,Masters,Operations,5,100K-125K
+Female,42-53,2,High School,Management,2,<75K
+Male,30-41,1,PhD,Engineering,4,<125K
+Male,42-53,4,High School,Operations,1,75K-100K
+Male,54-65,4,High School,Sales,2,100K-125K
+Female,42-53,3,Masters,Sales,3,75K-100K
+Female,30-41,3,Masters,Administration,1,<75K
+Female,42-53,1,High School,Operations,5,100K-125K
+Female,18-29,2,College,Operations,2,<75K
+Male,30-41,3,PhD,Engineering,1,75K-100K
+Female,18-29,1,Masters,Operations,4,<75K
+Male,54-65,4,Masters,Engineering,1,100K-125K
+Female,18-29,1,Masters,Management,5,<125K
+Female,54-65,3,Masters,Administration,5,100K-125K
+Male,18-29,2,College,Engineering,3,75K-100K
+Male,18-29,1,PhD,Management,2,75K-100K
+Female,18-29,1,PhD,Sales,5,100K-125K
+Male,30-41,2,College,Operations,3,75K-100K
+Female,18-29,1,High School,Management,4,75K-100K
+Male,42-53,3,Masters,Management,1,75K-100K
+Female,18-29,2,College,Administration,1,<75K
+Female,42-53,2,Masters,Operations,2,75K-100K
+Male,54-65,3,Masters,Administration,2,75K-100K
+Male,18-29,2,PhD,Management,1,<75K
+Male,54-65,3,College,Management,3,<125K
+Male,30-41,2,High School,Administration,4,75K-100K
+Male,18-29,2,College,Management,3,<75K
+Female,42-53,2,High School,Engineering,3,75K-100K
+Male,18-29,2,PhD,Engineering,3,75K-100K
+Male,18-29,2,High School,Sales,2,<75K
+Male,42-53,4,High School,Administration,4,75K-100K
+Male,42-53,3,High School,Administration,4,75K-100K
+Male,30-41,3,PhD,Operations,1,75K-100K
+Male,18-29,2,High School,Sales,3,75K-100K
+Male,54-65,3,College,Operations,3,100K-125K
+Female,30-41,3,Masters,Operations,3,75K-100K
+Female,42-53,3,Masters,Sales,5,75K-100K
+Female,54-65,3,Masters,Operations,5,100K-125K
+Female,42-53,2,College,Administration,5,75K-100K
+Male,54-65,4,Masters,Operations,3,100K-125K
+Female,42-53,3,High School,Administration,1,75K-100K
+Male,30-41,2,Masters,Administration,4,100K-125K
+Female,54-65,3,PhD,Engineering,1,100K-125K
+Female,30-41,2,High School,Operations,4,75K-100K
+Male,18-29,1,College,Management,2,100K-125K
+Male,30-41,2,High School,Administration,5,75K-100K
+Female,42-53,1,PhD,Operations,5,<125K
+Male,54-65,4,College,Operations,3,100K-125K
+Male,42-53,2,Masters,Engineering,5,<125K
+Male,42-53,2,Masters,Engineering,3,<125K
+Male,18-29,1,High School,Sales,4,75K-100K
+Male,30-41,2,College,Operations,1,75K-100K
+Male,30-41,2,High School,Engineering,2,<75K
+Male,30-41,1,College,Management,4,100K-125K
+Male,42-53,2,Masters,Operations,4,<125K
+Male,42-53,2,Masters,Management,5,100K-125K
+Male,18-29,1,High School,Administration,4,75K-100K
+Male,42-53,3,College,Administration,3,100K-125K
+Female,42-53,1,High School,Administration,5,100K-125K
+Female,18-29,1,PhD,Sales,5,100K-125K
+Male,30-41,2,Masters,Engineering,5,100K-125K
+Female,18-29,2,High School,Operations,3,<75K
+Male,42-53,3,Masters,Administration,1,75K-100K
+Female,30-41,2,High School,Engineering,5,100K-125K
+Male,30-41,2,PhD,Administration,3,75K-100K
+Female,42-53,3,Masters,Administration,1,75K-100K
+Male,30-41,3,Masters,Administration,1,75K-100K
+Female,54-65,2,College,Management,2,75K-100K
+Male,42-53,2,Masters,Management,5,100K-125K
+Female,54-65,3,PhD,Administration,1,100K-125K
+Male,30-41,2,Masters,Management,3,<125K
+Female,54-65,2,PhD,Administration,3,75K-100K
+Male,54-65,3,High School,Management,3,100K-125K
+Female,42-53,2,College,Administration,3,75K-100K
+Male,42-53,2,PhD,Engineering,4,<125K
+Female,54-65,3,PhD,Engineering,3,<125K
+Female,18-29,1,College,Management,2,75K-100K
+Female,42-53,3,High School,Management,1,75K-100K
+Male,30-41,3,High School,Sales,2,75K-100K
+Female,42-53,2,Masters,Management,2,75K-100K
+Female,18-29,2,College,Sales,3,75K-100K
+Female,54-65,2,PhD,Engineering,2,100K-125K
+Female,42-53,1,PhD,Engineering,1,75K-100K
+Female,30-41,2,College,Sales,3,75K-100K
+Male,42-53,3,High School,Sales,1,75K-100K
+Male,54-65,3,Masters,Engineering,4,100K-125K
+Female,54-65,2,Masters,Sales,5,<125K
+Male,42-53,3,PhD,Sales,1,100K-125K
+Male,30-41,2,High School,Administration,3,75K-100K
+Male,54-65,3,PhD,Sales,2,<125K
+Female,18-29,1,High School,Engineering,4,100K-125K
+Male,18-29,1,College,Engineering,3,75K-100K
+Male,54-65,4,Masters,Sales,1,100K-125K
+Male,54-65,3,PhD,Sales,3,100K-125K
+Male,54-65,3,PhD,Management,4,<125K
+Female,30-41,1,High School,Management,5,100K-125K
+Female,54-65,4,Masters,Administration,3,<125K
+Female,42-53,2,PhD,Management,2,<75K
+Male,30-41,2,High School,Administration,4,<75K
+Female,18-29,1,High School,Administration,5,100K-125K
+Male,30-41,1,College,Engineering,5,<125K
+Male,54-65,2,College,Management,5,<125K
+Male,30-41,1,High School,Operations,5,100K-125K
+Female,42-53,2,PhD,Operations,2,100K-125K
+Female,30-41,1,High School,Management,5,75K-100K
+Female,54-65,3,Masters,Management,2,100K-125K
+Female,54-65,4,College,Sales,1,75K-100K
+Female,30-41,1,Masters,Administration,3,75K-100K
+Female,18-29,1,PhD,Engineering,2,<75K
+Male,30-41,2,Masters,Sales,1,75K-100K
+Female,18-29,1,Masters,Engineering,5,75K-100K
+Female,18-29,1,Masters,Administration,2,<75K
+Male,30-41,2,Masters,Administration,2,100K-125K
+Female,42-53,2,PhD,Sales,3,100K-125K
+Male,42-53,2,College,Management,2,100K-125K
+Male,18-29,1,High School,Engineering,4,100K-125K
+Male,30-41,2,Masters,Sales,1,100K-125K
+Female,42-53,2,College,Administration,2,75K-100K
+Male,42-53,3,High School,Management,2,100K-125K
+Female,54-65,2,PhD,Sales,3,100K-125K
+Male,54-65,2,PhD,Administration,4,<125K
+Female,30-41,1,Masters,Management,5,100K-125K
+Female,54-65,3,Masters,Management,2,100K-125K
+Male,30-41,2,Masters,Sales,3,<125K
+Female,42-53,3,High School,Management,1,<75K
+Male,30-41,2,PhD,Operations,1,100K-125K
+Male,54-65,2,PhD,Sales,5,<125K
+Female,42-53,2,High School,Management,2,75K-100K
+Male,18-29,2,High School,Sales,2,<75K
+Female,54-65,2,College,Management,4,100K-125K
+Male,54-65,3,High School,Sales,2,<125K
+Female,30-41,1,College,Management,4,100K-125K
+Female,54-65,2,PhD,Engineering,2,100K-125K
+Male,42-53,2,Masters,Management,2,100K-125K
+Male,18-29,1,Masters,Administration,3,<75K
+Male,42-53,1,PhD,Management,4,<125K
+Female,54-65,3,College,Sales,4,<125K
+Female,42-53,2,Masters,Administration,5,<125K
+Female,18-29,1,High School,Operations,4,75K-100K
+Male,18-29,1,Masters,Operations,3,75K-100K
+Female,42-53,2,PhD,Administration,3,100K-125K
+Male,54-65,3,College,Engineering,3,<125K
+Female,54-65,3,High School,Sales,1,100K-125K
+Female,54-65,2,High School,Management,4,100K-125K
+Female,42-53,1,PhD,Sales,5,<125K
+Female,54-65,1,Masters,Management,4,<125K
+Female,18-29,1,High School,Administration,2,<75K
+Male,30-41,1,College,Operations,5,75K-100K
+Male,18-29,1,High School,Sales,2,<75K
+Female,54-65,2,High School,Sales,4,<125K
+Female,30-41,2,PhD,Administration,1,<75K
+Female,30-41,1,PhD,Operations,3,75K-100K
+Male,54-65,3,PhD,Sales,2,100K-125K
+Male,30-41,1,College,Operations,4,100K-125K
+Female,54-65,2,College,Administration,3,100K-125K
+Female,42-53,1,PhD,Engineering,4,100K-125K
+Male,54-65,3,College,Operations,1,75K-100K
+Female,42-53,2,PhD,Sales,4,100K-125K
+Female,42-53,2,High School,Administration,4,75K-100K
+Female,54-65,3,Masters,Engineering,2,75K-100K
+Male,18-29,1,College,Sales,1,<75K
+Female,54-65,2,College,Sales,2,100K-125K
+Male,42-53,1,Masters,Engineering,4,<125K
+Female,54-65,2,College,Operations,4,100K-125K
+Female,30-41,1,High School,Administration,4,100K-125K
+Male,54-65,2,PhD,Engineering,3,<125K
+Female,54-65,3,College,Sales,2,100K-125K
+Male,54-65,3,High School,Administration,3,100K-125K
+Female,54-65,3,High School,Engineering,3,100K-125K
+Male,30-41,2,Masters,Administration,1,75K-100K
+Female,54-65,1,College,Engineering,3,100K-125K
+Male,18-29,2,High School,Sales,2,75K-100K
+Male,18-29,2,PhD,Administration,4,100K-125K
+Female,18-29,2,College,Administration,2,<75K
+Female,18-29,2,College,Operations,1,<75K
+Male,42-53,1,Masters,Engineering,5,100K-125K
+Female,42-53,1,High School,Operations,5,100K-125K
+Male,18-29,1,College,Management,2,100K-125K
+Female,18-29,1,High School,Sales,2,<75K
+Male,42-53,1,Masters,Operations,3,100K-125K
+Male,54-65,4,Masters,Sales,1,100K-125K
+Male,42-53,2,College,Administration,5,75K-100K
+Male,30-41,1,High School,Sales,5,<125K
+Male,42-53,2,Masters,Operations,3,100K-125K
+Female,18-29,1,Masters,Engineering,1,<75K
+Female,30-41,1,PhD,Management,1,75K-100K
+Male,18-29,1,College,Operations,1,<75K
+Male,42-53,3,PhD,Sales,2,100K-125K
+Male,54-65,1,High School,Management,5,<125K
+Male,18-29,1,PhD,Operations,2,<75K
+Male,54-65,2,Masters,Management,4,100K-125K
+Female,54-65,2,High School,Management,2,<125K
+Female,54-65,3,High School,Administration,1,<75K
+Male,54-65,2,PhD,Engineering,4,<125K
+Male,54-65,2,Masters,Engineering,3,<125K
+Male,54-65,2,PhD,Management,3,<125K
+Male,42-53,2,PhD,Management,2,75K-100K
+Male,42-53,2,High School,Engineering,1,100K-125K
+Female,30-41,1,High School,Sales,3,<75K
+Female,54-65,2,College,Administration,4,100K-125K
+Female,54-65,2,Masters,Sales,4,100K-125K
+Female,30-41,2,College,Sales,1,<75K
+Male,42-53,3,Masters,Administration,1,75K-100K
+Female,18-29,1,College,Sales,2,<75K
+Male,18-29,1,Masters,Operations,3,75K-100K
+Male,42-53,2,High School,Operations,4,100K-125K
+Female,54-65,2,PhD,Engineering,2,100K-125K
+Female,54-65,2,High School,Operations,5,100K-125K
+Female,18-29,1,High School,Sales,1,<75K
+Male,54-65,2,High School,Management,3,<125K
+Female,54-65,2,High School,Engineering,3,100K-125K
+Female,42-53,1,Masters,Sales,5,<125K
+Female,54-65,2,High School,Sales,2,75K-100K
+Female,18-29,1,High School,Management,1,<75K
+Female,54-65,2,College,Engineering,4,100K-125K
+Male,30-41,2,High School,Management,1,<75K
+Female,54-65,2,Masters,Administration,3,100K-125K
+Female,18-29,1,High School,Management,4,75K-100K
+Male,54-65,2,College,Sales,4,100K-125K
+Female,30-41,1,High School,Administration,4,75K-100K
+Male,42-53,2,PhD,Sales,3,75K-100K
+Female,42-53,2,Masters,Engineering,2,75K-100K
+Female,54-65,1,Masters,Management,3,100K-125K
+Female,54-65,2,High School,Sales,3,75K-100K
+Female,42-53,1,High School,Engineering,5,<125K
+Male,42-53,2,High School,Management,1,75K-100K
+Male,54-65,2,Masters,Operations,3,100K-125K
+Male,42-53,2,PhD,Operations,3,75K-100K
+Male,54-65,3,High School,Management,2,100K-125K
+Male,42-53,1,Masters,Engineering,5,<125K
+Female,54-65,2,PhD,Engineering,5,<125K
+Female,30-41,1,College,Engineering,2,<75K
+Male,18-29,1,High School,Administration,4,75K-100K
+Male,30-41,1,High School,Management,5,100K-125K
+Female,42-53,1,High School,Administration,4,75K-100K
+Male,54-65,1,PhD,Operations,5,<125K
+Male,42-53,2,High School,Operations,2,100K-125K
+Male,42-53,1,PhD,Administration,4,100K-125K
+Male,30-41,2,College,Operations,1,75K-100K
+Female,42-53,1,College,Operations,5,75K-100K
+Male,18-29,1,High School,Operations,2,<75K
+Male,30-41,1,High School,Administration,2,75K-100K
+Female,42-53,1,Masters,Administration,2,75K-100K
+Male,42-53,2,High School,Operations,3,75K-100K
+Male,42-53,2,Masters,Operations,2,100K-125K
+Male,42-53,2,PhD,Sales,1,<75K
+Male,18-29,1,High School,Engineering,2,<75K
+Male,30-41,1,College,Administration,5,<125K
+Male,18-29,1,High School,Management,3,<75K
+Male,30-41,1,PhD,Administration,3,100K-125K
+Male,18-29,1,High School,Sales,1,<75K
+Male,54-65,1,PhD,Engineering,5,<125K
+Male,42-53,2,Masters,Management,3,100K-125K
+Female,54-65,1,College,Engineering,5,<125K
+Female,42-53,1,High School,Management,3,75K-100K
+Female,30-41,1,Masters,Engineering,4,100K-125K
+Female,54-65,1,Masters,Operations,3,<125K
+Female,54-65,2,High School,Administration,5,100K-125K
+Male,54-65,1,College,Sales,5,<125K
+Male,42-53,2,High School,Administration,2,75K-100K
+Female,42-53,1,College,Engineering,5,100K-125K
+Female,54-65,1,College,Administration,4,100K-125K
+Female,30-41,2,PhD,Operations,3,75K-100K
+Male,54-65,1,PhD,Sales,4,<125K
+Female,42-53,2,College,Operations,1,75K-100K
+Male,54-65,3,High School,Administration,3,<125K
+Female,54-65,1,High School,Sales,5,<125K
+Male,30-41,1,High School,Operations,2,100K-125K
+Male,30-41,1,Masters,Sales,2,75K-100K
+Female,42-53,1,High School,Sales,5,<125K
+Female,54-65,2,College,Sales,1,100K-125K
+Male,54-65,3,Masters,Sales,2,100K-125K
+Male,54-65,3,High School,Sales,3,100K-125K
+Male,30-41,2,College,Sales,1,<75K
+Female,54-65,2,High School,Engineering,3,75K-100K
+Male,54-65,1,Masters,Administration,5,<125K
+Female,42-53,1,Masters,Management,4,100K-125K
+Male,18-29,1,High School,Sales,1,75K-100K
+Male,54-65,3,High School,Operations,2,100K-125K
+Male,30-41,1,Masters,Sales,2,100K-125K
+Male,54-65,2,Masters,Operations,1,75K-100K
+Female,30-41,1,PhD,Engineering,1,<75K
+Male,18-29,1,Masters,Operations,2,75K-100K
+Female,54-65,2,High School,Administration,1,<75K
+Female,18-29,1,High School,Management,1,<75K
+Female,42-53,1,College,Administration,4,100K-125K
+Male,30-41,1,High School,Management,1,<75K
+Female,42-53,1,High School,Management,2,100K-125K
+Male,54-65,2,College,Sales,1,<125K
+Female,42-53,1,High School,Sales,3,75K-100K
+Female,54-65,1,College,Management,4,100K-125K
+Female,54-65,1,Masters,Management,4,100K-125K
+Male,30-41,1,PhD,Administration,2,75K-100K
+Male,54-65,2,Masters,Operations,2,100K-125K
+Female,54-65,1,Masters,Sales,3,75K-100K
+Female,54-65,2,College,Sales,2,<75K
+Female,54-65,2,High School,Engineering,1,100K-125K
+Male,54-65,2,College,Administration,2,100K-125K
+Male,42-53,2,High School,Management,1,<75K
+Female,30-41,1,High School,Sales,1,<75K
+Male,42-53,2,High School,Engineering,1,<75K
+Female,42-53,1,College,Sales,3,75K-100K
+Female,18-29,1,High School,Administration,1,<75K
+Female,30-41,1,PhD,Management,5,100K-125K
+Female,54-65,1,Masters,Engineering,4,<125K
+Male,54-65,1,High School,Operations,5,100K-125K
+Female,54-65,1,Masters,Operations,3,100K-125K
+Male,30-41,1,Masters,Operations,1,75K-100K
+Male,30-41,1,College,Operations,1,<75K
+Female,54-65,2,High School,Sales,3,100K-125K
+Male,42-53,1,College,Management,2,100K-125K
+Female,42-53,1,PhD,Operations,3,100K-125K
+Female,54-65,1,High School,Administration,3,<125K
+Male,42-53,1,College,Operations,3,75K-100K
+Female,54-65,1,PhD,Management,4,<125K
+Female,54-65,1,PhD,Operations,2,100K-125K
+Male,54-65,1,PhD,Management,4,<125K
+Female,54-65,1,College,Administration,5,100K-125K
+Female,54-65,2,PhD,Sales,5,<125K
+Male,42-53,1,PhD,Sales,4,100K-125K
+Male,30-41,1,High School,Sales,4,100K-125K
+Male,54-65,1,PhD,Administration,4,<125K
+Female,42-53,1,Masters,Sales,3,100K-125K
+Male,30-41,1,High School,Sales,1,75K-100K
+Male,54-65,1,Masters,Administration,2,75K-100K
+Female,42-53,1,High School,Management,3,100K-125K
+Male,54-65,2,PhD,Administration,1,<125K
+Male,42-53,1,College,Operations,4,<125K
+Female,54-65,1,PhD,Engineering,3,75K-100K
+Male,54-65,1,High School,Sales,3,<125K
+Female,30-41,2,High School,Engineering,1,<75K
+Female,30-41,1,PhD,Engineering,2,75K-100K
+Female,54-65,1,High School,Engineering,5,100K-125K
+Male,54-65,2,Masters,Sales,2,<125K
+Male,54-65,2,College,Sales,1,<125K
+Male,42-53,1,High School,Engineering,3,75K-100K
+Female,54-65,1,High School,Operations,3,100K-125K
+Male,30-41,1,Masters,Operations,1,75K-100K
+Male,30-41,1,College,Operations,2,<75K
+Male,54-65,1,College,Operations,3,100K-125K
+Female,42-53,1,PhD,Engineering,1,<75K
+Female,42-53,1,PhD,Management,2,100K-125K
+Male,54-65,1,PhD,Administration,3,<125K
+Male,54-65,1,PhD,Management,2,100K-125K
+Female,42-53,1,College,Administration,1,<75K
+Female,54-65,1,PhD,Operations,2,100K-125K
+Female,54-65,2,High School,Sales,1,75K-100K
+Female,54-65,1,PhD,Operations,3,<125K
+Female,42-53,1,College,Sales,2,<75K
+Male,30-41,1,College,Engineering,4,100K-125K
+Male,54-65,1,College,Administration,3,75K-100K
+Female,42-53,1,College,Operations,2,<75K
+Male,54-65,2,Masters,Operations,1,75K-100K
+Female,54-65,2,High School,Operations,1,<75K
+Male,30-41,1,Masters,Operations,1,<75K
+Female,42-53,1,Masters,Operations,1,<75K
+Male,54-65,1,PhD,Administration,5,100K-125K
+Male,54-65,1,High School,Sales,3,<125K
+Male,42-53,1,High School,Management,1,100K-125K
+Male,54-65,1,Masters,Sales,3,100K-125K
+Male,54-65,1,High School,Administration,3,100K-125K
+Male,54-65,1,High School,Operations,2,100K-125K
+Male,54-65,1,Masters,Sales,1,100K-125K
+Female,42-53,1,High School,Engineering,3,75K-100K
+Male,54-65,1,High School,Management,1,75K-100K
+Female,54-65,1,Masters,Operations,2,75K-100K
+Female,54-65,1,College,Operations,3,75K-100K
+Female,54-65,1,College,Sales,3,100K-125K
+Female,42-53,1,PhD,Sales,3,100K-125K
+Male,54-65,1,Masters,Sales,1,75K-100K
+Male,54-65,1,High School,Operations,1,75K-100K
+Male,54-65,1,High School,Management,3,100K-125K
+Female,54-65,1,College,Engineering,1,<75K
+Female,42-53,1,High School,Administration,2,100K-125K
+Male,54-65,1,High School,Administration,1,100K-125K
+Male,54-65,1,College,Sales,2,100K-125K
+Female,54-65,1,High School,Operations,3,100K-125K
+Male,54-65,1,Masters,Administration,2,100K-125K
+Female,54-65,1,High School,Administration,2,75K-100K
+Female,54-65,1,Masters,Engineering,1,75K-100K
+Female,54-65,1,Masters,Administration,1,100K-125K
+Female,54-65,1,College,Administration,2,75K-100K
+Female,54-65,1,Masters,Administration,1,75K-100K
+Female,54-65,1,PhD,Administration,2,75K-100K
+Female,54-65,1,High School,Administration,1,<75K
+Male,54-65,1,Masters,Sales,2,100K-125K
+Male,42-53,1,High School,Operations,1,75K-100K
+Male,54-65,2,High School,Administration,1,75K-100K
+Male,54-65,1,PhD,Sales,2,<125K

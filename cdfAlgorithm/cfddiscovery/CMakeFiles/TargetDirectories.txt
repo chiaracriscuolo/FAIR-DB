@@ -1,0 +1,3 @@
+/home/chiara/Dropbox/Tesi/cdfAlgorithm/cfddiscovery-master/CMakeFiles/rebuild_cache.dir
+/home/chiara/Dropbox/Tesi/cdfAlgorithm/cfddiscovery-master/CMakeFiles/CFDD.dir
+/home/chiara/Dropbox/Tesi/cdfAlgorithm/cfddiscovery-master/CMakeFiles/edit_cache.dir

@@ -35,7 +35,7 @@ function init () {
     // spawn new child process to call the python script
     console.log(req.body)
     // const subprocess = spawn('python', ['nodePythonApp/script1.py'])
-    const subprocess = spawn('python', ['nodePythonApp/discoveryScript.py', JSON.stringify(req.body)])
+    const subprocess = spawn('pipenv', ['run', 'python', 'discoveryScript.py', JSON.stringify(req.body)], { cwd: 'nodePythonApp' })
     // collect data from script
     subprocess.stdout.on('data', function (data) {
       console.log('Pipe data from python script...')
@@ -49,7 +49,7 @@ function init () {
       console.log(`child process close all stdio with code ${code}`)
       // send data to browser
       // res.send('Dati:' + dataToSend)
-      dataToSend = 'static/ACFDsTitanic.json'
+      // dataToSend = 'static/ACFDsTitanic.json'
       res.json(dataToSend)
     })
   })

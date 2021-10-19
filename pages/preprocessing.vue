@@ -5,6 +5,7 @@
       Input Table
     </h4>
     <PrintTable />
+    <!-- TO DO: DATA VISUALIZATION -->
     <div class="container">
       <h4 class="ui horizontal divider header">
         <i class="chart area icon" />
@@ -47,7 +48,7 @@
           <tbody>
             <tr v-for="(item) in headers" :key="item">
               <td class="two wide column">
-                <input v-model="params.protected_attr[item]" type="checkbox">
+                <input v-model="params.protected_attr" :value="item" type="checkbox">
               </td>
               <td>
                 {{ item }}
@@ -70,7 +71,7 @@
             <div class="field">
               <div type="ui radio checkbox">
                 <td class="two wide column">
-                  <input v-model="params.target[item]" type="radio" :value="true" name="example2">
+                  <input v-model="params.target" type="radio" :value="item" name="example2">
                 </td>
                 <td>
                   {{ item }}
@@ -155,8 +156,8 @@ export default {
       headers: null,
       show: false,
       params: {
-        protected_attr: { Pclass: true, Sex: true },
-        target: { Survived: true },
+        protected_attr: [],
+        target: 'Survived',
         confidence: 0.8,
         support: 0.1,
         maxAntSize: 2,
@@ -170,22 +171,19 @@ export default {
     this.headers = obj.columns
   },
   methods: {
-    postParams () {
+    async postParams () {
       // console.warn(this.params)
-      axios.post('/api/postParams', this.params)
+      // const self = this
+      const response = await axios.post('/api/postParams', this.params)
       // axios.get('/api/preprocessingApi')
-        .then(function (response) {
-          // Handle success
-          // this.$router.push('/filtering')
-          console.log(response.body)
-          this.show = true
-          // response.redirect('/filtering')
-        })
-    },
-    changeState () {
-      this.show = !this.show
+      // .then(function (response) {
+      // Handle success
+      // this.$router.push('/filtering')
+      console.log('----------', response.body)
+      this.show = true
+      // response.redirect('/filtering')
+      // })
     }
-
   }
 }
 </script>

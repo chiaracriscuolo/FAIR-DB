@@ -27,10 +27,10 @@
           <tr v-for="el in data" :key="el">
             <td class="collapsing">
               <div class="ui fitted checkbox">
-                <input type="checkbox"> <label />
+                <input v-model="params[el]" type="checkbox"> <label />
               </div>
             </td>
-            <td v-for="i in el" :key="i">
+            <td v-for="i in el" :key="i" type="number" @="setTwoNumberDecimal(i)">
               {{ i }}
             </td>
           </tr>
@@ -38,7 +38,12 @@
       </table>
 
       <a href="/" aria-current="page" class="nuxt-link-exact-active nuxt-link-active">
-        <button class="fluid ui purple button">Compute Statistics!</button>
+        <button class="ui purple button">Compute Statistics!</button>
+      </a>
+      <a v-if="show" href="/" aria-current="page" class="nuxt-link-exact-active nuxt-link-active">
+        <button class="fluid ui purple button">
+          See Dependencies!
+        </button>
       </a>
     </div>
   </div>
@@ -49,7 +54,9 @@ export default {
   data () {
     return {
       headers: null,
-      data: null
+      data: null,
+      show: false,
+      params: {}
     }
   },
   async mounted () {
