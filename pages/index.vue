@@ -1,10 +1,11 @@
 <template>
   <main class="container">
     <section>
-      <img src="~/static/fairnessPhoto.png" alt="Bot ADS">
+       <img src="~/static/fairnessPhoto.png" alt="Bot ADS">
+      <!--<img src="https://images.unsplash.com/photo-1587740896339-96a76170508d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=471&q=80" alt="Bot ADS"> -->
       <h2>FunctionAl dependencIes to discoveR Data Bias</h2>
       <p>
-        We present FAIR-DB (FunctionAl dependencIes to discoveR Data Bias), a novel framework
+        We present <b>FAIR-DB (FunctionAl dependencIes to discoveR Data Bias)</b>, a novel framework
         to detect biases and discover discrimination in datasets. By exploiting various kinds of functional
         dependencies, our tool can identify those attributes in a database that encompass discrimination (e.g.
         sex, ethnicity or religion) and the ones that instead satisfy various fairness criteria.
@@ -16,7 +17,7 @@
       </p>
     </section>
     <div class="container">
-      <a href="/preprocessing" aria-current="page" class="nuxt-link-exact-active nuxt-link-active">
+      <a href="/selection" aria-current="page" class="nuxt-link-exact-active nuxt-link-active">
         <button class="fluid ui purple button">Start the demo!</button>
       </a>
     </div>

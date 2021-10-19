@@ -2,17 +2,20 @@
   <div>
     <div class="container">
       <h4>Choose the ordering criterion</h4>
-      <select class="ui selection dropdown">
-        <option value="">
+      <select v-model="orderingCriterion" class="ui selection dropdown">
+        <option value="Support">
           Support
         </option>
-        <option value="0">
-          Confidence
-        </option>
-        <option value="1">
+        <option value="Difference">
           Difference
         </option>
+        <!-- TODO <option value="Mean">
+          Mean
+        </option>-->
       </select>
+      <button class="ui purple button" @click="sorted()">
+        Apply Ordering Criterion!
+      </button>
 
       <h4>Table of Functional Dependencies</h4>
       <table class="ui purple table">
@@ -24,14 +27,14 @@
             </th>
           </tr>
         </thead><tbody>
-          <tr v-for="el in data" :key="el">
+          <tr v-for="(el, index) in data" :key="el">
             <td class="collapsing">
               <div class="ui fitted checkbox">
-                <input v-model="params[el]" type="checkbox"> <label />
+                <input v-model="params" type="checkbox" :value="index"> <label />
               </div>
             </td>
-            <td v-for="i in el" :key="i" type="number" @="setTwoNumberDecimal(i)">
-              {{ i }}
+            <td v-for="i in el" :key="i" name="example2">
+              <span class="ui black text">{{ pretty(i) }}</span>
             </td>
           </tr>
         </tbody>
@@ -50,13 +53,25 @@
 </template>
 
 <script>
+
+function parseACFD (value) {
+  /* value = value.replace('{', '')
+  value = value.replace('},', '=>')
+  value = value.replace('},', '')
+  value = value.replace('"lhs":', '')
+  value = value.replace('"rhs":', '') */
+
+  return ' ' + JSON.stringify(value.lhs) + ' => ' + JSON.stringify(value.rhs)
+}
+
 export default {
   data () {
     return {
       headers: null,
       data: null,
       show: false,
-      params: {}
+      orderingCriterion: 'Support',
+      params: []
     }
   },
   async mounted () {
@@ -64,10 +79,19 @@ export default {
     const obj = JSON.parse(json.data)
     this.data = obj.data.slice(0, 10)
     this.headers = obj.columns
+  },
+  methods: {
+    pretty (value) {
+      if (typeof (value) === 'number') {
+        return value.toFixed(2)
+      } else if (JSON.stringify(value) === 'null') { return 0 } else { return parseACFD(value) }
+    },
+    sorted () {
+      return this.data
+    }
   }
 }
 </script>
 
 <style scoped>
-
 </style>

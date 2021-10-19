@@ -2,7 +2,7 @@
   <main class="container">
     <h4 class="ui horizontal divider header">
       <i class="table icon" />
-      Input Table
+      Input Dataset
     </h4>
     <PrintTable />
     <!-- TO DO: DATA VISUALIZATION -->

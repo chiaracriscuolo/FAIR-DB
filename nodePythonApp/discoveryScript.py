@@ -3,6 +3,22 @@ import sys
 import json
 import pandas
 #import numpy as np
+# Python code to create child process 
+import os
+  
+def parent_child():
+    n = os.fork()
+  
+    # n greater than 0  means parent process
+    if n > 0:
+        print("Parent process and id is : ", os.getpid())
+  
+    # n equals to 0 means child process
+    else:
+        print("Child process and id is : ", os.getpid())
+          
+# Driver code
+parent_child()
 
 #def return_key(currency_dict, val):
 #    val_list = currency_dict.values()
@@ -45,11 +61,15 @@ file_path = '../cdfAlgorithm/cfddiscovery/datasets/preprocessedTitanic.csv'
 df = pandas.read_csv(file_path)
 all_tuples = len(df)
 cols = df.columns
-supportCount = support*all_tuples
-#supportCount = 80
+## TODO TOGLIERE COMMENTO!!
+#supportCount = support*all_tuples
+supportCount = 80
 print(cols, all_tuples, supportCount)
 
 ##### 2. APPLY CFD_DISCOVERY ALGORITHM
+// Creating first child
+n1 = os.fork()
+
 #Apply CFDDiscovery algorithm
 #output = !../cdfAlgorithm/cfddiscovery/CFDD {file_path} {supportCount} {confidence} {maxAntSize} | grep {grepValue}
 
