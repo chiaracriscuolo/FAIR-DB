@@ -104,10 +104,10 @@
           </tr>
           <tr>
             <td class="two wide column">
-              Support
+              SupportCount
             </td>
             <td>
-              <input id="support" v-model.number="params.support" type="text" placeholder="0.1">
+              <input id="supportCount" v-model.number="params.supportCount" type="text" placeholder="80">
             </td>
           </tr>
           <tr>
@@ -159,8 +159,8 @@ export default {
         protected_attr: [],
         target: 'Survived',
         confidence: 0.8,
-        support: 0.1,
-        maxAntSize: 2,
+        supportCount: 80,
+        maxAntSize: 2.0,
         difference: 0.07
       }
     }

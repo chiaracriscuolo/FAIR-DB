@@ -3,22 +3,6 @@ import sys
 import json
 import pandas
 #import numpy as np
-# Python code to create child process 
-import os
-  
-def parent_child():
-    n = os.fork()
-  
-    # n greater than 0  means parent process
-    if n > 0:
-        print("Parent process and id is : ", os.getpid())
-  
-    # n equals to 0 means child process
-    else:
-        print("Child process and id is : ", os.getpid())
-          
-# Driver code
-parent_child()
 
 #def return_key(currency_dict, val):
 #    val_list = currency_dict.values()
@@ -49,7 +33,7 @@ protected_attr = y['protected_attr']
 
 target = y['target']
 confidence = y['confidence']
-support = y['support']
+supportCount = y['supportCount']
 maxAntSize = y['maxAntSize']
 difference = y['difference']
 #print(protected_attr, target, confidence, support, maxAntSize, difference)
@@ -63,18 +47,16 @@ all_tuples = len(df)
 cols = df.columns
 ## TODO TOGLIERE COMMENTO!!
 #supportCount = support*all_tuples
-supportCount = 80
-print(cols, all_tuples, supportCount)
+#print(cols, all_tuples, supportCount)
 
 ##### 2. APPLY CFD_DISCOVERY ALGORITHM
-// Creating first child
-n1 = os.fork()
 
 #Apply CFDDiscovery algorithm
 #output = !../cdfAlgorithm/cfddiscovery/CFDD {file_path} {supportCount} {confidence} {maxAntSize} | grep {grepValue}
+output = sys.argv[2]
 
-#all rules obtianed
-#print("Total number of dependencies found: " ,len(output), "\n")
+#all rules obtained
+#print("Total number of dependencies found: ", len(output), "\n")
 
 #for i in range(0,2):
     #print("Dependency n.", i, ": " ,output[i])
