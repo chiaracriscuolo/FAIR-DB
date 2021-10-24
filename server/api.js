@@ -11,7 +11,7 @@ function pythonDiscoveryScript (body, dataToSend, res) {
   // spawn new child process to call the python script
   // const subprocess = spawn('python', ['nodePythonApp/script1.py'])
   // const subprocess1 = spawn('./CFDD', ['./datasets/preprocessedTitanic.csv', 80, params.confidence, params.maxAntSize], { cwd: 'cdfAlgorithm/cfddiscovery' })
-  const subprocess2 = spawn('pipenv', ['run', 'python', 'discoveryScript.py', JSON.stringify(body), JSON.stringify(dataToSend)], { cwd: 'nodePythonApp' })
+  const subprocess2 = spawn('pipenv', ['run', 'python', 'discoveryScript.py', JSON.stringify(body), dataToSend], { cwd: 'nodePythonApp' })
   // collect data from script
   subprocess2.stdout.on('data', function (data) {
     console.log('Pipe data from python script...')
@@ -22,7 +22,7 @@ function pythonDiscoveryScript (body, dataToSend, res) {
   })
   // in close event we are sure that stream from child process is closed
   subprocess2.on('close', (code) => {
-    console.log(`child process close all stdio with code ${code}`)
+    console.log(`child python process close all stdio with code ${code}`)
     // send data to browser
     console.log('Dati:' + dataToSend2)
     // dataToSend = 'static/ACFDsTitanic.json'
@@ -74,11 +74,12 @@ function init () {
     })
     // in close event we are sure that stream from child process is closed
     subprocess1.on('close', (code) => {
-      console.log(`child process close all stdio with code ${code}`)
+      console.log(`child c++ processclose all stdio with code ${code}`)
       // send data to browser
       // res.send('Dati:' + dataToSend)
       // dataToSend = 'static/ACFDsTitanic.json'
       // console.log('First output inside: ', dataToSend)
+      // console.log(typeof (dataToSend), dataToSend)
       pythonDiscoveryScript(req.body, dataToSend, res)
       // console.log('Dati:' + back)
       // console.log('BACKKKK:', pythonDiscoveryScript(req.body, dataToSend))
