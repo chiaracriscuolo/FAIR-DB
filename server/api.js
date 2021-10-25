@@ -5,6 +5,7 @@ const app = express()
 // We need this one if we send data inside the body as JSON
 app.use(express.json())
 
+// Function to call python script
 function pythonDiscoveryScript (body, dataToSend, res) {
   let dataToSend2
   const { spawn } = require('child_process')
@@ -32,14 +33,22 @@ function pythonDiscoveryScript (body, dataToSend, res) {
 }
 
 function init () {
-  // API to get a python script
-  // API to get a python script
-  app.get('/postParams', (req, res) => {
+  // This one is just an example
+  app.get('/api/preprocessingUNUSED', (req, res) => {
+    return res.json({
+      url:
+        'https://wordstream-files-prod.s3.amazonaws.com/s3fs-public/styles/simple_image/public/images/media/images/google-display-ads-example-2-final.png?oV7qevVB2XtFyF_O64TG6L27AFM3M2oL&itok=TBfuuTM_'
+    })
+  })
+
+  // example: get that calls a python script
+  app.get('/postParamsUNUSED', (req, res) => {
     const { spawn } = require('child_process')
     let dataToSend
     // spawn new child process to call the python script
     // const subprocess = spawn('python', ['nodePythonApp/script1.py'])
-    const subprocess = spawn('python', ['nodePythonApp/discoveryScript.py', JSON.stringify(req.body)])
+    // const subprocess = spawn('python', ['nodePythonApp/discoveryScript.py', JSON.stringify(req.body)])
+    const subprocess = spawn('pipenv', ['run', 'python', 'discoveryScript.py', JSON.stringify(req.body)], { cwd: 'nodePythonApp' })
     // collect data from script
     subprocess.stdout.on('data', function (data) {
       dataToSend = data.toString()
@@ -55,7 +64,9 @@ function init () {
       res.json(dataToSend)
     })
   })
-  app.post('/postParams', (req, res) => {
+
+  // POST FOR CFD_DISCOVERY
+  app.post('/preprocessing/postParams', (req, res) => {
     const { spawn } = require('child_process')
     let dataToSend
     // spawn new child process to call the python script
@@ -87,16 +98,52 @@ function init () {
     })
     // console.log('First output: ', dataToSend)
   })
-  // This one is just an example
-  app.get('/api/preprocessing', (req, res) => {
-    return res.json({
-      url:
-        'https://wordstream-files-prod.s3.amazonaws.com/s3fs-public/styles/simple_image/public/images/media/images/google-display-ads-example-2-final.png?oV7qevVB2XtFyF_O64TG6L27AFM3M2oL&itok=TBfuuTM_'
+
+  // POST TO CHANGE ORDER CRITERION
+  app.post('/filtering/sortACFDs', (req, res) => {
+    let dataToSend
+    console.log('Input order: ', req.body)
+    const { spawn } = require('child_process')
+    const subprocess = spawn('pipenv', ['run', 'python', 'sortingScript.py', JSON.stringify(req.body)], { cwd: 'nodePythonApp' })
+    // collect data from script
+    subprocess.stdout.on('data', function (data) {
+      dataToSend = data.toString()
+    })
+    subprocess.stderr.on('data', (data) => {
+      console.error(`stderr: ${data}`)
+    })
+    // in close event we are sure that stream from child process is closed
+    subprocess.on('close', (code) => {
+      console.log(`child process close all stdio with code ${code}`)
+      console.log(dataToSend)
+      // send data to browser
+      // res.send('Dati:' + dataToSend)
+      res.json(dataToSend)
     })
   })
-  // app.post('/postParams', (req, res) => {
-  //  return res.send(req.body)
-  // })
+
+  // POST TO COMPUTE STATISTICS
+  app.post('/filtering/postACFDs', (req, res) => {
+    let dataToSend
+    console.log('Input statistics params: ', req.body)
+    const { spawn } = require('child_process')
+    const subprocess = spawn('pipenv', ['run', 'python', 'statisticsScript.py', JSON.stringify(req.body)], { cwd: 'nodePythonApp' })
+    // collect data from script
+    subprocess.stdout.on('data', function (data) {
+      dataToSend = data.toString()
+    })
+    subprocess.stderr.on('data', (data) => {
+      console.error(`stderr: ${data}`)
+    })
+    // in close event we are sure that stream from child process is closed
+    subprocess.on('close', (code) => {
+      console.log(`child process close all stdio with code ${code}`)
+      console.log(dataToSend)
+      // send data to browser
+      // res.send('Dati:' + dataToSend)
+      res.json(dataToSend)
+    })
+  })
 }
 
 init()

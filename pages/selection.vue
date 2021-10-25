@@ -2,7 +2,7 @@
   <main class="container">
     <div class="container">
       <section>
-        <img src="https://images.unsplash.com/photo-1483736762161-1d107f3c78e1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" alt="Bot ADS">
+        <img style="width: 400px; height: 300px;" src="https://images.unsplash.com/photo-1483736762161-1d107f3c78e1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" alt="Bot ADS">
         <h2>Dataset Selection</h2>
         <p>
           You can try our demo <b>FAIR-DB</b> with our sample the <i>"Titanic dataset"</i> or you can upload your own dataset <b>(json format is required)</b>.

@@ -136,6 +136,7 @@
       <button class="ui purple button" @click="postParams()">
         Compute Dependencies!
       </button>
+      <div class="ui bottom attached loading tab segment" />
     </div>
     <div class="container">
       <a v-if="show" href="/filtering" aria-current="page" class="nuxt-link-exact-active nuxt-link-active">
@@ -174,7 +175,7 @@ export default {
     async postParams () {
       // console.warn(this.params)
       // const self = this
-      const response = await axios.post('/api/postParams', this.params)
+      const response = await axios.post('/api/preprocessing/postParams', this.params)
       // axios.get('/api/preprocessingApi')
       // .then(function (response) {
       // Handle success
