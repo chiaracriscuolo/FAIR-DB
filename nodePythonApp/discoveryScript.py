@@ -528,12 +528,15 @@ try:
 except NameError:
     to_unicode = str
 
+df6 = df6.reset_index(drop=True)
+print(df6.head())
 df6.to_csv('../static/ACFDsTitanicComputed.csv',index=True)
-data = df6.to_json(orient="split")
+#data = df6.to_json(orient="split")
 # Write JSON file
-with io.open('../static/ACFDsTitanicComputed.json', 'w', encoding='utf8') as outfile:
-    str_ = json.dumps(data,
-                      indent=4, sort_keys=True,
-                      separators=(',', ': '), ensure_ascii=False)
-    outfile.write(to_unicode(str_))
+#with io.open('../static/ACFDsTitanicComputed.json', 'w', encoding='utf8') as outfile:
+#    str_ = json.dumps(data,
+#                      indent=4, sort_keys=True,
+#                      separators=(',', ': '), ensure_ascii=False)
+#    outfile.write(to_unicode(str_))
 
+df6.to_json(path_or_buf='../static/ACFDsTitanicComputed.json', orient="split")

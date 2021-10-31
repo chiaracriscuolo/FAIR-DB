@@ -1,7 +1,39 @@
 <template>
   <div class="container">
+    <!-- STEPS -->
+    <div class="ui  ordered steps">
+      <a class="completed link step" href="/selection">
+        <div class="content">
+          <div class="title">Dataset Selection</div>
+          <!--<div class="description">Select the dataset</div>-->
+        </div>
+      </a>
+      <a class="completed link step" href="/preprocessing">
+        <!--<i class="truck icon"></i>-->
+        <div class="content">
+          <div class="title">Preprocessing</div>
+          <!--<div class="description">Analyze the dataset</div>-->
+        </div>
+      </a>
+      <a class="completed link step" href="/filtering">
+        <div class="content">
+          <div class="title">Filtering</div>
+          <!--<div class="description">Analyze ACFDs</div>-->
+        </div>
+      </a>
+      <a class="active link step" href="/statistics">
+        <div class="content">
+          <div class="title">Statistics</div>
+          <!--<div class="description">Analyze Statistics</div>-->
+        </div>
+      </a>
+    </div>
+    <!-- END OF STEPS -->
     <div>
-      <h4>Table of Selected Functional Dependencies</h4>
+      <br>
+      <h4 class="ui horizontal divider header">
+        Table of Selected Functional Dependencies
+      </h4>
       <table class="ui purple table">
         <thead>
           <tr>
@@ -18,56 +50,68 @@
         </tbody>
       </table>
     </div>
-    <br/>
+    <br>
     <div>
+      <br>
       <h4 class="ui horizontal divider header">
         <i class="table icon" />
         Problematic Tuples in the Dataset
       </h4>
-      <PrintTable />
+      <PrintTable url="/TitanicProblematicTuples.json" />
     </div>
     <div>
-      <h4>Metrics</h4>
+      <h4 class="ui horizontal divider header">
+        Metrics
+      </h4>
+      <!-- progress bar?<div class="ui purple inverted progress">
+        <div class="bar">
+          <div class="centered active progress">
+            {{ params.cumulativeSupport }}
+          </div>
+        </div>
+      </div>-->
       <table class="ui purple table">
         <tbody>
           <tr>
             <td>
-              Cumulative Support:
+              <b>Cumulative Support:</b>
             </td>
             <td>
-              {{ params.cumulativeSupport }}
+              <b>{{ params.cumulativeSupport }}</b>
+              <i v-if="show_support" class="exclamation red icon" />
             </td>
           </tr>
           <tr>
             <td>
-              Difference Mean:
+              <b>Difference Mean:</b>
             </td>
             <td>
-              {{ params.differenceMean }}
+              <b>{{ params.differenceMean }}</b>
+              <i v-if="show_difference" class="exclamation red icon" />
             </td>
           </tr>
           <tr v-for="(index,item) in params.pDiffs" :key="item">
             <td>
-              P-Difference {{ item }}:
+              <b>P-Difference {{ item }}:</b>
             </td>
             <td>
-              {{ params.pDiffs[item] }}
-            </td>
-          </tr>
-          <tr>
-            <td>
-              Total number of tuples:
-            </td>
-            <td>
-              {{ params.totTuples }}
+              <b>{{ params.pDiffs[item] }}</b>
             </td>
           </tr>
           <tr>
             <td>
-              Total number of problematic tuples:
+              <b>Total number of tuples in the dataset:</b>
             </td>
             <td>
-              {{ params.tuplesInterested }}
+              <b>{{ params.totTuples }}</b>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <b>Total number of "problematic" tuples:</b>
+            </td>
+            <td>
+              <b>{{ params.tuplesInterested }}</b>
             </td>
           </tr>
         </tbody>
@@ -102,14 +146,18 @@ export default {
         },
         tuplesInterested: 100,
         totTuples: 876
-      }
+      },
+      show_difference: false,
+      show_support: false
     }
   },
   async mounted () {
-    const json = await this.$axios.get('/ACFDsTitanicComputed.json')
-    const obj = JSON.parse(json.data)
+    const json = await this.$axios.get('/TitanicFinalACFDs.json')
+    const obj = json.data
     this.data = obj.data.slice(0, 10)
     this.headers = obj.columns
+    if (this.params.cumulativeSupport > 0.5) { this.show_support = true }
+    if (this.params.differenceMean > 0.05) { this.show_difference = true }
   },
   methods: {
     pretty (value) {

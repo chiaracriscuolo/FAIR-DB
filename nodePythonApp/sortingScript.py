@@ -8,14 +8,14 @@ try:
 except NameError:
     to_unicode = str
 
-file_path = '../static/ACFDsTitanicComputed.csv'
+file_path_acfds_json = '../static/ACFDsTitanicComputed.json'
 #with open('../static/ACFDsTitanicComputed.json') as f:
 #    a_json = json.load(f)
 #    df51 = pandas.DataFrame.from_dict(a_json, orient="columns")
 params = json.loads(sys.argv[1])
 orderingCriterion = params['orderingCriterion']
 print("Ord criterion: ", type(orderingCriterion), orderingCriterion)
-df51 = pandas.read_csv(file_path)
+df51 = pandas.read_json(file_path_acfds_json, orient='split')
 
 if(orderingCriterion == 'Support'):
     df6 = df51.iloc[df51['Support'].argsort()[::-1][:len(df51)]]
@@ -30,11 +30,5 @@ else:
     df6 = df51.iloc[df51['Mean'].argsort()[::-1][:len(df51)]]
     print('Ordered by Mean')
 
-df6.to_csv('../static/ACFDsTitanicComputed.csv',index=False)
-data = df6.to_json(orient="split")
 # Write JSON file
-with io.open('../static/ACFDsTitanicComputed.json', 'w', encoding='utf8') as outfile:
-    str_ = json.dumps(data,
-                      indent=4, sort_keys=True,
-                      separators=(',', ': '), ensure_ascii=False)
-    outfile.write(to_unicode(str_))
+df6.to_json(path_or_buf='../static/ACFDsTitanicComputed.json', orient="split")

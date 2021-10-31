@@ -1,59 +1,91 @@
 <template>
-  <div>
-    <div class="container">
-      <h4>Choose the ordering criterion</h4>
-      <select v-model="params.orderingCriterion" class="ui selection dropdown">
-        <option disabled value="">
-          Select an ordering criterion
-        </option>
-        <option value="Support">
-          Support
-        </option>
-        <option value="Difference">
-          Difference
-        </option>
-        <option value="Mean">
-          Mean
-        </option>
-      </select>
-      <button class="ui purple button" @click="sorted()">
-        Apply Ordering Criterion!
-      </button>
+  <div class="container">
+    <!-- STEPS -->
+    <div class="ui  ordered steps">
+      <a class="completed link step" href="/selection">
+        <div class="content">
+          <div class="title">Dataset Selection</div>
+          <!--<div class="description">Select the dataset</div>-->
+        </div>
+      </a>
+      <a class="completed link step" href="/preprocessing">
+        <!--<i class="truck icon"></i>-->
+        <div class="content">
+          <div class="title">Preprocessing</div>
+          <!--<div class="description">Analyze the dataset</div>-->
+        </div>
+      </a>
+      <a class="active link step" href="/filtering">
+        <div class="content">
+          <div class="title">Filtering</div>
+          <!--<div class="description">Analyze ACFDs</div>-->
+        </div>
+      </a>
+      <a class="step">
+        <div class="content">
+          <div class="title">Statistics</div>
+          <!--<div class="description">Analyze Statistics</div>-->
+        </div>
+      </a>
+    </div>
+    <!-- END OF STEPS -->
+    <h4>Choose the ordering criterion</h4>
+    <select v-model="params.orderingCriterion" class="ui selection dropdown">
+      <option disabled value="">
+        Select an ordering criterion
+      </option>
+      <option value="Support">
+        Support
+      </option>
+      <option value="Difference">
+        Difference
+      </option>
+      <option value="Mean">
+        Mean
+      </option>
+    </select>
+    <button class="ui purple button" @click="sorted()">
+      Apply Ordering Criterion!
+    </button>
 
-      <h4>Table of Functional Dependencies</h4>
-      <table class="ui purple table">
-        <thead>
-          <tr>
-            <th />
-            <th v-for="item in headers" :key="item">
-              {{ item }}
-            </th>
-          </tr>
-        </thead><tbody>
-          <tr v-for="(el, index) in data" :key="el">
-            <td class="collapsing">
-              <div class="ui fitted checkbox">
-                <input v-model="params.acfds" type="checkbox" :value="index"> <label />
-              </div>
-            </td>
-            <td v-for="i in el" :key="i" name="example2">
-              <span class="ui black text">{{ pretty(i) }}</span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="container">
-        <button class="ui purple button" @click="postACFDs()">
-          Compute Statistics!
+    <h4 class="ui horizontal divider header">
+      Table of Functional Dependencies
+    </h4>
+    <table class="ui purple table">
+      <thead>
+        <tr>
+          <th />
+          <th v-for="item in headers" :key="item">
+            {{ item }}
+          </th>
+        </tr>
+      </thead><tbody>
+        <tr v-for="(el, index) in data" :key="el">
+          <td class="collapsing">
+            <div class="ui fitted checkbox">
+              <input v-model="params.acfds" type="checkbox" :value="index"> <label />
+            </div>
+          </td>
+          <td v-for="i in el" :key="i" name="example2">
+            <span class="ui black text">{{ pretty(i) }}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="container">
+      <button v-if="show_compute" class="ui purple button" @click="postACFDs()">
+        Compute Statistics!
+      </button>
+      <div v-if="show_loading" class="ui purple bottom attached loading tab">
+        The process will take few seconds
+      </div>
+    </div>
+    <div class="container">
+      <a v-if="show_next" href="/statistics" aria-current="page" class="nuxt-link-exact-active nuxt-link-active">
+        <button class="fluid ui purple button">
+          See Statistics!
         </button>
-      </div>
-      <div class="container">
-        <a v-if="show" href="/" aria-current="page" class="nuxt-link-exact-active nuxt-link-active">
-          <button class="fluid ui purple button">
-            See Statistics!
-          </button>
-        </a>
-      </div>
+      </a>
     </div>
   </div>
 </template>
@@ -76,7 +108,9 @@ export default {
     return {
       headers: null,
       data: null,
-      show: false,
+      show_compute: true,
+      show_next: false,
+      show_loading: false,
       params: {
         acfds: [],
         orderingCriterion: ''
@@ -85,7 +119,8 @@ export default {
   },
   async mounted () {
     const json = await this.$axios.get('/ACFDsTitanicComputed.json')
-    const obj = JSON.parse(json.data)
+    // const obj = JSON.parse(json.data)
+    const obj = json.data
     this.data = obj.data.slice(0, 10)
     this.headers = obj.columns
   },
@@ -105,6 +140,11 @@ export default {
       // Handle success
       // this.$router.push('/filtering')
       console.log('----------', response.body)
+      // To update the dataset
+      const json = await this.$axios.get('/ACFDsTitanicComputed.json')
+      const obj = json.data
+      this.data = obj.data.slice(0, 10)
+      this.headers = obj.columns
       // window.location.reload(true)
       // this.show = true
       // response.redirect('/filtering')
@@ -112,9 +152,12 @@ export default {
       return this.data
     },
     async postACFDs () {
+      this.show_compute = false
+      this.show_loading = true
       const response = await axios.post('/api/filtering/postACFDs', this.params)
       console.log('----------', response.body)
-      this.show = true
+      this.show_loading = false
+      this.show_next = true
       return this.data
     }
   }
@@ -122,4 +165,29 @@ export default {
 </script>
 
 <style scoped>
+.header{
+  background-color: white;
+}
+table {
+  margin: 0 auto;
+  text-align: center;
+  border-collapse: collapse;
+  border: 1px solid #d4d4d4;
+}
+
+tr:nth-child(even) {
+  background: #d4d4d4;
+}
+
+th, td {
+  padding: 10px 30px;
+}
+
+th {
+  border-bottom: 1px solid #d4d4d4;
+}
+
+.ui.selection.dropdown {
+    height: 45px;
+}
 </style>

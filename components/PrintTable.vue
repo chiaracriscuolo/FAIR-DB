@@ -21,6 +21,12 @@
 <script>
 
 export default {
+  props: {
+    url: {
+      type: String,
+      default: '/dataTitanic.json'
+    }
+  },
   data () {
     return {
       headers: null,
@@ -28,8 +34,8 @@ export default {
     }
   },
   async mounted () {
-    const json = await this.$axios.get('/dataTitanic.json')
-    const obj = JSON.parse(json.data)
+    const json = await this.$axios.get(this.url)
+    const obj = json.data
     this.data = obj.data.slice(0, 5)
     this.headers = obj.columns
   }

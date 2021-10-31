@@ -164,9 +164,7 @@
       <button v-if="show_compute" class="ui purple button" @click="postParams()">
         Compute Dependencies!
       </button>
-      <div v-if="show_loading" class="ui purple bottom attached loading tab">
-        The process will take few seconds
-      </div>
+      <div v-if="show_loading" class="ui purple bottom attached loading tab" />
     </div>
     <div class="container">
       <a v-if="show_next" href="/filtering" aria-current="page" class="nuxt-link-exact-active nuxt-link-active">
@@ -181,7 +179,6 @@
 <script>
 import axios from 'axios'
 export default {
-
   data () {
     return {
       headers: null,
@@ -203,8 +200,10 @@ export default {
       }
     }
   },
-  async mounted () {
-    const json = await this.$axios.get('/dataTitanic.json')
+  mounted () {
+    // TODO fare funzione che trasforma dataset da csv a Json
+    console.log(this.$store.getters.getFile)
+    const json = this.$store.getters.getFile
     const obj = json.data
     this.headers = obj.columns
   },

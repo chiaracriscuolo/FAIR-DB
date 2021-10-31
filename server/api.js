@@ -1,4 +1,5 @@
 import express from 'express'
+// const fs = require('fs')
 
 const app = express()
 
@@ -40,6 +41,16 @@ function init () {
         'https://wordstream-files-prod.s3.amazonaws.com/s3fs-public/styles/simple_image/public/images/media/images/google-display-ads-example-2-final.png?oV7qevVB2XtFyF_O64TG6L27AFM3M2oL&itok=TBfuuTM_'
     })
   })
+
+  // POST TO SAVE THE DATASET
+  // app.post('/postDataset', async (req, res) => {
+  // const dataset = req.body
+  // const path = process.cwd() + '../static/' + req.body.name
+  // await fs.writeFile(path, dataset, function (err) {
+  //  if (err) { return { response: 'error' } }
+  // })
+  // return path
+  // })
 
   // example: get that calls a python script
   app.get('/postParamsUNUSED', (req, res) => {

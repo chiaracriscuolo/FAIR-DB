@@ -34,7 +34,7 @@ def computeStatistics(df6, selectedDependencies, dfMarked, indexArray):
     print('Number of tuples interested by the rules: ', len(dfM), ". Total number of tuples: ", len(df), "\n")
     print( "Cumulative Support: ", len(dfM)/len(df), ". Difference Mean: ", diffMean, "\n")
 
-    for attribute in protected_attr:
+    for attribute in columns:
         deps = 0
         if(attribute+'Diff' in df6):
             for i in indexArray:
@@ -78,25 +78,29 @@ def validates(df,elem):
 
 
 
-file_path_acfds = '../static/ACFDsTitanicComputed.csv'
+
+file_path_acfds_json = '../static/ACFDsTitanicComputed.json'
 file_path = '../cdfAlgorithm/cfddiscovery/datasets/preprocessedTitanic.csv'
 df = pandas.read_csv(file_path)
-df6 = pandas.read_csv(file_path_acfds)
+df6 = pandas.read_json(file_path_acfds_json, orient='split')
+columns = df.columns
 #add column 'marked'
 #add one column to count the number of tuples involved by the dependencies
 df['marked'] = 0
 
 params = json.loads(sys.argv[1])
 #orderingCriterion = params['orderingCriterion']
-#indexArray = params['acfds']
-indexArray = [1,2,3,4,5]
+indexArray = params['acfds']
+#indexArray = [1,2,3,4,5]
 #minumum number of rules necessary to have a problematic tuple
 nMarked = 0
 
 dependencies = []
 for i in indexArray:
+    print(df6.Rule[i])
     dependencies.append(df6.Rule[i])
-    
+
+print(dependencies)   
 #create a copy of the df to count the number of tuples involved by the dependencies
 dfMarked = df
 for dep in dependencies:
@@ -107,5 +111,8 @@ for dep in dependencies:
 dfEthicalProblems = extractProblematicTuples(dfMarked)
 print("Problematic tuples: ", len(dfEthicalProblems))
 
+dfEthicalProblems.to_json(path_or_buf='../static/TitanicProblematicTuples.json', orient="split")
+
 finalRules = computeStatistics(df6, dependencies, dfMarked, indexArray)
 
+finalRules.to_json(path_or_buf='../static/TitanicFinalACFDs.json', orient="split")

@@ -1,11 +1,40 @@
 <template>
   <main class="container">
+    <!-- STEPS -->
+    <div class="ui  ordered steps">
+      <a class="active link step" href="/selection">
+        <div class="content">
+          <div class="title">Dataset Selection</div>
+          <!--<div class="description">Select the dataset</div>-->
+        </div>
+      </a>
+      <a class="step">
+        <!--<i class="truck icon"></i>-->
+        <div class="content">
+          <div class="title">Data preprocessing</div>
+          <!--<div class="description">Analyze the dataset</div>-->
+        </div>
+      </a>
+      <a class="step">
+        <div class="content">
+          <div class="title">Filtering</div>
+          <!--<div class="description">Analyze ACFDs</div>-->
+        </div>
+      </a>
+      <a class="step">
+        <div class="content">
+          <div class="title">Statistics</div>
+          <!--<div class="description">Analyze Statistics</div>-->
+        </div>
+      </a>
+    </div>
+    <!-- END OF STEPS -->
     <div class="container">
       <section>
-        <img style="width: 400px; height: 300px;" src="https://images.unsplash.com/photo-1483736762161-1d107f3c78e1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" alt="Bot ADS">
+        <img style="width: 400px; height: 200px;" src="https://images.unsplash.com/photo-1483736762161-1d107f3c78e1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" alt="Bot ADS">
         <h2>Dataset Selection</h2>
         <p>
-          You can try our demo <b>FAIR-DB</b> with our sample the <i>"Titanic dataset"</i> or you can upload your own dataset <b>(json format is required)</b>.
+          You can try our demo <b>FAIR-DB</b> with our sample the <i>"Titanic dataset"</i> or you can upload your own dataset <b>(csv format is required)</b>.
           Remember to delete all the missing values, categorize numerical attributes into bins and we suggest to use dataset with binary target variable.
           If you dataset have more than 1000 tuples we suggest to use the notebook version of the demo.
         </p>
@@ -28,7 +57,7 @@
             Dataset 2
           </button>
         </div>-->
-        <button class="ui purple button" @click="onPickFile">
+        <button v-if="show" class="ui purple button" @click="onPickFile">
           Upload your dataset
         </button>
         <input
@@ -40,20 +69,23 @@
         >
       </div>
     </section>
-    <div v-show="show" class="container">
-      <a href="/preprocessing" aria-current="page" class="nuxt-link-exact-active nuxt-link-active">
-        <button class="fluid ui purple button"> Use the dataset!</button>
+    <div v-show="show_next" class="container">
+      <a href="/preprocessing-custom" aria-current="page" class="nuxt-link-exact-active nuxt-link-active">
+        <button class="ui purple button"> Use the dataset!</button>
       </a>
     </div>
   </main>
 </template>
 
 <script>
+// import axios from 'axios'
 export default {
   data () {
     return {
       dataset: null,
-      show: false
+      // name: null,
+      show: true,
+      show_next: false
     }
   },
   methods: {
@@ -69,8 +101,26 @@ export default {
       })
       fileReader.readAsDataURL(files[0])
       this.dataset = files[0]
-      this.show = true
+      this.$store.commit('updateFile', this.dataset)
+      this.show_next = true
+      this.show = false
     }
+    // async postDataset () {
+    // console.warn(this.params)
+    // const self = this
+    // this.show_loading = true
+    // this.show_compute = false
+    // const response = await axios.post('/api/selection/postParams', this.dataset, this.name)
+    // axios.get('/api/preprocessingApi')
+    // .then(function (response) {
+    // Handle success
+    // this.$router.push('/filtering')
+    // console.log('----------', response.body)
+    // this.show_loading = false
+    // this.show_next = true
+    // response.redirect('/filtering')
+    // })
+    // }
   }
 }
 </script>
