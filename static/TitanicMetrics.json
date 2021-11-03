@@ -1,0 +1,10 @@
+{
+    "cumulativeSupport": 0.6038812785388128,
+    "differenceMean": 0.3108785188666667,
+    "pDiffs": {
+        "Pclass": 0.2260468898,
+        "Sex": 0.25250821585
+    },
+    "totTuples": 876,
+    "totTuplesInterested": 529
+}

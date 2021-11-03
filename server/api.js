@@ -84,7 +84,7 @@ function init () {
     console.log(req.body)
     const params = req.body
     // const subprocess = spawn('python', ['nodePythonApp/script1.py'])
-    const subprocess1 = spawn('./CFDD', ['./datasets/preprocessedTitanic.csv', params.supportCount, params.confidence, params.maxAntSize], { cwd: 'cdfAlgorithm/cfddiscovery' })
+    const subprocess1 = spawn('./CFDD', ['./datasets/preprocessed' + params.dataset + '.csv', params.supportCount, params.confidence, params.maxAntSize], { cwd: 'cdfAlgorithm/cfddiscovery' })
     // const subprocess = spawn('pipenv', ['run', 'python', 'discoveryScript.py', JSON.stringify(req.body)], { cwd: 'nodePythonApp' })
     // collect data from script
     subprocess1.stdout.on('data', function (data) {

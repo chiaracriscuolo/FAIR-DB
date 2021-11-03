@@ -8,14 +8,14 @@
           <!--<div class="description">Select the dataset</div>-->
         </div>
       </a>
-      <a class="completed link step" href="/preprocessing">
+      <a class="completed link step" href="/preprocessing-census">
         <!--<i class="truck icon"></i>-->
         <div class="content">
           <div class="title">Preprocessing</div>
           <!--<div class="description">Analyze the dataset</div>-->
         </div>
       </a>
-      <a class="active link step" href="/filtering">
+      <a class="active link step" href="/filtering-census">
         <div class="content">
           <div class="title">Selection</div>
           <!--<div class="description">Analyze ACFDs</div>-->
@@ -81,7 +81,7 @@
       </div>
     </div>
     <div class="container">
-      <a v-if="show_next" href="/statistics" aria-current="page" class="nuxt-link-exact-active nuxt-link-active">
+      <a v-if="show_next" href="/statistics-census" aria-current="page" class="nuxt-link-exact-active nuxt-link-active">
         <button class="fluid ui purple button">
           See Statistics!
         </button>
@@ -114,12 +114,12 @@ export default {
       params: {
         acfds: [],
         orderingCriterion: '',
-        dataset: 'Titanic'
+        dataset: 'Census'
       }
     }
   },
   async mounted () {
-    const json = await this.$axios.get('/ACFDsTitanicComputed.json')
+    const json = await this.$axios.get('/ACFDsCensusComputed.json')
     // const obj = JSON.parse(json.data)
     const obj = json.data
     this.data = obj.data.slice(0, 10)
@@ -142,7 +142,7 @@ export default {
       // this.$router.push('/filtering')
       console.log('----------', response.body)
       // To update the dataset
-      const json = await this.$axios.get('/ACFDsTitanicComputed.json')
+      const json = await this.$axios.get('/ACFDsCensusComputed.json')
       const obj = json.data
       this.data = obj.data.slice(0, 10)
       this.headers = obj.columns

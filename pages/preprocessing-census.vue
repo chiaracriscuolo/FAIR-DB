@@ -8,7 +8,7 @@
           <!--<div class="description">Select the dataset</div>-->
         </div>
       </a>
-      <a class="active step" href="/preprocessing-custom">
+      <a class="active step" href="/preprocessing-census">
         <!--<i class="truck icon"></i>-->
         <div class="content">
           <div class="title">Data preprocessing</div>
@@ -33,36 +33,20 @@
       <i class="table icon" />
       Input Dataset
     </h4>
-    <PrintTable />
-    <!-- TO DO: DATA VISUALIZATION -->
+    <PrintTable url="/USCensus.json"/>
+    <!-- TO DO: DATA VISUALIZATION
     <div class="container">
       <h4 class="ui horizontal divider header">
         <i class="chart area icon" />
         Data Visualization
       </h4>
-      <div class="ui grid">
+      <div v-for="(item) in headers" :key="item" class="ui grid">
         <div class="four wide column">
-          <button class="ui purple button">
-            Attribute 1
-          </button>
-        </div>
-        <div class="four wide column">
-          <button class="ui purple button">
-            Attribute 2
-          </button>
-        </div>
-        <div class="four wide column">
-          <button class="ui purple button">
-            Attribute 3
-          </button>
-        </div>
-        <div class="four wide column">
-          <button class="ui purple button">
-            Attribute 4
-          </button>
+          <input v-model="params.visualize_attribute" type="button" class="ui purple button">
+          {{ item }}
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- Protected attribute div -->
     <div class="container">
       <h4 class="ui horizontal divider header">
@@ -110,6 +94,7 @@
         </tbody>
       </table>
     </div>
+    <highchart :options="chartOptions" />
 
     <!-- INPUT PARAMETERS CONTAINER -->
     <div class="container">
@@ -164,10 +149,12 @@
       <button v-if="show_compute" class="ui purple button" @click="postParams()">
         Compute Dependencies!
       </button>
-      <div v-if="show_loading" class="ui purple bottom attached loading tab" />
+      <div v-if="show_loading" class="ui purple bottom attached loading tab">
+        The process will take few seconds
+      </div>
     </div>
     <div class="container">
-      <a v-if="show_next" href="/filtering" aria-current="page" class="nuxt-link-exact-active nuxt-link-active">
+      <a v-if="show_next" href="/filtering-census" aria-current="page" class="nuxt-link-exact-active nuxt-link-active">
         <button class="fluid ui purple button">
           See Dependencies!
         </button>
@@ -178,6 +165,7 @@
 
 <script>
 import axios from 'axios'
+
 export default {
   data () {
     return {
@@ -185,25 +173,27 @@ export default {
       show_compute: true,
       show_next: false,
       show_loading: false,
+      visualize_attribute: 'income',
       params: {
         protected_attr: [],
-        target: 'Survived',
+        target: 'income',
         confidence: 0.8,
         supportCount: 80,
         maxAntSize: 2.0,
-        difference: 0.07
+        difference: 0.07,
+        dataset: 'Census'
       },
       chartOptions: {
-        series: [{
-          data: [1, 2, 3] // sample data
-        }]
+        series: [
+          {
+            data: [1, 2, 3]
+          }
+        ]
       }
     }
   },
-  mounted () {
-    // TODO fare funzione che trasforma dataset da csv a Json
-    console.log(this.$store.getters.getFile)
-    const json = this.$store.getters.getFile
+  async mounted () {
+    const json = await this.$axios.get('/USCensus.json')
     const obj = json.data
     this.headers = obj.columns
   },

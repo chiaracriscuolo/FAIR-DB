@@ -2,9 +2,9 @@
   <main class="container">
     <!-- STEPS -->
     <div class="ui  ordered steps">
-      <a class="completed link step" href="/selection">
+      <a class="completed link step" href="/import">
         <div class="content">
-          <div class="title">Dataset Selection</div>
+          <div class="title">Import Dataset</div>
           <!--<div class="description">Select the dataset</div>-->
         </div>
       </a>
@@ -17,7 +17,7 @@
       </a>
       <a class="step">
         <div class="content">
-          <div class="title">Filtering</div>
+          <div class="title">Selection</div>
           <!--<div class="description">Analyze ACFDs</div>-->
         </div>
       </a>
@@ -34,35 +34,19 @@
       Input Dataset
     </h4>
     <PrintTable />
-    <!-- TO DO: DATA VISUALIZATION -->
+    <!-- TO DO: DATA VISUALIZATION
     <div class="container">
       <h4 class="ui horizontal divider header">
         <i class="chart area icon" />
         Data Visualization
       </h4>
-      <div class="ui grid">
+      <div v-for="(item) in headers" :key="item" class="ui grid">
         <div class="four wide column">
-          <button class="ui purple button">
-            Attribute 1
-          </button>
-        </div>
-        <div class="four wide column">
-          <button class="ui purple button">
-            Attribute 2
-          </button>
-        </div>
-        <div class="four wide column">
-          <button class="ui purple button">
-            Attribute 3
-          </button>
-        </div>
-        <div class="four wide column">
-          <button class="ui purple button">
-            Attribute 4
-          </button>
+          <input v-model="params.visualize_attribute" type="button" class="ui purple button">
+          {{ item }}
         </div>
       </div>
-    </div>
+    </div> -->
     <!-- Protected attribute div -->
     <div class="container">
       <h4 class="ui horizontal divider header">
@@ -110,6 +94,7 @@
         </tbody>
       </table>
     </div>
+    <highchart :options="chartOptions" />
 
     <!-- INPUT PARAMETERS CONTAINER -->
     <div class="container">
@@ -180,26 +165,30 @@
 
 <script>
 import axios from 'axios'
-export default {
 
+export default {
   data () {
     return {
       headers: null,
       show_compute: true,
       show_next: false,
       show_loading: false,
+      visualize_attribute: 'Survived',
       params: {
         protected_attr: [],
         target: 'Survived',
         confidence: 0.8,
         supportCount: 80,
         maxAntSize: 2.0,
-        difference: 0.07
+        difference: 0.07,
+        dataset: 'Titanic'
       },
       chartOptions: {
-        series: [{
-          data: [1, 2, 3] // sample data
-        }]
+        series: [
+          {
+            data: [1, 2, 3]
+          }
+        ]
       }
     }
   },

@@ -22,12 +22,13 @@ confidence = y['confidence']
 supportCount = y['supportCount']
 maxAntSize = y['maxAntSize']
 minDiff = y['difference']
+dataset = y['dataset']
 #print(protected_attr, target, confidence, support, maxAntSize, difference)
 
 ## TODO ricordati di controllare che abbia la target class: lo dovrebbe controllare al momento della creazione della tabella!
 #grepValue = target+'='
 
-file_path = '../cdfAlgorithm/cfddiscovery/datasets/preprocessedTitanic.csv'
+file_path = '../cdfAlgorithm/cfddiscovery/datasets/preprocessed'+dataset+'.csv'
 df = pandas.read_csv(file_path)
 all_tuples = len(df)
 cols = df.columns
@@ -36,7 +37,8 @@ support = supportCount/all_tuples
 #supportCount = support*all_tuples
 #print(cols, all_tuples, supportCount)
 ## deal with numbers ##
-df = df.applymap(lambda x : str(x) if type(x) == int else x)
+if(dataset == 'Titanic'):
+    df = df.applymap(lambda x : str(x) if type(x) == int else x)
 
 ########## 2. APPLY CFD_DISCOVERY ALGORITHM ##########
 
@@ -49,7 +51,7 @@ outputDiscovery = outputDiscovery.split('\n')
 #to delete the final comment of cdfDiscovery
 outputDiscovery.pop()
 outputDiscovery.pop() 
-
+print(outputDiscovery)
 #all rules obtained
 #print("Total number of dependencies found: ", len(outputDiscovery), "\n")
 
@@ -169,6 +171,7 @@ def createDictionaryElem(side):
 o4 = list(map(createSplitting, o3))
 #for i in range(0,4):
 #    print(o4[i])
+print(o4)
 
 #Create the dictionary with the LHS and RHS that contains all CFDs
 parsedRules = list(map(lambda x: {'lhs' : createDictionaryElem(x[0]), 'rhs': createDictionaryElem(x[1])}, o4))
@@ -530,7 +533,7 @@ except NameError:
 
 df6 = df6.reset_index(drop=True)
 print(df6.head())
-df6.to_csv('../static/ACFDsTitanicComputed.csv',index=True)
+df6.to_csv('../static/ACFDs'+dataset+'Computed.csv',index=True)
 #data = df6.to_json(orient="split")
 # Write JSON file
 #with io.open('../static/ACFDsTitanicComputed.json', 'w', encoding='utf8') as outfile:
@@ -539,4 +542,4 @@ df6.to_csv('../static/ACFDsTitanicComputed.csv',index=True)
 #                      separators=(',', ': '), ensure_ascii=False)
 #    outfile.write(to_unicode(str_))
 
-df6.to_json(path_or_buf='../static/ACFDsTitanicComputed.json', orient="split")
+df6.to_json(path_or_buf='../static/ACFDs'+dataset+'Computed.json', orient="split")

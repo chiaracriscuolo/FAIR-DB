@@ -17,7 +17,7 @@
       </p>
     </section>
     <div class="container">
-      <a href="/selection" aria-current="page" class="nuxt-link-exact-active nuxt-link-active">
+      <a href="/import" aria-current="page" class="nuxt-link-exact-active nuxt-link-active">
         <button class="fluid ui purple button">Start the demo!</button>
       </a>
     </div>

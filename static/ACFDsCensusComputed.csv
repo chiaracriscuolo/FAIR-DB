@@ -1,0 +1,4 @@
+,Rule,Support,Confidence,Diff,sexDiff,Mean
+0,"{'lhs': {'sex': 'Female', 'occupation': 'Machine-op-inspct'}, 'rhs': {'income': '<=50K'}}",0.017339698958954975,0.9631675874769797,0.08778610222774275,0.08778610222774275,0.05256290059334886
+1,"{'lhs': {'income': '>50K', 'occupation': 'Protective-serv'}, 'rhs': {'sex': 'Male'}}",0.006630860022544924,0.9523809523809523,0.07039337474120078,,0.03851211738187285
+2,"{'lhs': {'income': '>50K', 'occupation': 'Handlers-cleaners'}, 'rhs': {'sex': 'Male'}}",0.002619189708905245,0.9518072289156626,0.07328871039714413,,0.03795395005302469
