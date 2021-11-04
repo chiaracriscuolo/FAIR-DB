@@ -34,13 +34,14 @@
         <img style="width: 400px; height: 200px;" src="https://images.unsplash.com/photo-1483736762161-1d107f3c78e1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" alt="Bot ADS">
         <h2>Import Dataset</h2>
         <p>
-          You can try our demo <b>FAIR-DB</b> with our sample the <i>"Titanic dataset"</i> or you can upload your own dataset <b>(csv format is required)</b>.
+          You can try our demo <b>FAIR-DB</b> with our samples: the <i>"Titanic dataset"</i> and the <i>"U.S. Census dataset"</i> or you can upload your own dataset <b>(csv format is required)</b>.
           Remember to delete all the missing values, categorize numerical attributes into bins and we suggest to use dataset with binary target variable.
           If you dataset have more than 1000 tuples we suggest to use the notebook version of the demo.
         </p>
         <p>
           To use our python notebook see our
-          <a href="http://ceur-ws.org/Vol-2841/PIE+Q_4.pdf">
+          <!-- TO DO UPDATE GITHUB REPO -->
+          <a href="https://github.com/chiaracriscuolo/FAIR-DB">
             github repo</a>
         </p>
       </section>

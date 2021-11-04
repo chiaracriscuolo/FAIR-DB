@@ -159,7 +159,7 @@ export default {
         pDiffs: {},
         totTuplesInterested: null,
         totTuples: null,
-        dataset: 'Titanic'
+        dataset: 'Census'
       },
       show_difference: false,
       show_support: false
@@ -171,11 +171,11 @@ export default {
     }
   },
   async mounted () {
-    const json = await this.$axios.get('/TitanicFinalACFDs.json')
+    const json = await this.$axios.get('/CensusFinalACFDs.json')
     const obj = json.data
     this.data = obj.data.slice(0, 10)
     this.headers = obj.columns
-    const jsonMetrics = await this.$axios.get('/TitanicMetrics.json')
+    const jsonMetrics = await this.$axios.get('/CensusMetrics.json')
     const objMetrics = jsonMetrics.data
     this.params.cumulativeSupport = objMetrics.cumulativeSupport
     if (this.params.cumulativeSupport > 0.5) { this.show_support = true }
@@ -192,7 +192,7 @@ export default {
       } else if (JSON.stringify(value) === 'null') { return 0 } else { return parseACFD(value) }
     },
     async displayTuples () {
-      const json = await this.$axios.get('/ACFDsTitanicComputed.json')
+      const json = await this.$axios.get('/ACFDsCensusComputed.json')
       const obj = json.data
       this.data = obj.data.slice(0, this.nTuples)
       this.headers = obj.columns

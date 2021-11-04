@@ -94,7 +94,7 @@
         </tbody>
       </table>
     </div>
-    <highchart :options="chartOptions" />
+    <!--<highchart :options="chartOptions" />-->
 
     <!-- INPUT PARAMETERS CONTAINER -->
     <div class="container">

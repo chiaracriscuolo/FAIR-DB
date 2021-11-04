@@ -86,11 +86,10 @@ def validates(df,elem):
 
 ### End of function part ###
 
-
-
-
-file_path_acfds_json = '../static/ACFDsTitanicComputed.json'
-file_path = '../cdfAlgorithm/cfddiscovery/datasets/preprocessedTitanic.csv'
+params = json.loads(sys.argv[1])
+dataset = params['dataset']
+file_path_acfds_json = '../static/ACFDs'+dataset+'Computed.json'
+file_path = '../cdfAlgorithm/cfddiscovery/datasets/preprocessed'+dataset+'.csv'
 df = pandas.read_csv(file_path)
 df6 = pandas.read_json(file_path_acfds_json, orient='split')
 columns = df.columns
@@ -98,7 +97,6 @@ columns = df.columns
 #add one column to count the number of tuples involved by the dependencies
 df['marked'] = 0
 
-params = json.loads(sys.argv[1])
 #orderingCriterion = params['orderingCriterion']
 indexArray = params['acfds']
 #indexArray = [1,2,3,4,5]
@@ -122,18 +120,18 @@ for dep in dependencies:
 dfEthicalProblems = extractProblematicTuples(dfMarked)
 print("Problematic tuples: ", len(dfEthicalProblems))
 
-dfEthicalProblems.to_json(path_or_buf='../static/TitanicProblematicTuples.json', orient="split")
+dfEthicalProblems.to_json(path_or_buf='../static/'+dataset+'ProblematicTuples.json', orient="split")
 
 statistics = computeStatistics(df6, dependencies, dfMarked, indexArray)
 
 finalRules = statistics[0]
 
-finalRules.to_json(path_or_buf='../static/TitanicFinalACFDs.json', orient="split")
+finalRules.to_json(path_or_buf='../static/'+dataset+'FinalACFDs.json', orient="split")
 
 metrics = statistics[1]
 print("FINAL METRICS:", metrics)
 
-with io.open('../static/TitanicMetrics.json', 'w', encoding='utf8') as outfile:
+with io.open('../static/'+dataset+'Metrics.json', 'w', encoding='utf8') as outfile:
     str_ = json.dumps(metrics,
                      indent=4, sort_keys=True,
                       separators=(',', ': '), ensure_ascii=False)

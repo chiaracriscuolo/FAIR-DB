@@ -94,8 +94,6 @@
         </tbody>
       </table>
     </div>
-    <highchart :options="chartOptions" />
-
     <!-- INPUT PARAMETERS CONTAINER -->
     <div class="container">
       <h4 class="ui horizontal divider header">
