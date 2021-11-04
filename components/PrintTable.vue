@@ -1,20 +1,5 @@
 <template>
   <div class="container">
-    <h4>Choose the number of tuples to display</h4>
-    <select v-model="nTuples" class="ui selection dropdown">
-      <option value="5">
-        5
-      </option>
-      <option value="20">
-        20
-      </option>
-      <option value="100">
-        100
-      </option>
-    </select>
-    <button class="ui purple button" @click="displayTuples()">
-      Display tuples!
-    </button>
     <table class="ui purple table">
       <thead>
         <tr>
@@ -30,6 +15,21 @@
         </tr>
       </tbody>
     </table>
+    <h4>Choose the number of tuples to display</h4>
+    <select v-model="nTuples" class="ui selection dropdown">
+      <option value="5">
+        5
+      </option>
+      <option value="20">
+        20
+      </option>
+      <option value="100">
+        100
+      </option>
+    </select>
+    <button class="ui purple button" @click="displayTuples()">
+      Display!
+    </button>
   </div>
 </template>
 
@@ -46,19 +46,21 @@ export default {
     return {
       headers: null,
       data: null,
-      nTuples: 5,
-      dataset: null
+      nTuples: 5
     }
   },
   async mounted () {
     const json = await this.$axios.get(this.url)
     const obj = json.data
-    this.data = obj.data.slice(0, this.nTuples)
+    this.data = obj.data.slice(0, 5)
     this.headers = obj.columns
   },
   methods: {
-    displayTuples () {
-      // TO DO
+    async displayTuples () {
+      const json = await this.$axios.get(this.url)
+      const obj = json.data
+      this.data = obj.data.slice(0, this.nTuples)
+      this.headers = obj.columns
     }
   }
   /* methods: {

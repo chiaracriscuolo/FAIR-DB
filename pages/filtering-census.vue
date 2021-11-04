@@ -72,6 +72,21 @@
         </tr>
       </tbody>
     </table>
+    <h4>Choose the number of ACFDs to display</h4>
+    <select v-model="nTuples" class="ui selection dropdown">
+      <option value="10">
+        10
+      </option>
+      <option value="50">
+        50
+      </option>
+      <option value="100">
+        100
+      </option>
+    </select>
+    <button class="ui purple button" @click="displayTuples()">
+      Display!
+    </button>
     <div class="container">
       <button v-if="show_compute" class="ui purple button" @click="postACFDs()">
         Compute Statistics!
@@ -111,6 +126,7 @@ export default {
       show_compute: true,
       show_next: false,
       show_loading: false,
+      nTuples: 10,
       params: {
         acfds: [],
         orderingCriterion: '',
@@ -130,6 +146,12 @@ export default {
       if (typeof (value) === 'number') {
         return value.toFixed(2)
       } else if (JSON.stringify(value) === 'null') { return 0 } else { return parseACFD(value) }
+    },
+    async displayTuples () {
+      const json = await this.$axios.get('/ACFDsCensusComputed.json')
+      const obj = json.data
+      this.data = obj.data.slice(0, this.nTuples)
+      this.headers = obj.columns
     },
     async sorted () {
       // console.warn(this.params)

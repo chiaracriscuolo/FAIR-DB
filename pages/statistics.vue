@@ -49,6 +49,21 @@
           </tr>
         </tbody>
       </table>
+      <h4>Choose the number of ACFDs to display</h4>
+    <select v-model="nTuples" class="ui selection dropdown">
+      <option value="10">
+        10
+      </option>
+      <option value="50">
+        50
+      </option>
+      <option value="100">
+        100
+      </option>
+    </select>
+    <button class="ui purple button" @click="displayTuples()">
+      Display!
+    </button>
     </div>
     <br>
     <div>
@@ -137,6 +152,7 @@ export default {
       headers: null,
       data: null,
       show: false,
+      nTuples: 10,
       params: {
         cumulativeSupport: null,
         differenceMean: null,
@@ -173,6 +189,12 @@ export default {
       if (typeof (value) === 'number') {
         return value.toFixed(2)
       } else if (JSON.stringify(value) === 'null') { return 0 } else { return parseACFD(value) }
+    },
+    async displayTuples () {
+      const json = await this.$axios.get('/ACFDsTitanicComputed.json')
+      const obj = json.data
+      this.data = obj.data.slice(0, this.nTuples)
+      this.headers = obj.columns
     }
   }
 }
