@@ -76,7 +76,7 @@
     <table class="ui purple table">
       <thead>
         <tr>
-          <th />
+          <th><input v-model="selectAll" type="checkbox"></th>
           <th v-for="item in headers" :key="item">
             {{ item }}
           </th>
@@ -131,6 +131,7 @@ export default {
     return {
       headers: null,
       data: null,
+      all: [],
       show_compute: true,
       show_next: false,
       show_loading: false,
@@ -142,10 +143,27 @@ export default {
       }
     }
   },
+  computed: {
+    selectAll: {
+      get () {
+        return this.all ? this.params.acfds.length === this.all.length : false
+      },
+      set (value) {
+        let selected = []
+
+        if (value) {
+          selected = this.all
+        }
+
+        this.params.acfds = selected
+      }
+    }
+  },
   async mounted () {
     const json = await this.$axios.get('/ACFDsCensusComputed.json')
     // const obj = JSON.parse(json.data)
     const obj = json.data
+    this.all = obj.index
     this.data = obj.data.slice(0, 10)
     this.headers = obj.columns
   },

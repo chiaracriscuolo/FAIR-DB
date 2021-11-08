@@ -77,7 +77,7 @@
     <table class="ui purple table">
       <thead>
         <tr>
-          <th />
+          <th><input v-model="selectAll" type="checkbox"></th>
           <th v-for="item in headers" :key="item">
             {{ item }}
           </th>
@@ -132,6 +132,7 @@ export default {
     return {
       headers: null,
       data: null,
+      all: [],
       show_compute: true,
       show_next: false,
       show_loading: false,
@@ -143,11 +144,28 @@ export default {
       }
     }
   },
+  computed: {
+    selectAll: {
+      get () {
+        return this.all ? this.params.acfds.length === this.all.length : false
+      },
+      set (value) {
+        let selected = []
+
+        if (value) {
+          selected = this.all
+        }
+
+        this.params.acfds = selected
+      }
+    }
+  },
   async mounted () {
     const json = await this.$axios.get('/ACFDsTitanicComputed.json')
     // const obj = JSON.parse(json.data)
     const obj = json.data
-    this.data = obj.data.slice(0, 10)
+    this.all = json.data.index
+    this.data = obj.data.slice(0, this.nTuples)
     this.headers = obj.columns
   },
   methods: {
@@ -156,6 +174,14 @@ export default {
         return value.toFixed(2)
       } else if (JSON.stringify(value) === 'null') { return 0 } else { return parseACFD(value) }
     },
+    // selectAll () {
+    // this.params.acfds = []
+    // if (!this.params.allSelected) {
+    // this.all.forEach(function (acfd) {
+    // this.params.acfds.push(acfd.id)
+    // })
+    // }
+    // },
     async displayTuples () {
       const json = await this.$axios.get('/ACFDsTitanicComputed.json')
       const obj = json.data
