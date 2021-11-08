@@ -1,35 +1,45 @@
 <template>
-  <div class="container">
-    <table class="ui purple table">
-      <thead>
-        <tr>
-          <th v-for="item in headers" :key="item">
-            {{ item }}
-          </th>
-        </tr>
-      </thead><tbody>
-        <tr v-for="el in data" :key="el">
-          <td v-for="i in el" :key="i">
-            {{ i }}
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <h4>Choose the number of tuples to display</h4>
-    <select v-model="nTuples" class="ui selection dropdown">
-      <option value="5">
-        5
-      </option>
-      <option value="20">
-        20
-      </option>
-      <option value="100">
-        100
-      </option>
-    </select>
-    <button class="ui purple button" @click="displayTuples()">
-      Display!
-    </button>
+  <div>
+    <div class="ui two column grid">
+      <div class="two column row">
+        <div class="center aligned nine wide column">
+          <br>
+          <p> {{ p }} </p>
+        </div>
+        <div class="five wide right aligned column">
+          <h4>Number of tuples to display</h4>
+          <select v-model="nTuples" class="ui dropdown">
+            <option value="5">
+              5
+            </option>
+            <option value="20">
+              20
+            </option>
+            <option value="100">
+              100
+            </option>
+          </select>
+          <button class="ui purple button" @click="displayTuples()">
+            Display!
+          </button>
+        </div>
+      </div>
+      <table class="ui purple table">
+        <thead>
+          <tr>
+            <th v-for="item in headers" :key="item">
+              {{ item }}
+            </th>
+          </tr>
+        </thead><tbody>
+          <tr v-for="el in data" :key="el">
+            <td v-for="i in el" :key="i">
+              {{ i }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
@@ -40,6 +50,10 @@ export default {
     url: {
       type: String,
       default: '/dataTitanic.json'
+    },
+    p: {
+      type: String,
+      default: ''
     }
   },
   data () {

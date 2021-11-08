@@ -32,38 +32,49 @@
     <div>
       <br>
       <h4 class="ui horizontal divider header">
-        Table of Selected Functional Dependencies
+        <i class="bookmark icon" />
+        Table of Selected ACFDs
       </h4>
-      <table class="ui purple table">
-        <thead>
-          <tr>
-            <th v-for="item in headers" :key="item">
-              {{ item }}
-            </th>
-          </tr>
-        </thead><tbody>
-          <tr v-for="el in data" :key="el">
-            <td v-for="i in el" :key="i" name="example2">
-              <span class="ui black text">{{ pretty(i) }}</span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <h4>Choose the number of ACFDs to display</h4>
-    <select v-model="nTuples" class="ui selection dropdown">
-      <option value="10">
-        10
-      </option>
-      <option value="50">
-        50
-      </option>
-      <option value="100">
-        100
-      </option>
-    </select>
-    <button class="ui purple button" @click="displayTuples()">
-      Display!
-    </button>
+      <div class="ui two column grid">
+        <div class="two column row">
+          <div class="center aligned nine wide column">
+            <br>
+            <p> User-selected ACFDs </p>
+          </div>
+          <div class="five wide right aligned column">
+            <h4>Number of ACFDs to display</h4>
+            <select v-model="nTuplesACFD" class="ui dropdown">
+              <option value="10">
+                10
+              </option>
+              <option value="50">
+                50
+              </option>
+              <option value="100">
+                100
+              </option>
+            </select>
+            <button class="ui purple button" @click="displayTuples()">
+              Display!
+            </button>
+          </div>
+          <table class="ui purple table">
+            <thead>
+              <tr>
+                <th v-for="item in headers" :key="item">
+                  {{ item }}
+                </th>
+              </tr>
+            </thead><tbody>
+              <tr v-for="el in data" :key="el">
+                <td v-for="i in el" :key="i" name="example2">
+                  <span class="ui black text">{{ pretty(i) }}</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
     <br>
     <div>
@@ -72,12 +83,16 @@
         <i class="table icon" />
         Problematic Tuples in the Dataset
       </h4>
-      <PrintTable url="/TitanicProblematicTuples.json" />
+      <PrintTable url="/TitanicProblematicTuples.json" p="In this table we show the tuples that are most affected by the user-selected ACFDs." />
     </div>
+    <br>
+    <br>
     <div>
       <h4 class="ui horizontal divider header">
+        <i class="temperature high icon" />
         Metrics
       </h4>
+      <p> Summary of the interesting metrics on the selected ACFDs regarding the input dataset. </p>
       <!-- progress bar?<div class="ui purple inverted progress">
         <div class="bar">
           <div class="centered active progress">
@@ -132,6 +147,44 @@
         </tbody>
       </table>
     </div>
+    <br>
+    <br>
+    <div>
+      <h4 class="ui horizontal divider header">
+        <i class="balance scale icon" />
+        More favoured and more discriminated groups
+      </h4>
+      <p>In this table, given the selected ACFDs, we display the favoured and discrinated protected attribute values of the dataset. </p>
+      <!-- progress bar?<div class="ui purple inverted progress">
+        <div class="bar">
+          <div class="centered active progress">
+            {{ params.cumulativeSupport }}
+          </div>
+        </div>
+      </div>-->
+      <table class="ui purple table">
+        <tbody>
+          <tr>
+            <td>
+              <b>Attribute:</b>
+            </td>
+            <td>
+              <b>Favoured Groups</b>
+              <i class="balance scale left green icon" />
+            </td>
+            <td>
+              <b>Discriminated Groups</b>
+              <i class="balance scale right red icon" />
+            </td>
+          </tr>
+          <tr v-for="item in protected_attr" :key="item">
+            <td> {{ item }} </td>
+            <td> {{ print(params.favoured[item]) }} </td>
+            <td> {{ print(params.discriminated[item]) }} </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 
@@ -152,13 +205,16 @@ export default {
       headers: null,
       data: null,
       show: false,
-      nTuples: 10,
+      nTuplesACFD: 10,
+      protected_attr: null,
       params: {
         cumulativeSupport: null,
         differenceMean: null,
         pDiffs: {},
         totTuplesInterested: null,
         totTuples: null,
+        favoured: null,
+        discriminated: null,
         dataset: 'Titanic'
       },
       show_difference: false,
@@ -173,7 +229,7 @@ export default {
   async mounted () {
     const json = await this.$axios.get('/TitanicFinalACFDs.json')
     const obj = json.data
-    this.data = obj.data.slice(0, 10)
+    this.data = obj.data.slice(0, this.nTuplesACFD)
     this.headers = obj.columns
     const jsonMetrics = await this.$axios.get('/TitanicMetrics.json')
     const objMetrics = jsonMetrics.data
@@ -184,6 +240,11 @@ export default {
     this.params.totTuples = objMetrics.totTuples
     this.params.totTuplesInterested = objMetrics.totTuplesInterested
     this.params.pDiffs = objMetrics.pDiffs
+    this.params.favoured = objMetrics.favoured
+    this.params.discriminated = objMetrics.discriminated
+    const jsonP = await this.$axios.get('/TitanicParams.json')
+    const objP = jsonP.data
+    this.protected_attr = objP.protected_attr
   },
   methods: {
     pretty (value) {
@@ -191,10 +252,14 @@ export default {
         return value.toFixed(2)
       } else if (JSON.stringify(value) === 'null') { return 0 } else { return parseACFD(value) }
     },
+    print (value) {
+      const s = value.toString()
+      return s.replace(',', ', ')
+    },
     async displayTuples () {
       const json = await this.$axios.get('/ACFDsTitanicComputed.json')
       const obj = json.data
-      this.data = obj.data.slice(0, this.nTuples)
+      this.data = obj.data.slice(0, this.nTuplesACFD)
       this.headers = obj.columns
     }
   }

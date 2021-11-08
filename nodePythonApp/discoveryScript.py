@@ -176,7 +176,7 @@ print(o4)
 #Create the dictionary with the LHS and RHS that contains all CFDs
 parsedRules = list(map(lambda x: {'lhs' : createDictionaryElem(x[0]), 'rhs': createDictionaryElem(x[1])}, o4))
 
-print("Total number of dependencies in the dictionary: " ,len(parsedRules))
+print("Total number of STARTING dependencies in the dictionary: " ,len(parsedRules))
 #print(parsedRules)
 
 ######### 4. COMPUTE THE TABLE OF ACFDS WITH METRICS #########
@@ -543,3 +543,11 @@ df6.to_csv('../static/ACFDs'+dataset+'Computed.csv',index=True)
 #    outfile.write(to_unicode(str_))
 
 df6.to_json(path_or_buf='../static/ACFDs'+dataset+'Computed.json', orient="split")
+
+print("PARAMS:", y)
+
+with io.open('../static/'+dataset+'Params.json', 'w', encoding='utf8') as outfile:
+    str_ = json.dumps(y,
+                     indent=4, sort_keys=True,
+                      separators=(',', ': '), ensure_ascii=False)
+    outfile.write(to_unicode(str_))

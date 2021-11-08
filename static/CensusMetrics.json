@@ -1,10 +1,35 @@
 {
-    "cumulativeSupport": 0.5088300220750552,
-    "differenceMean": 0.18581879518000002,
+    "cumulativeSupport": 0.5518763796909493,
+    "differenceMean": 0.18593668084285714,
+    "discriminated": {
+        "native-country": [
+            "NC-Hispanic"
+        ],
+        "race": [
+            "Black",
+            "Amer-Indian-Eskimo"
+        ],
+        "sex": [
+            "Female"
+        ]
+    },
+    "favoured": {
+        "native-country": [
+            "NC-Non-Hisp-White"
+        ],
+        "race": [
+            "Asian-Pac-Islander",
+            "White"
+        ],
+        "sex": [
+            "Male"
+        ]
+    },
     "pDiffs": {
-        "race": 0.014387980075000001,
-        "sex": 0.13248411223333334
+        "native-country": 0.15738869170000003,
+        "race": 0.12767496679999998,
+        "sex": 0.138748669825
     },
     "totTuples": 906,
-    "totTuplesInterested": 461
+    "totTuplesInterested": 500
 }

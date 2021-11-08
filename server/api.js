@@ -78,8 +78,8 @@ function init () {
 
   // POST FOR CFD_DISCOVERY
   app.post('/preprocessing/postParams', (req, res) => {
+    let dataToSend = ''
     const { spawn } = require('child_process')
-    let dataToSend
     // spawn new child process to call the python script
     console.log(req.body)
     const params = req.body
@@ -89,21 +89,21 @@ function init () {
     // collect data from script
     subprocess1.stdout.on('data', function (data) {
       console.log('Pipe data from c++ script...')
-      dataToSend = data.toString()
+      dataToSend += data.toString()
     })
     subprocess1.stderr.on('data', (data) => {
       console.error(`stderr: ${data}`)
     })
     // in close event we are sure that stream from child process is closed
     subprocess1.on('close', (code) => {
-      console.log(`child c++ processclose all stdio with code ${code}`)
+      console.log(`child c++ process close all stdio with code ${code}`)
       // send data to browser
       // res.send('Dati:' + dataToSend)
       // dataToSend = 'static/ACFDsTitanic.json'
       // console.log('First output inside: ', dataToSend)
-      // console.log(typeof (dataToSend), dataToSend)
+      // console.log(typeof (dataToSend), dataToSend
+      console.log('Dipendenze: ' + dataToSend)
       pythonDiscoveryScript(req.body, dataToSend, res)
-      // console.log('Dati:' + back)
       // console.log('BACKKKK:', pythonDiscoveryScript(req.body, dataToSend))
       // res.json(back)
     })

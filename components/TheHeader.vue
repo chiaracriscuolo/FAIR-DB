@@ -2,12 +2,11 @@
   <header class="header">
     <div class="header-content">
       <div class="title">
-        <h2>
-          <a href="/" aria-current="page" class="nuxt-link-exact-active nuxt-link-active">
+        <h1>
+          <a href="/" aria-current="page" class="nuxt-link-exact-active nuxt-link-active light-hover">
             FAIR-DB
           </a>
-        </h2>
-        <h4>A novel system to discover Data Bias</h4>
+        </h1>
       </div>
       <!--<nav class="right">
         <div
@@ -74,9 +73,9 @@ export default {
   font-size: 1.3rem;
   margin-bottom: 5px;
 }
-.nuxt-link-exact-active.nuxt-link-active:hover{
-  background-color:white;
-  color:#9627ba;
+.light-hover.nuxt-link-exact-active.nuxt-link-active:hover{
+  background-color:#9627ba;
+  color: lightgrey;
   border-radius: 1rem;
 }
 </style>

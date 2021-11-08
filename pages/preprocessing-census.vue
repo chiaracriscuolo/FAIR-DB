@@ -33,7 +33,7 @@
       <i class="table icon" />
       Input Dataset
     </h4>
-    <PrintTable url="/USCensus.json"/>
+    <PrintTable url="/USCensus.json" p="A few tuples from the input dataset" />
     <!-- TO DO: DATA VISUALIZATION
     <div class="container">
       <h4 class="ui horizontal divider header">
@@ -54,7 +54,7 @@
         Select one or more protected attributes
       </h4>
       <p>
-        Protected attributes could be qualities, traits or characteristics that, by law, should not be discriminated against (for example sex or native country)
+        A protected attribute is a characteristic for which non-discrimination should be established, like age, race, sex, etc.
       </p>
       <table class="ui definition table">
         <tbody>
@@ -76,7 +76,7 @@
         <i class="bar chart icon" />
         Select ONE binary target class
       </h4>
-      <p>The target is whatever the output of the input variables</p>
+      <p>The target is the feature of a dataset about which the user wants to gain a deeper understanding, for example the income, or a boolean label that indicates whether a loan is authorized or not,  etc. It must be binary.</p>
       <table class="ui definition table">
         <tbody>
           <tr v-for="(item) in headers" :key="item">
@@ -101,39 +101,39 @@
         Input Parameters
       </h4>
       <p>
-        The algorithm takes four mandatory inputs paramters: the confidence leeway threshold, the minimum support count threshold, the maximum antecedent size of the discovered ACFDs and the minimum difference threshold.
+        The algorithm takes four mandatory inputs parameters: the confidence leeway threshold, the minimum support count threshold, the maximum antecedent size of the discovered ACFDs and the minimum difference threshold.
       </p>
       <table class="ui definition table">
         <tbody>
           <tr>
-            <td class="two wide column">
-              Confidence
+            <td class="five wide column">
+              ACFD Confidence threshold
             </td>
-            <td>
+            <td class="five wide column">
               <input id="confidence" v-model.number="params.confidence" type="text" placeholder="0.8">
             </td>
           </tr>
           <tr>
-            <td class="two wide column">
-              SupportCount
+            <td class="five wide column">
+              ACFD SupportCount threshold
             </td>
-            <td>
+            <td class="five wide column">
               <input id="supportCount" v-model.number="params.supportCount" type="text" placeholder="80">
             </td>
           </tr>
           <tr>
-            <td class="two wide column">
+            <td class="five wide column">
               Maximum Antecendent Size
             </td>
-            <td>
+            <td class="five wide column">
               <input id="maxAntSize" v-model.number="params.maxAntSize" type="text" placeholder="2">
             </td>
           </tr>
           <tr>
-            <td class="two wide column">
-              Difference
+            <td class="five wide column">
+              Difference threshold
             </td>
-            <td>
+            <td class="five wide column">
               <input id="difference" v-model.number="params.difference" type="text" placeholder="0.07">
             </td>
           </tr>
@@ -173,10 +173,10 @@ export default {
       show_loading: false,
       visualize_attribute: 'income',
       params: {
-        protected_attr: [],
+        protected_attr: ['race', 'sex', 'native-country'],
         target: 'income',
         confidence: 0.8,
-        supportCount: 80,
+        supportCount: 8,
         maxAntSize: 2.0,
         difference: 0.07,
         dataset: 'Census'

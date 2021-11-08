@@ -1,0 +1,12 @@
+{
+    "confidence": 0.8,
+    "dataset": "Titanic",
+    "difference": 0.07,
+    "maxAntSize": 2,
+    "protected_attr": [
+        "Pclass",
+        "Sex"
+    ],
+    "supportCount": 80,
+    "target": "Survived"
+}

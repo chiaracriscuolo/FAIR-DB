@@ -33,7 +33,7 @@
       <i class="table icon" />
       Input Dataset
     </h4>
-    <PrintTable />
+    <PrintTable url="/USCensus.json" p="A few tuples from the input dataset" />
     <!-- TO DO: DATA VISUALIZATION -->
     <div class="container">
       <h4 class="ui horizontal divider header">
@@ -187,11 +187,12 @@ export default {
       show_loading: false,
       params: {
         protected_attr: [],
-        target: 'Survived',
-        confidence: 0.8,
-        supportCount: 80,
-        maxAntSize: 2.0,
-        difference: 0.07
+        target: null,
+        confidence: null,
+        supportCount: null,
+        maxAntSize: null,
+        difference: null,
+        dataset: null
       },
       chartOptions: {
         series: [{

@@ -8,11 +8,12 @@ try:
 except NameError:
     to_unicode = str
 
-file_path_acfds_json = '../static/ACFDsTitanicComputed.json'
+params = json.loads(sys.argv[1])
+dataset = params['dataset']
+file_path_acfds_json = '../static/ACFDs'+dataset+'Computed.json'
 #with open('../static/ACFDsTitanicComputed.json') as f:
 #    a_json = json.load(f)
 #    df51 = pandas.DataFrame.from_dict(a_json, orient="columns")
-params = json.loads(sys.argv[1])
 orderingCriterion = params['orderingCriterion']
 print("Ord criterion: ", type(orderingCriterion), orderingCriterion)
 df51 = pandas.read_json(file_path_acfds_json, orient='split')
@@ -31,4 +32,4 @@ else:
     print('Ordered by Mean')
 
 # Write JSON file
-df6.to_json(path_or_buf='../static/ACFDsTitanicComputed.json', orient="split")
+df6.to_json(path_or_buf='../static/ACFDs'+dataset+'Computed.json', orient="split")

@@ -48,4 +48,8 @@ button{
   background-color: lightsalmon;
   color: white;
 }
+.ui.purple.button:hover{
+  background-color: lightsalmon;
+  color: white;
+}
 </style>

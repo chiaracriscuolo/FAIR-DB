@@ -106,10 +106,10 @@ metrics = {}
 
 dependencies = []
 for i in indexArray:
-    print(df6.Rule[i])
+    #print(df6.Rule[i])
     dependencies.append(df6.Rule[i])
 
-print(dependencies)   
+#print(dependencies)   
 #create a copy of the df to count the number of tuples involved by the dependencies
 dfMarked = df
 for dep in dependencies:
@@ -129,6 +129,86 @@ finalRules = statistics[0]
 finalRules.to_json(path_or_buf='../static/'+dataset+'FinalACFDs.json', orient="split")
 
 metrics = statistics[1]
+
+## COMPUTE FAVOURED /DISCRIMINATED GROUPS 
+def getTargetValue(ACFD):
+    for key in list(ACFD['lhs'].keys()):
+        
+        if(key == target):
+            return ACFD['lhs'][key]    
+            
+    for key in list(ACFD['rhs'].keys()):
+        
+        if(key== target):
+            return ACFD['rhs'][key]
+    return None
+
+def selectRulesOnTargetValue(ACFDList):
+    positiveTargetRules = []
+    negativeTargetRules = []
+    for ACFD in ACFDList:
+        value = getTargetValue(ACFD)
+        if(value != None):
+            if(value == str(binaryValues[1])):
+                positiveTargetRules.append(ACFD)
+            else:
+                negativeTargetRules.append(ACFD)
+    return positiveTargetRules, negativeTargetRules
+
+def getAttributeValue(ACFD, attribute):
+    for key in list(ACFD['lhs'].keys()):
+        
+        if(key == attribute):
+            return ACFD['lhs'][key]    
+            
+    for key in list(ACFD['rhs'].keys()):
+        
+        if(key== attribute):
+            return ACFD['rhs'][key]
+    return None
+
+def selectAttributeValues(ACFDList, protected_attr):
+    values = {}
+    for attribute in protected_attr:
+        v = []
+        for ACFD in ACFDList:
+            for a in ACFD['lhs'].keys():
+                if (attribute == a):
+                    value = getAttributeValue(ACFD, attribute)
+                    if not(value in v):
+                        v.append(value)
+            for a in ACFD['rhs'].keys():
+                if (attribute  == a):
+                    value = getAttributeValue(ACFD, attribute)
+                    if not(value in v):
+                        v.append(value)
+        values[attribute] = v
+    return values
+
+with open('../static/'+dataset+'Params.json') as f:
+  params = json.load(f)
+
+#params = json.loads(file_path_params)
+target = params['target']
+protected_attr = params['protected_attr']
+binaryValues = df[target].unique()
+
+rules = selectRulesOnTargetValue(dependencies)
+positiveRules = rules[0]
+negativeRules = rules[1]
+
+#print("Positive rules: ", positiveRules)
+#print("Negative rules: ", negativeRules)
+
+favoured_groups= selectAttributeValues(positiveRules, protected_attr)
+discriminated_groups= selectAttributeValues(negativeRules, protected_attr)
+
+#print("Favoured rules: ", favoured_groups)
+#print("Discriminated rules: ", discriminated_groups)
+
+metrics['favoured'] = favoured_groups
+metrics['discriminated'] = discriminated_groups
+
 print("FINAL METRICS:", metrics)
 
 with io.open('../static/'+dataset+'Metrics.json', 'w', encoding='utf8') as outfile:
@@ -136,3 +216,4 @@ with io.open('../static/'+dataset+'Metrics.json', 'w', encoding='utf8') as outfi
                      indent=4, sort_keys=True,
                       separators=(',', ': '), ensure_ascii=False)
     outfile.write(to_unicode(str_))
+

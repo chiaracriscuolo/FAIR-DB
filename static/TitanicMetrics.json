@@ -1,9 +1,26 @@
 {
     "cumulativeSupport": 0.7842465753424658,
-    "differenceMean": 0.2738050753666666,
+    "differenceMean": 0.31374377049,
+    "discriminated": {
+        "Pclass": [
+            "3"
+        ],
+        "Sex": [
+            "male"
+        ]
+    },
+    "favoured": {
+        "Pclass": [
+            "1",
+            "2"
+        ],
+        "Sex": [
+            "female"
+        ]
+    },
     "pDiffs": {
-        "Pclass": 0.11853722315000001,
-        "Sex": 0.23272770031666665
+        "Pclass": 0.1543737787,
+        "Sex": 0.29058523321428575
     },
     "totTuples": 876,
     "totTuplesInterested": 687

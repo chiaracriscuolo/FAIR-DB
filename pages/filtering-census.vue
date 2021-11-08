@@ -29,28 +29,50 @@
       </a>
     </div>
     <!-- END OF STEPS -->
-    <h4>Choose the ordering criterion</h4>
-    <select v-model="params.orderingCriterion" class="ui selection dropdown">
-      <option disabled value="">
-        Select an ordering criterion
-      </option>
-      <option value="Support">
-        Support
-      </option>
-      <option value="Difference">
-        Difference
-      </option>
-      <option value="Mean">
-        Mean
-      </option>
-    </select>
-    <button class="ui purple button" @click="sorted()">
-      Apply Ordering Criterion!
-    </button>
-
     <h4 class="ui horizontal divider header">
+      <i class="search icon" />
       Table of Functional Dependencies
     </h4>
+    <p> This is the list of ACFDs that are extracted given the input parameters, select the ones that are more interesting for your research purpose. </p>
+    <div class="ui two column grid">
+      <div class="two column row">
+        <div class="center aligned nine wide column">
+          <h4>Choose the number of ACFDs to display</h4>
+          <select v-model="nTuples" class="ui dropdown">
+            <option value="10">
+              10
+            </option>
+            <option value="50">
+              50
+            </option>
+            <option value="100">
+              100
+            </option>
+          </select>
+          <button class="ui purple button" @click="displayTuples()">
+            Display!
+          </button>
+        </div>
+        <div class="five wide right aligned column">
+          <h4>Choose the ordering criterion</h4>
+          <select v-model="params.orderingCriterion" class="ui dropdown">
+            <option value="Support">
+              Support
+            </option>
+            <option value="Difference">
+              Difference
+            </option>
+            <option value="Mean">
+              Mean
+            </option>
+          </select>
+          <button class="ui purple button" @click="sorted()">
+            Order!
+          </button>
+        </div>
+      </div>
+    </div>
+    <!--    TABLE -->
     <table class="ui purple table">
       <thead>
         <tr>
@@ -72,27 +94,13 @@
         </tr>
       </tbody>
     </table>
-    <h4>Choose the number of ACFDs to display</h4>
-    <select v-model="nTuples" class="ui selection dropdown">
-      <option value="10">
-        10
-      </option>
-      <option value="50">
-        50
-      </option>
-      <option value="100">
-        100
-      </option>
-    </select>
-    <button class="ui purple button" @click="displayTuples()">
-      Display!
-    </button>
+
     <div class="container">
       <button v-if="show_compute" class="ui purple button" @click="postACFDs()">
-        Compute Statistics!
+        Compute Statistics on the selected ACFDs!
       </button>
       <div v-if="show_loading" class="ui purple bottom attached loading tab">
-        The process will take few seconds
+        The process will take a few seconds
       </div>
     </div>
     <div class="container">
