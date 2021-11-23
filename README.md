@@ -1,4 +1,12 @@
-# fair-db
+# FAIR-DB Website
+
+## Paper Abstract
+In our everyday lives, technologies based on data play an increasingly important role. With the widespread adoption of decision making systems also in very sensitive environments, Fairness has become a very important topic of discussion within the data science community. In this context, it is crucial to ensure that the data on which we base these decisions, are fair, and do not reflect historical biases.  
+
+In this demo we propose FAIR-DB (FunctionAl dependencIes to discoveR Data Bias), a system that exploiting the notion of Functional Dependency, a particular type of constraint on the data, can discover unethical behaviours in a dataset.
+
+The proposed solution is implemented as a web-based application, that, given an input dataset, generates such dependencies, walks the user trough their analysis, and finally provides many insights about bias present in the data. 
+Our tool uses a novel metric to evaluate the unfairness present in datasets, identifies the attributes that encompass discrimination (e.g. ethnicity, sex or religion), and provides very precise information about the groups treated unequally. We also provide a detailed description of the system architecture and present a demonstration scenario, based on a real-world dataset frequently used in the field of computer ethics.
 
 ## Build Setup
 
