@@ -83,7 +83,7 @@
         <i class="table icon" />
         Problematic Tuples in the Dataset
       </h4>
-      <PrintTable url="/CensusProblematicTuples.json" p="In this table we show the tuples that are most affected by the user-selected ACFDs." />
+      <PrintTable url="/CensusProblematicTuples.json" p="In this table we show the tuples that are most affected by the user-selected ACFDs. The column named 'marked' indicates for each tuple how many ACFDs impact it" />
     </div>
     <br>
     <br>
@@ -104,6 +104,9 @@
         <tbody>
           <tr>
             <td>
+              <div class="icon ui button" data-tooltip="It is the percentage of tuples in the dataset involved by the selected ACFDs. The more this value is close to 1, the more tuples are impacted by the unfair dependencies." data-position="top left" data-variation=" fixed very wide">
+                <i class="info icon" />
+              </div>
               <b>Cumulative Support:</b>
             </td>
             <td>
@@ -113,6 +116,9 @@
           </tr>
           <tr>
             <td>
+              <div class="icon ui button" data-tooltip="It is the mean of all the ‘Difference’ scores of the selected ACFDs. It indicates how much the dataset is unethical according to the dependencies selected. The greater the value, the higher the bias in the dataset." data-position="top left" data-variation=" fixed very wide">
+                <i class="info icon" />
+              </div>
               <b>Difference Mean:</b>
             </td>
             <td>
@@ -122,10 +128,24 @@
           </tr>
           <tr v-for="(index,item) in params.pDiffs" :key="item">
             <td>
-              <b>P-Difference {{ item }}:</b>
+              <div class="icon ui button" data-tooltip="It is the mean of the P-Difference (P is the protected attribute that is analyzed) over all the selected ACFDs. It indicates how much the dataset is ethical over P according to the selected dependencies. The greater the value, the higher the bias in the dataset." data-position="top left" data-variation=" fixed very wide">
+                <i class="info icon" />
+              </div>
+              <b>{{ item }}-Difference Mean:</b>
             </td>
             <td>
               <b>{{ pretty(params.pDiffs[item]) }}</b>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="icon ui button" data-tooltip="They are exemplar tuples impacted by the selected ACFDs, this information might be useful in a future phase of bias mitigation." data-position="top left" data-variation=" fixed very wide">
+                <i class="info icon" />
+              </div>
+              <b>Total number of "problematic" tuples:</b>
+            </td>
+            <td>
+              <b>{{ params.totTuplesInterested }}</b>
             </td>
           </tr>
           <tr>
@@ -134,14 +154,6 @@
             </td>
             <td>
               <b>{{ params.totTuples }}</b>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <b>Total number of "problematic" tuples:</b>
-            </td>
-            <td>
-              <b>{{ params.totTuplesInterested }}</b>
             </td>
           </tr>
         </tbody>
@@ -244,7 +256,7 @@ export default {
   methods: {
     pretty (value) {
       if (typeof (value) === 'number') {
-        return value.toFixed(2)
+        return value.toFixed(3)
       } else if (JSON.stringify(value) === 'null') { return 0 } else { return parseACFD(value) }
     },
     print (value) {
@@ -252,7 +264,7 @@ export default {
       return s.replace(',', ', ')
     },
     async displayTuples () {
-      const json = await this.$axios.get('/ACFDsCensusComputed.json')
+      const json = await this.$axios.get('/CensusFinalACFDs.json')
       const obj = json.data
       this.data = obj.data.slice(0, this.nTuplesACFD)
       this.headers = obj.columns

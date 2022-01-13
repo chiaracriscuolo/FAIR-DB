@@ -1,32 +1,27 @@
 {
-    "cumulativeSupport": 0.9417808219178082,
-    "differenceMean": 0.2566038568106383,
+    "cumulativeSupport": 0.7591324200913242,
+    "differenceMean": 0.3638454048833333,
     "discriminated": {
         "Pclass": [
-            "3",
-            "1",
-            "2"
+            "3"
         ],
         "Sex": [
-            "male",
-            "female"
+            "male"
         ]
     },
     "favoured": {
         "Pclass": [
             "1",
-            "2",
-            "3"
+            "2"
         ],
         "Sex": [
-            "female",
-            "male"
+            "female"
         ]
     },
     "pDiffs": {
-        "Pclass": 0.08411798958235298,
-        "Sex": 0.22175902816956522
+        "Pclass": 0.15437377870000002,
+        "Sex": 0.2802213037166667
     },
     "totTuples": 876,
-    "totTuplesInterested": 825
+    "totTuplesInterested": 665
 }

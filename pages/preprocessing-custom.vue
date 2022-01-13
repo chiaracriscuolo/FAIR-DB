@@ -118,13 +118,13 @@
         Input Parameters
       </h4>
       <p>
-        The algorithm takes four mandatory inputs paramters: the confidence leeway threshold, the minimum support count threshold, the maximum antecedent size of the discovered ACFDs and the minimum difference threshold.
+        The algorithm takes four mandatory input parameters: the confidence leeway threshold, the minimum support count threshold, the maximum antecedent size of the discovered ACFDs and the minimum difference threshold. To best choose the values, we suggest to perform a preliminary data exploration to understand the general distribution of the values and detect, if present, possible minorities
       </p>
       <table class="ui definition table">
         <tbody>
           <tr>
             <td class="two wide column">
-              Confidence
+              ACFD Confidence threshold
             </td>
             <td>
               <input id="confidence" v-model.number="params.confidence" type="text" placeholder="0.8">
@@ -132,7 +132,7 @@
           </tr>
           <tr>
             <td class="two wide column">
-              SupportCount
+              ACFD SupportCount threshold
             </td>
             <td>
               <input id="supportCount" v-model.number="params.supportCount" type="text" placeholder="80">
@@ -148,7 +148,7 @@
           </tr>
           <tr>
             <td class="two wide column">
-              Difference
+              Difference threshold
             </td>
             <td>
               <input id="difference" v-model.number="params.difference" type="text" placeholder="0.07">

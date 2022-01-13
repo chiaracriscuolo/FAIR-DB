@@ -1,13 +1,13 @@
 <template>
   <main class="container">
     <section>
-      <img src="~/static/fairnessPhoto.png" alt="Bot ADS">
+      <img  src="~/static/fairnessPhoto.png" alt="Bot ADS">
       <!--<img src="https://images.unsplash.com/photo-1587740896339-96a76170508d?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=471&q=80" alt="Bot ADS"> -->
       <h2>FunctionAl dependencIes to discoveR Data Bias</h2>
       <p>
         <b>FAIR-DB (FunctionAl dependencIes to discoveR Data Bias)</b> is a novel framework
         to detect biases and discover discrimination in datasets. By exploiting various kinds of functional
-        dependencies, FAIR-DB can identify those attributes in a database that encompass discrimination (e.g.
+        dependencies, called Approximate Conditional Functional Dependencies (ACFDs), FAIR-DB can identify those attributes in a database that encompass discrimination (e.g.
         sex, ethnicity or religion) and the ones that instead satisfy various fairness criteria.
       </p>
       <p>

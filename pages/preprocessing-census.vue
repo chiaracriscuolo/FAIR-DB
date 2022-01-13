@@ -101,12 +101,15 @@
         Input Parameters
       </h4>
       <p>
-        The algorithm takes four mandatory inputs parameters: the confidence leeway threshold, the minimum support count threshold, the maximum antecedent size of the discovered ACFDs and the minimum difference threshold.
+        The algorithm takes four mandatory input parameters: the confidence leeway threshold, the minimum support count threshold, the maximum antecedent size of the discovered ACFDs and the minimum difference threshold. To best choose the values, we suggest to perform a preliminary data exploration to understand the general distribution of the values and detect, if present, possible minorities
       </p>
       <table class="ui definition table">
         <tbody>
           <tr>
             <td class="five wide column">
+              <div class="icon ui button" data-tooltip="This parameter shows how frequently the dependency X->Y is verified knowing that X is verified. It can assume values in the range [0, 1]. The higher this value is, higher is the probability that the dependency is verified." data-position="top left" data-variation=" fixed very wide">
+                <i class="info icon" />
+              </div>
               ACFD Confidence threshold
             </td>
             <td class="five wide column">
@@ -115,6 +118,9 @@
           </tr>
           <tr>
             <td class="five wide column">
+              <div class="icon ui button" data-tooltip="The support count is the number of the samples in the dataset that verifies the dependency X->Y and it can assume values in the range [0, dataset-lenght]. It defines how many samples should be seen in order to consider a dependency as a valid one. We suggest to put it lower than the cardinality of the groups that you want to study." data-position="top left" data-variation=" fixed very wide">
+                <i class="info icon" />
+              </div>
               ACFD SupportCount threshold
             </td>
             <td class="five wide column">
@@ -123,6 +129,9 @@
           </tr>
           <tr>
             <td class="five wide column">
+              <div class="icon ui button" data-tooltip="It is the maximum antecedent size of a dependency X->Y, so the maximum number of attributes that can compare in X. It should be in the range between 1 and the number of chosen protected attributes." data-position="top left" data-variation=" fixed very wide">
+                <i class="info icon" />
+              </div>
               Maximum Antecendent Size
             </td>
             <td class="five wide column">
@@ -131,6 +140,9 @@
           </tr>
           <tr>
             <td class="five wide column">
+              <div class="icon ui button" data-tooltip="It indicates how much a dependency is ‘unethical’, it is the difference between the confidence(X->Y) and the confidence computed without the protected attributes in X. It can assume values in the range [0, 1]. To detect ethical problems we suggest to put it very low as 0.05 and perform some tests to tune it according to the ACFDs found." data-position="top left" data-variation=" fixed very wide">
+                <i class="info icon" />
+              </div>
               Difference threshold
             </td>
             <td class="five wide column">
@@ -148,7 +160,7 @@
         Compute Dependencies!
       </button>
       <div v-if="show_loading" class="ui purple bottom attached loading tab">
-        The process will take few seconds
+        The process will take a few seconds
       </div>
     </div>
     <div class="container">
@@ -176,7 +188,7 @@ export default {
         protected_attr: ['race', 'sex', 'native-country'],
         target: 'income',
         confidence: 0.8,
-        supportCount: 8,
+        supportCount: 10,
         maxAntSize: 2.0,
         difference: 0.07,
         dataset: 'Census'

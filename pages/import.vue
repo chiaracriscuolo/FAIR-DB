@@ -69,16 +69,18 @@
           </button>
         </div>-->
           <div class="center aligned five wide column">
-            <button v-if="show" class="ui purple button" @click="onPickFile">
+            <input id="fileUpload" type="file" hidden>
+            <button v-if="show" class="ui purple button" @click="chooseFiles()">
+              <!--<button v-if="show" class="ui purple button" @click="onPickFile">-->
               Upload your dataset
             </button>
-            <input
+            <!--<input
               ref="fileInput"
               type="file"
               style="display: none"
-              accept="json/*"
+              accept="csv/*"
               @change="onFilePicked"
-            >
+            >-->
             <div v-show="show_next">
               <a href="/preprocessing-custom" aria-current="page" class="nuxt-link-exact-active nuxt-link-active">
                 <button class="ui purple button"> Use the dataset!</button>
@@ -92,21 +94,28 @@
 </template>
 
 <script>
-// import axios from 'axios'
+import axios from 'axios'
 export default {
   data () {
     return {
-      dataset: null,
-      // name: null,
+      params: {
+        dataset: null,
+        filename: null
+      },
       show: true,
       show_next: false
     }
   },
   methods: {
+    chooseFiles () {
+      this.params.dataset = document.getElementById('fileUpload').click()
+      console.log('dataset pre invio: ')
+      console.log(this.params.dataset)
+    },
     onPickFile () {
       this.$refs.fileInput.click()
     },
-    onFilePicked (event) {
+    async onFilePicked (event) {
       const files = event.target.files
       // const filename = files[0].name
       const fileReader = new FileReader()
@@ -114,8 +123,15 @@ export default {
         this.imageUrl = fileReader.result
       })
       fileReader.readAsDataURL(files[0])
-      this.dataset = files[0]
-      this.$store.commit('updateFile', this.dataset)
+      console.log(files)
+      this.params.dataset = files[0]
+      console.log('dataset pre invio: ')
+      // console.log(this.params.dataset)
+      console.log(this.params.dataset)
+      this.params.filename = files[0].name
+      // console.log(this.filename)
+      await axios.post('/api/import/postDataset', this.params)
+      // this.$store.commit('updateFile', this.dataset)
       this.show_next = true
       this.show = false
     }

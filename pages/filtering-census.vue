@@ -170,7 +170,7 @@ export default {
   methods: {
     pretty (value) {
       if (typeof (value) === 'number') {
-        return value.toFixed(2)
+        return value.toFixed(3)
       } else if (JSON.stringify(value) === 'null') { return 0 } else { return parseACFD(value) }
     },
     async displayTuples () {

@@ -42,15 +42,23 @@ function init () {
     })
   })
 
-  // POST TO SAVE THE DATASET
-  // app.post('/postDataset', async (req, res) => {
-  // const dataset = req.body
-  // const path = process.cwd() + '../static/' + req.body.name
-  // await fs.writeFile(path, dataset, function (err) {
-  //  if (err) { return { response: 'error' } }
-  // })
-  // return path
-  // })
+  // POST TO SAVE THE CUSTOM DATASET
+  app.post('/import/postDataset', (req, res) => {
+    let dataToSend = null
+    const dataset = req.body
+    console.log('DATASET: ')
+    console.log(dataset)
+    dataToSend = dataset.toString
+    res.json(dataToSend)
+    // const path = '../static/' + req.body.filename
+    // console.log(path)
+    // const path = process.cwd() + '../static/' + req.body.name
+
+    // await fs.writeFile(path, dataset, function (err) {
+    //  if (err) { return { response: 'error' } }
+    // })
+    // return path
+  })
 
   // example: get that calls a python script
   app.get('/postParamsUNUSED', (req, res) => {
