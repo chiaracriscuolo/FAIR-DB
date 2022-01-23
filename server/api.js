@@ -1,8 +1,21 @@
 import express from 'express'
+import multer from 'multer'
 // const fs = require('fs')
 
 const app = express()
+const storage = multer.diskStorage({
+  destination (req, file, cb) {
+    cb(null, './static')
+  },
+  filename (req, file, cb) {
+    // const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9)
+    // cb(null, file.fieldname + '-' + uniqueSuffix + '.csv')
+    cb(null, file.fieldname + '.csv')
+  }
+})
 
+const upload = multer({ storage })
+// const upload = multer({ dest: './static/' })
 // We need this one if we send data inside the body as JSON
 app.use(express.json())
 
@@ -43,21 +56,32 @@ function init () {
   })
 
   // POST TO SAVE THE CUSTOM DATASET
-  app.post('/import/postDataset', (req, res) => {
+  app.post('/import/postDataset', upload.single('dataset'), (req, res) => {
     let dataToSend = null
-    const dataset = req.body
+    const dataset = req.file
     console.log('DATASET: ')
     console.log(dataset)
-    dataToSend = dataset.toString
-    res.json(dataToSend)
-    // const path = '../static/' + req.body.filename
-    // console.log(path)
-    // const path = process.cwd() + '../static/' + req.body.name
 
-    // await fs.writeFile(path, dataset, function (err) {
-    //  if (err) { return { response: 'error' } }
-    // })
-    // return path
+    // CHIAMARE SCRIPT IMPORT DATASET.PY PER CONVERTIRE .CSV IN .JSON
+    const { spawn } = require('child_process')
+    const subprocess = spawn('pipenv', ['run', 'python', 'importDataset.py', '../static/dataset.csv'], { cwd: 'nodePythonApp' })
+    // collect data from script
+    subprocess.stdout.on('data', function (data) {
+      console.log('Pipe data from python script...')
+      dataToSend = data.toString()
+    })
+    subprocess.stderr.on('data', (data) => {
+      console.error(`stderr: ${data}`)
+    })
+    // in close event we are sure that stream from child process is closed
+    subprocess.on('close', (code) => {
+      console.log(`child python process close all stdio with code ${code}`)
+      // send data to browser
+      console.log('Dati:' + dataToSend)
+      // dataToSend = 'static/ACFDsTitanic.json'
+      res.json(dataToSend)
+    // return dataToSend2
+    })
   })
 
   // example: get that calls a python script

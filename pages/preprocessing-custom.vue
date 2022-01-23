@@ -33,7 +33,7 @@
       <i class="table icon" />
       Input Dataset
     </h4>
-    <PrintTable url="/USCensus.json" p="A few tuples from the input dataset" />
+    <PrintTable url="/dataset.json" p="A few tuples from the input dataset" />
     <!-- TO DO: DATA VISUALIZATION -->
     <div class="container">
       <h4 class="ui horizontal divider header">
@@ -201,10 +201,8 @@ export default {
       }
     }
   },
-  mounted () {
-    // TODO fare funzione che trasforma dataset da csv a Json
-    console.log(this.$store.getters.getFile)
-    const json = this.$store.getters.getFile
+  async mounted () {
+    const json = await this.$axios.get('/dataset.json')
     const obj = json.data
     this.headers = obj.columns
   },

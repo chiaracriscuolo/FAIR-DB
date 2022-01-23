@@ -69,18 +69,18 @@
           </button>
         </div>-->
           <div class="center aligned five wide column">
-            <input id="fileUpload" type="file" hidden>
-            <button v-if="show" class="ui purple button" @click="chooseFiles()">
-              <!--<button v-if="show" class="ui purple button" @click="onPickFile">-->
+            <!--<input id="fileUpload" type="file" hidden>
+            <button v-if="show" class="ui purple button" @click="chooseFiles()">-->
+            <button v-if="show" class="ui purple button" @click="onPickFile">
               Upload your dataset
             </button>
-            <!--<input
+            <input
               ref="fileInput"
               type="file"
               style="display: none"
               accept="csv/*"
               @change="onFilePicked"
-            >-->
+            >
             <div v-show="show_next">
               <a href="/preprocessing-custom" aria-current="page" class="nuxt-link-exact-active nuxt-link-active">
                 <button class="ui purple button"> Use the dataset!</button>
@@ -95,11 +95,12 @@
 
 <script>
 import axios from 'axios'
+import FormData from 'form-data'
 export default {
   data () {
     return {
       params: {
-        dataset: null,
+        dataset: new FormData(),
         filename: null
       },
       show: true,
@@ -124,13 +125,17 @@ export default {
       })
       fileReader.readAsDataURL(files[0])
       console.log(files)
-      this.params.dataset = files[0]
+      this.params.dataset.append('dataset', files[0])
       console.log('dataset pre invio: ')
       // console.log(this.params.dataset)
       console.log(this.params.dataset)
       this.params.filename = files[0].name
       // console.log(this.filename)
-      await axios.post('/api/import/postDataset', this.params)
+      await axios.post('/api/import/postDataset', this.params.dataset, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
       // this.$store.commit('updateFile', this.dataset)
       this.show_next = true
       this.show = false

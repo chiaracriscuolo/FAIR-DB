@@ -7,7 +7,17 @@ try:
 except NameError:
     to_unicode = str
 
-dataset = sys.argv[1]
-path = sys.argv[2]
+path = sys.argv[1]
+df = pandas.read_csv(path)
+#EXTRA to extract a JSON FILE
 
-print("PATH: ", path)
+# data = df.to_json(orient="split")
+df.to_json(path_or_buf='../static/dataset.json', orient="split")
+# print(json.dumps(data))
+# Write JSON file
+#with io.open('../static/dataset.json', 'w', encoding='utf8') as outfile:
+#    str_ = json.dumps(data,
+#                      indent=4, sort_keys=True,
+#                      separators=(',', ': '), ensure_ascii=False)
+#    outfile.write(to_unicode(str_))
+
