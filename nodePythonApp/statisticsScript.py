@@ -192,6 +192,13 @@ with open('../static/'+dataset+'Params.json') as f:
 target = params['target']
 protected_attr = params['protected_attr']
 binaryValues = df[target].unique()
+if (dataset == 'dataset'): 
+    print(binaryValues)
+    negativeTargetValue = params['negativeTargetValue']
+    if (binaryValues[0] != negativeTargetValue):
+        binaryValues[1] = binaryValues[0]
+        binaryValues[0] = negativeTargetValue
+    print(binaryValues)
 
 rules = selectRulesOnTargetValue(dependencies)
 positiveRules = rules[0]
