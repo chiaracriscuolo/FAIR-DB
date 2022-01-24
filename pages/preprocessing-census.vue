@@ -213,12 +213,12 @@ export default {
       // const self = this
       this.show_loading = true
       this.show_compute = false
-      const response = await axios.post('/api/preprocessing/postParams', this.params)
+      await axios.post('/api/preprocessing/postParams', this.params)
       // axios.get('/api/preprocessingApi')
       // .then(function (response) {
       // Handle success
       // this.$router.push('/filtering')
-      console.log('----------', response.body)
+      // console.log('----------', response.body)
       this.show_loading = false
       this.show_next = true
       // response.redirect('/filtering')

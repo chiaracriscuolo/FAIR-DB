@@ -34,7 +34,7 @@
       Input Dataset
     </h4>
     <PrintTable url="/dataset.json" p="A few tuples from the input dataset" />
-    <!-- TO DO: DATA VISUALIZATION -->
+    <!-- TO DO: DATA VISUALIZATION
     <div class="container">
       <h4 class="ui horizontal divider header">
         <i class="chart area icon" />
@@ -62,7 +62,7 @@
           </button>
         </div>
       </div>
-    </div>
+    </div>-->
     <!-- Protected attribute div -->
     <div class="container">
       <h4 class="ui horizontal divider header">
@@ -123,35 +123,47 @@
       <table class="ui definition table">
         <tbody>
           <tr>
-            <td class="two wide column">
+            <td class="five wide column">
+              <div class="icon ui button" data-tooltip="This parameter shows how frequently the dependency X->Y is verified knowing that X is verified. It can assume values in the range [0, 1]. The higher this value is, higher is the probability that the dependency is verified." data-position="top left" data-variation=" fixed very wide">
+                <i class="info icon" />
+              </div>
               ACFD Confidence threshold
             </td>
-            <td>
-              <input id="confidence" v-model.number="params.confidence" type="text" placeholder="0.8">
+            <td class="five wide column">
+              <input id="confidence" v-model.number="params.confidence" type="text">
             </td>
           </tr>
           <tr>
-            <td class="two wide column">
+            <td class="five wide column">
+              <div class="icon ui button" data-tooltip="The support count is the number of the samples in the dataset that verifies the dependency X->Y and it can assume values in the range [0, dataset-lenght]. It defines how many samples should be seen in order to consider a dependency as a valid one. We suggest to put it lower than the cardinality of the groups that you want to study." data-position="top left" data-variation=" fixed very wide">
+                <i class="info icon" />
+              </div>
               ACFD SupportCount threshold
             </td>
-            <td>
-              <input id="supportCount" v-model.number="params.supportCount" type="text" placeholder="80">
+            <td class="five wide column">
+              <input id="supportCount" v-model.number="params.supportCount" type="text">
             </td>
           </tr>
           <tr>
-            <td class="two wide column">
+            <td class="five wide column">
+              <div class="icon ui button" data-tooltip="It is the maximum antecedent size of a dependency X->Y, so the maximum number of attributes that can compare in X. It should be in the range between 1 and the number of chosen protected attributes." data-position="top left" data-variation=" fixed very wide">
+                <i class="info icon" />
+              </div>
               Maximum Antecendent Size
             </td>
-            <td>
-              <input id="maxAntSize" v-model.number="params.maxAntSize" type="text" placeholder="2">
+            <td class="five wide column">
+              <input id="maxAntSize" v-model.number="params.maxAntSize" type="text">
             </td>
           </tr>
           <tr>
-            <td class="two wide column">
+            <td class="five wide column">
+              <div class="icon ui button" data-tooltip="It indicates how much a dependency is ‘unethical’, it is the difference between the confidence(X->Y) and the confidence computed without the protected attributes in X. It can assume values in the range [0, 1]. To detect ethical problems we suggest to put it very low as 0.05 and perform some tests to tune it according to the ACFDs found." data-position="top left" data-variation=" fixed very wide">
+                <i class="info icon" />
+              </div>
               Difference threshold
             </td>
-            <td>
-              <input id="difference" v-model.number="params.difference" type="text" placeholder="0.07">
+            <td class="five wide column">
+              <input id="difference" v-model.number="params.difference" type="text">
             </td>
           </tr>
         </tbody>
@@ -167,7 +179,7 @@
       <div v-if="show_loading" class="ui purple bottom attached loading tab" />
     </div>
     <div class="container">
-      <a v-if="show_next" href="/filtering" aria-current="page" class="nuxt-link-exact-active nuxt-link-active">
+      <a v-if="show_next" href="/filtering-custom" aria-current="page" class="nuxt-link-exact-active nuxt-link-active">
         <button class="fluid ui purple button">
           See Dependencies!
         </button>
@@ -192,7 +204,7 @@ export default {
         supportCount: null,
         maxAntSize: null,
         difference: null,
-        dataset: null
+        dataset: 'dataset'
       },
       chartOptions: {
         series: [{

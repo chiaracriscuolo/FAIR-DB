@@ -8,20 +8,20 @@
           <!--<div class="description">Select the dataset</div>-->
         </div>
       </a>
-      <a class="completed link step" href="/preprocessing">
+      <a class="completed link step" href="/preprocessing-custom">
         <!--<i class="truck icon"></i>-->
         <div class="content">
           <div class="title">Preprocessing</div>
           <!--<div class="description">Analyze the dataset</div>-->
         </div>
       </a>
-      <a class="completed link step" href="/filtering">
+      <a class="completed link step" href="/filtering-custom">
         <div class="content">
           <div class="title">Selection</div>
           <!--<div class="description">Analyze ACFDs</div>-->
         </div>
       </a>
-      <a class="active link step" href="/statistics">
+      <a class="active link step" href="/statistics-custom">
         <div class="content">
           <div class="title">Statistics</div>
           <!--<div class="description">Analyze Statistics</div>-->
@@ -83,7 +83,7 @@
         <i class="table icon" />
         Problematic Tuples in the Dataset
       </h4>
-      <PrintTable url="/TitanicProblematicTuples.json" p="In this table we show the tuples that are most affected by the user-selected ACFDs. The column named 'marked' indicates for each tuple how many ACFDs impact it" />
+      <PrintTable url="/datasetProblematicTuples.json" p="In this table we show the tuples that are most affected by the user-selected ACFDs. The column named 'marked' indicates for each tuple how many ACFDs impact it" />
     </div>
     <br>
     <br>
@@ -227,7 +227,7 @@ export default {
         totTuples: null,
         favoured: null,
         discriminated: null,
-        dataset: 'Titanic'
+        dataset: 'dataset'
       },
       show_difference: false,
       show_support: false
@@ -239,11 +239,11 @@ export default {
     }
   },
   async mounted () {
-    const json = await this.$axios.get('/TitanicFinalACFDs.json')
+    const json = await this.$axios.get('/datasetFinalACFDs.json')
     const obj = json.data
     this.data = obj.data.slice(0, this.nTuplesACFD)
     this.headers = obj.columns
-    const jsonMetrics = await this.$axios.get('/TitanicMetrics.json')
+    const jsonMetrics = await this.$axios.get('/datasetMetrics.json')
     const objMetrics = jsonMetrics.data
     this.params.cumulativeSupport = objMetrics.cumulativeSupport
     if (this.params.cumulativeSupport > 0.5) { this.show_support = true }
@@ -254,7 +254,7 @@ export default {
     this.params.pDiffs = objMetrics.pDiffs
     this.params.favoured = objMetrics.favoured
     this.params.discriminated = objMetrics.discriminated
-    const jsonP = await this.$axios.get('/TitanicParams.json')
+    const jsonP = await this.$axios.get('/datasetParams.json')
     const objP = jsonP.data
     this.protected_attr = objP.protected_attr
   },
@@ -269,7 +269,7 @@ export default {
       return s.replace(',', ', ')
     },
     async displayTuples () {
-      const json = await this.$axios.get('/TitanicFinalACFDs.json')
+      const json = await this.$axios.get('/datasetFinalACFDs.json')
       const obj = json.data
       this.data = obj.data.slice(0, this.nTuplesACFD)
       this.headers = obj.columns

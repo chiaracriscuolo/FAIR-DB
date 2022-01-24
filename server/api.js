@@ -62,7 +62,7 @@ function init () {
     console.log('DATASET: ')
     console.log(dataset)
 
-    // CHIAMARE SCRIPT IMPORT DATASET.PY PER CONVERTIRE .CSV IN .JSON
+    // CHIAMATA A SCRIPT IMPORT DATASET.PY PER CONVERTIRE .CSV IN .JSON
     const { spawn } = require('child_process')
     const subprocess = spawn('pipenv', ['run', 'python', 'importDataset.py', '../static/dataset.csv'], { cwd: 'nodePythonApp' })
     // collect data from script

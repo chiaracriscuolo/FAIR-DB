@@ -37,7 +37,7 @@ support = supportCount/all_tuples
 #supportCount = support*all_tuples
 #print(cols, all_tuples, supportCount)
 ## deal with numbers ##
-if(dataset == 'Titanic'):
+if(dataset == 'Titanic' or dataset == 'dataset'):
     df = df.applymap(lambda x : str(x) if type(x) == int else x)
 
 ########## 2. APPLY CFD_DISCOVERY ALGORITHM ##########
