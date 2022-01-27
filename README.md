@@ -8,6 +8,14 @@ In this demo we propose FAIR-DB (FunctionAl dependencIes to discoveR Data Bias),
 The proposed solution is implemented as a web-based application, that, given an input dataset, generates such dependencies, walks the user trough their analysis, and finally provides many insights about bias present in the data. 
 Our tool uses a novel metric to evaluate the unfairness present in datasets, identifies the attributes that encompass discrimination (e.g. ethnicity, sex or religion), and provides very precise information about the groups treated unequally. We also provide a detailed description of the system architecture and present a demonstration scenario, based on a real-world dataset frequently used in the field of computer ethics.
 
+## User Section
+Are you confused? Why don't you look at our demo video? It could be helpful in understanding how the system works.
+
+https://user-images.githubusercontent.com/37806290/151364199-9791e511-e7c7-452d-ab44-61e8970ecd33.mp4
+
+
+
+## Developer Section
 ## Build Setup
 
 ```bash
