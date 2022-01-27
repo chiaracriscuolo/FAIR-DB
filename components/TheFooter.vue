@@ -2,7 +2,8 @@
   <header class="footer">
     <div class="footer-content">
       <h5>Chiara Criscuolo, Fabio Azzalini and Letizia Tanca, 2021</h5>
-      <!--<nav class="right">
+      <!-- NO USED
+        <nav class="right">
         <div
           v-for="(item, itemIndex) of menuOptions"
           :key="'menu-item-' + itemIndex"
@@ -19,7 +20,8 @@
 
 <script>
 export default {
-  /* data() {
+  /* OLD VERSION
+  data() {
     return {
       /* menuOptions: [
         {

@@ -1,3 +1,4 @@
+<!-- NO USED ANYMORE -->
 <template>
   <div class="container">
     <table class="ui definition table">
@@ -28,7 +29,8 @@ export default {
     const obj = JSON.parse(json.data)
     this.headers = obj.columns
   }
-  /* methods: {
+  /* OLD VERSION
+   methods: {
     async getHeaders () {
       const json = await this.$axios.get('/dataTitanic.json')
       // console.log(Object.keys(obj))

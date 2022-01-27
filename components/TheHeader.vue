@@ -8,7 +8,8 @@
           </a>
         </h1>
       </div>
-      <!--<nav class="right">
+      <!-- OLD VERSION
+        <nav class="right">
         <div
           v-for="(item, itemIndex) of menuOptions"
           :key="'menu-item-' + itemIndex"
@@ -25,7 +26,8 @@
 
 <script>
 export default {
-  /* data() {
+  /* OLD VERSION
+  data() {
     return {
       /* menuOptions: [
         {

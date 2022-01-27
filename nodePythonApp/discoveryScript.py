@@ -5,9 +5,8 @@ import json
 import pandas
 #import numpy as np
 
+########## SCRIPT TO DISCOVER ACFDS AND FILTER THEM ##########
 ######### 1. TAKE INPUTS #########
-#protected_attr = ['Pclass', 'Sex',]
-#target = 'Survived'
 
 ## The body of the request that contains all input parameters
 y = json.loads(sys.argv[1])
@@ -23,10 +22,6 @@ supportCount = y['supportCount']
 maxAntSize = y['maxAntSize']
 minDiff = y['difference']
 dataset = y['dataset']
-#print(protected_attr, target, confidence, support, maxAntSize, difference)
-
-## TODO ricordati di controllare che abbia la target class: lo dovrebbe controllare al momento della creazione della tabella!
-#grepValue = target+'='
 
 file_path = '../cdfAlgorithm/cfddiscovery/datasets/preprocessed'+dataset+'.csv'
 df = pandas.read_csv(file_path)
@@ -36,29 +31,28 @@ support = supportCount/all_tuples
 ## TODO Risolvere SupportCount!!
 #supportCount = support*all_tuples
 #print(cols, all_tuples, supportCount)
-## deal with numbers ##
+## To deal with numbers ##
 if(dataset == 'Titanic' or dataset == 'dataset'):
     df = df.applymap(lambda x : str(x) if type(x) == int else x)
 
 ########## 2. APPLY CFD_DISCOVERY ALGORITHM ##########
 
-#Apply CFDDiscovery algorithm: mi faccio passare le regole dallo script precedente 
+#Apply CFDDiscovery algorithm
 #output = !../cdfAlgorithm/cfddiscovery/CFDD {file_path} {supportCount} {confidence} {maxAntSize} | grep {grepValue}
 outputDiscovery = sys.argv[2]
-#print(outputDiscovery)
 outputDiscovery = outputDiscovery.split('\n')
 
-#to delete the final comment of cdfDiscovery
+#to delete the final comment (strings) of cdfDiscovery
 outputDiscovery.pop()
 outputDiscovery.pop() 
-print(outputDiscovery)
+# print(outputDiscovery)
 #all rules obtained
 #print("Total number of dependencies found: ", len(outputDiscovery), "\n")
 
 #for i in range(0,2):
     #print("Dependency n.", i, ": " ,outputoutputDiscovery[i])
 
-###### 3. TRASFORM CFD DISCOVERY OUTPUT IN A DICTIONARY
+###### 3. TRASFORM CFD DISCOVERY OUTPUT IN A DICTIONARY ##########
 #Transform the '<=' in '<' and viceversa to not have problem with the following '=' detection
 o1 = list(map(lambda x: x.replace("<=", "<"), outputDiscovery))
 #o1 = list(map(lambda x: x.replace(">=", ">"), output))
@@ -128,6 +122,7 @@ def parseCFDWithCond(x, conditionslhs, conditionsrhs):
             return None
     
     
+#TODO ADD MANAGING OF CONDITIONS
 #condition to delete some rules that are not interesting, for example:
 #conditionslhs = ['age-range=15-30']
 conditionslhs = []
@@ -171,13 +166,12 @@ def createDictionaryElem(side):
 o4 = list(map(createSplitting, o3))
 #for i in range(0,4):
 #    print(o4[i])
-print(o4)
+
 
 #Create the dictionary with the LHS and RHS that contains all CFDs
 parsedRules = list(map(lambda x: {'lhs' : createDictionaryElem(x[0]), 'rhs': createDictionaryElem(x[1])}, o4))
 
-print("Total number of STARTING dependencies in the dictionary: " ,len(parsedRules))
-#print(parsedRules)
+#print("Total number of STARTING dependencies in the dictionary: " ,len(parsedRules)
 
 ######### 4. COMPUTE THE TABLE OF ACFDS WITH METRICS #########
 ## FUNCTIONS NEEDED TO CREATE THE TABLE ##
@@ -376,10 +370,8 @@ df3 = createTable(parsedRules)
 df3 = removeDuplicates(df3)
 pandas.set_option('display.max_colwidth', None)
 pandas.set_option('display.max_rows', None)
-print("Total number of ACFDs (before completion) in dataframe before applying difference threshold: " ,len(df3))
-#df3.head()
 df4 = df3[df3.Diff > minDiff]
-print("Total number of ACFDs (before completion) in dataframe after applying difference threshold: " ,len(df4))
+#print("Total number of ACFDs (before completion) in dataframe after applying difference threshold: " ,len(df4))
 
 ####### 6. ACFDs COMPLETION ######
 ## FUNCTIONS NEED FOR THE CARTESIAN PRODUCT ##
@@ -489,23 +481,19 @@ for elem in df4.Rule:
     
     for ar in rulesCount:
         CFDCombinations.append(ar)
-        
-print("Total number of combinations found before removing duplicates: ", len(CFDCombinations))
 
-#print("Original ACFD: ", df4.Rule[0], "\n")
 CFDCombinations = removeDuplicatesArray(CFDCombinations)
-print("Total number of combinations found after removing duplicates: ", len(CFDCombinations))
+#print("Total number of combinations found after removing duplicates: ", len(CFDCombinations))
 
 ####### 7. SHOW ACFDS COMPLETED #######
 df5 = createTable(CFDCombinations)   
 df5 = removeDuplicates(df5)
 pandas.set_option('display.max_colwidth', None)
 pandas.set_option('display.max_rows', None)
-print("Total number of ACFDs (after completion) in dataframe before applying difference threshold: " ,len(df5))
 df51 = df5[df5.Diff > minDiff]
-print("Total number of ACFDs (after completion) in dataframe after applying difference threshold: " ,len(df51))
+#print("Total number of ACFDs (after completion) in dataframe after applying difference threshold: " ,len(df51))
 
-### 8. ORDER THE DEPENDENCIES ###
+########## 8. ORDER THE DEPENDENCIES ##########
 #Order the rules by Diff or Support or Mean
 ## DEFAULT: ORDER BY MEAN ##
 orderingCriterion = 2
@@ -519,7 +507,7 @@ else:
          df51.loc[index, 'Mean'] = ((df51.loc[index, 'Support'] + df51.loc[index,'Diff'])/2)
     df6 = df51.iloc[df51['Mean'].argsort()[::-1][:len(df51)]]
     
-print("Number of original ACFDs: ", len(df4), ". Number of ACFDs after completion: ", len(df5), ". Number of final ACFDs found: ", len(df6))
+#print("Number of original ACFDs: ", len(df4), ". Number of ACFDs after completion: ", len(df5), ". Number of final ACFDs found: ", len(df6))
 #df6.head()
 
 ##### 9. COMPUTE AND SAVE ACFDSTITANIC.JSON #####
@@ -532,19 +520,9 @@ except NameError:
     to_unicode = str
 
 df6 = df6.reset_index(drop=True)
-print(df6.head())
 df6.to_csv('../static/ACFDs'+dataset+'Computed.csv',index=True)
-#data = df6.to_json(orient="split")
-# Write JSON file
-#with io.open('../static/ACFDsTitanicComputed.json', 'w', encoding='utf8') as outfile:
-#    str_ = json.dumps(data,
-#                      indent=4, sort_keys=True,
-#                      separators=(',', ': '), ensure_ascii=False)
-#    outfile.write(to_unicode(str_))
 
 df6.to_json(path_or_buf='../static/ACFDs'+dataset+'Computed.json', orient="split")
-
-print("PARAMS:", y)
 
 with io.open('../static/'+dataset+'Params.json', 'w', encoding='utf8') as outfile:
     str_ = json.dumps(y,

@@ -99,7 +99,7 @@
             <div class="field">
               <div type="ui radio checkbox">
                 <td class="two wide column">
-                  <input v-model="params.target" type="radio" :value="item" name="example2" @click="getAnswer(item)">
+                  <input v-model="params.target" type="radio" :value="item" name="example2" @click="getTargetValues(item)">
                 </td>
                 <td>
                   {{ item }}
@@ -213,16 +213,16 @@
             Target Attribute is required! (It should be binary)
           </li>
           <li v-if="!confidenceIsValid">
-            Confidence  > 0 is required
+            Confidence greater than 0 and less than 1 is required
           </li>
           <li v-if="!supportCountIsValid">
-            Support Count  > 0 is required
+            Support Count greater than 0 and less than the dataset length is required
           </li>
           <li v-if="!differenceIsValid">
-            Difference  > 0 is required
+            Difference greater than 0 and less than 1 is required
           </li>
           <li v-if="!maxSizeAntIsValid">
-            Maximum Antecedent Size  > 0 is required
+            Maximum Antecedent Size  greater than 0 is required
           </li>
         </ul>
       </p>
@@ -278,16 +278,16 @@ export default {
       return !(!this.params.target)
     },
     confidenceIsValid () {
-      return (!(!this.params.confidence)) && this.params.confidence > 0
+      return (!(!this.params.confidence)) && this.params.confidence > 0 && this.params.confidence < 1
     },
     supportCountIsValid () {
       return (!(!this.params.supportCount)) && this.params.supportCount > 0
     },
     differenceIsValid () {
-      return (!(!this.params.difference)) && this.params.difference > 0.01
+      return (!(!this.params.difference)) && this.params.difference > 0.01 && this.params.difference < 1
     },
     maxSizeAntIsValid () {
-      return (!(!this.params.confidence)) && this.params.maxAntSize > 0
+      return (!(!this.params.confidence)) && this.params.maxAntSize > 0 && this.params.maxAntSize <= this.params.protected_attr.length
     }
   },
   async mounted () {
@@ -311,12 +311,10 @@ export default {
       }
       alert(this.errors)
     },
-    async getAnswer (target) {
-      console.log('entrato')
+    async getTargetValues (target) {
       if (target != null) {
-        console.log(target)
         const json = await this.$axios.get('/datasetColumnsValues.json')
-        console.log(json.data[target])
+        // console.log(json.data[target])
         this.targetValues = json.data[target]
         this.show_targetValues = true
         return null
@@ -328,12 +326,13 @@ export default {
       // const self = this
       this.show_loading = true
       this.show_compute = false
-      const response = await axios.post('/api/preprocessing/postParams', this.params)
+      // const response =
+      await axios.post('/api/preprocessing/postParams', this.params)
       // axios.get('/api/preprocessingApi')
       // .then(function (response) {
       // Handle success
       // this.$router.push('/filtering')
-      console.log('----------', response.body)
+      // console.log('----------', response.body)
       this.show_loading = false
       this.show_next = true
       // response.redirect('/filtering')

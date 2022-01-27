@@ -33,7 +33,7 @@
       <i class="search icon" />
       Table of Functional Dependencies
     </h4>
-    <p> This is the list of ACFDs that are extracted given the input parameters, select the ones that are more interesting for your research purpose. Please choose at least one dependency</p>
+    <p> This is the list of ACFDs that are extracted given the input parameters, select the ones that are more interesting for your research purpose.  <span class="ui purple text"><b>Please choose at least one dependency</b></span></p>
     <div class="ui two column grid">
       <div class="two column row">
         <div class="center aligned nine wide column">
@@ -118,7 +118,8 @@
 import axios from 'axios'
 
 function parseACFD (value) {
-  /* value = value.replace('{', '')
+  /* OLD VERSION
+  value = value.replace('{', '')
   value = value.replace('},', '=>')
   value = value.replace('},', '')
   value = value.replace('"lhs":', '')
@@ -161,7 +162,6 @@ export default {
   },
   async mounted () {
     const json = await this.$axios.get('/ACFDsCensusComputed.json')
-    // const obj = JSON.parse(json.data)
     const obj = json.data
     this.all = obj.index
     this.data = obj.data.slice(0, 10)
@@ -180,31 +180,17 @@ export default {
       this.headers = obj.columns
     },
     async sorted () {
-      // console.warn(this.params)
-      // const self = this
-      console.log('---Order:', this.params.orderingCriterion)
-      const response = await axios.post('/api/filtering/sortACFDs', this.params)
-      // axios.get('/api/preprocessingApi')
-      // .then(function (response) {
-      // Handle success
-      // this.$router.push('/filtering')
-      console.log('----------', response.body)
-      // To update the dataset
+      await axios.post('/api/filtering/sortACFDs', this.params)
       const json = await this.$axios.get('/ACFDsCensusComputed.json')
       const obj = json.data
       this.data = obj.data.slice(0, 10)
       this.headers = obj.columns
-      // window.location.reload(true)
-      // this.show = true
-      // response.redirect('/filtering')
-      // })
       return this.data
     },
     async postACFDs () {
       this.show_compute = false
       this.show_loading = true
-      const response = await axios.post('/api/filtering/postACFDs', this.params)
-      console.log('----------', response.body)
+      await axios.post('/api/filtering/postACFDs', this.params)
       this.show_loading = false
       this.show_next = true
       return this.data

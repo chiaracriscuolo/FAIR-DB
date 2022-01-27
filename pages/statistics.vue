@@ -93,7 +93,8 @@
         Metrics
       </h4>
       <p> Summary of the interesting metrics on the selected ACFDs regarding the input dataset. </p>
-      <!-- progress bar?<div class="ui purple inverted progress">
+      <!-- OLD VERSION
+      progress bar?<div class="ui purple inverted progress">
         <div class="bar">
           <div class="centered active progress">
             {{ params.cumulativeSupport }}
@@ -167,7 +168,8 @@
         More favoured and more discriminated groups
       </h4>
       <p>In this table, given the selected ACFDs, we display the favoured and discrinated protected attribute values of the dataset. </p>
-      <!-- progress bar?<div class="ui purple inverted progress">
+      <!-- OLD VERSION
+      progress bar?<div class="ui purple inverted progress">
         <div class="bar">
           <div class="centered active progress">
             {{ params.cumulativeSupport }}
@@ -203,12 +205,6 @@
 <script>
 
 function parseACFD (value) {
-  /* value = value.replace('{', '')
-  value = value.replace('},', '=>')
-  value = value.replace('},', '')
-  value = value.replace('"lhs":', '')
-  value = value.replace('"rhs":', '') */
-
   return ' ' + JSON.stringify(value.lhs) + ' => ' + JSON.stringify(value.rhs)
 }
 export default {

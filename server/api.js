@@ -3,6 +3,7 @@ import multer from 'multer'
 // const fs = require('fs')
 
 const app = express()
+// to save custom dataset
 const storage = multer.diskStorage({
   destination (req, file, cb) {
     cb(null, './static')
@@ -24,30 +25,26 @@ function pythonDiscoveryScript (body, dataToSend, res) {
   let dataToSend2
   const { spawn } = require('child_process')
   // spawn new child process to call the python script
-  // const subprocess = spawn('python', ['nodePythonApp/script1.py'])
-  // const subprocess1 = spawn('./CFDD', ['./datasets/preprocessedTitanic.csv', 80, params.confidence, params.maxAntSize], { cwd: 'cdfAlgorithm/cfddiscovery' })
   const subprocess2 = spawn('pipenv', ['run', 'python', 'discoveryScript.py', JSON.stringify(body), dataToSend], { cwd: 'nodePythonApp' })
   // collect data from script
   subprocess2.stdout.on('data', function (data) {
-    console.log('Pipe data from python script...')
+    // console.log('Pipe data from python script...')
     dataToSend2 = data.toString()
   })
   subprocess2.stderr.on('data', (data) => {
-    console.error(`stderr: ${data}`)
+    // console.error(`stderr: ${data}`)
   })
   // in close event we are sure that stream from child process is closed
   subprocess2.on('close', (code) => {
-    console.log(`child python process close all stdio with code ${code}`)
+    // console.log(`child python process close all stdio with code ${code}`)
     // send data to browser
-    console.log('Dati:' + dataToSend2)
-    // dataToSend = 'static/ACFDsTitanic.json'
+    // console.log('Dati:' + dataToSend2)
     res.json(dataToSend2)
-    // return dataToSend2
   })
 }
 
 function init () {
-  // This one is just an example
+  // This one is just an example to download an image
   app.get('/api/preprocessingUNUSED', (req, res) => {
     return res.json({
       url:
@@ -58,33 +55,32 @@ function init () {
   // POST TO SAVE THE CUSTOM DATASET
   app.post('/import/postDataset', upload.single('dataset'), (req, res) => {
     let dataToSend = null
-    const dataset = req.file
-    console.log('DATASET: ')
-    console.log(dataset)
+    // const dataset = req.file
+    // console.log('DATASET: ')
+    // console.log(dataset)
 
     // CHIAMATA A SCRIPT IMPORT DATASET.PY PER CONVERTIRE .CSV IN .JSON
     const { spawn } = require('child_process')
     const subprocess = spawn('pipenv', ['run', 'python', 'importDataset.py', '../static/dataset.csv'], { cwd: 'nodePythonApp' })
     // collect data from script
     subprocess.stdout.on('data', function (data) {
-      console.log('Pipe data from python script...')
+      // console.log('Pipe data from python script...')
       dataToSend = data.toString()
     })
     subprocess.stderr.on('data', (data) => {
-      console.error(`stderr: ${data}`)
+      // console.error(`stderr: ${data}`)
     })
     // in close event we are sure that stream from child process is closed
     subprocess.on('close', (code) => {
-      console.log(`child python process close all stdio with code ${code}`)
+      // console.log(`child python process close all stdio with code ${code}`)
       // send data to browser
-      console.log('Dati:' + dataToSend)
+      // console.log('Dati:' + dataToSend)
       // dataToSend = 'static/ACFDsTitanic.json'
       res.json(dataToSend)
-    // return dataToSend2
     })
   })
 
-  // example: get that calls a python script
+  /* example: get that calls a python script
   app.get('/postParamsUNUSED', (req, res) => {
     const { spawn } = require('child_process')
     let dataToSend
@@ -106,46 +102,36 @@ function init () {
       // res.send('Dati:' + dataToSend)
       res.json(dataToSend)
     })
-  })
+  }) */
 
   // POST FOR CFD_DISCOVERY
   app.post('/preprocessing/postParams', (req, res) => {
     let dataToSend = ''
     const { spawn } = require('child_process')
     // spawn new child process to call the python script
-    console.log(req.body)
     const params = req.body
     // const subprocess = spawn('python', ['nodePythonApp/script1.py'])
     const subprocess1 = spawn('./CFDD', ['./datasets/preprocessed' + params.dataset + '.csv', params.supportCount, params.confidence, params.maxAntSize], { cwd: 'cdfAlgorithm/cfddiscovery' })
     // const subprocess = spawn('pipenv', ['run', 'python', 'discoveryScript.py', JSON.stringify(req.body)], { cwd: 'nodePythonApp' })
     // collect data from script
     subprocess1.stdout.on('data', function (data) {
-      console.log('Pipe data from c++ script...')
+      // console.log('Pipe data from c++ script...')
       dataToSend += data.toString()
     })
     subprocess1.stderr.on('data', (data) => {
-      console.error(`stderr: ${data}`)
+      // console.error(`stderr: ${data}`)
     })
     // in close event we are sure that stream from child process is closed
     subprocess1.on('close', (code) => {
-      console.log(`child c++ process close all stdio with code ${code}`)
-      // send data to browser
-      // res.send('Dati:' + dataToSend)
-      // dataToSend = 'static/ACFDsTitanic.json'
-      // console.log('First output inside: ', dataToSend)
-      // console.log(typeof (dataToSend), dataToSend
-      console.log('Dipendenze: ' + dataToSend)
+      // console.log(`child c++ process close all stdio with code ${code}`)
+      // console.log('Dipendenze: ' + dataToSend)
       pythonDiscoveryScript(req.body, dataToSend, res)
-      // console.log('BACKKKK:', pythonDiscoveryScript(req.body, dataToSend))
-      // res.json(back)
     })
-    // console.log('First output: ', dataToSend)
   })
 
   // POST TO CHANGE ORDER CRITERION
   app.post('/filtering/sortACFDs', (req, res) => {
     let dataToSend
-    console.log('Input order: ', req.body)
     const { spawn } = require('child_process')
     const subprocess = spawn('pipenv', ['run', 'python', 'sortingScript.py', JSON.stringify(req.body)], { cwd: 'nodePythonApp' })
     // collect data from script
@@ -153,12 +139,12 @@ function init () {
       dataToSend = data.toString()
     })
     subprocess.stderr.on('data', (data) => {
-      console.error(`stderr: ${data}`)
+      // console.error(`stderr: ${data}`)
     })
     // in close event we are sure that stream from child process is closed
     subprocess.on('close', (code) => {
-      console.log(`child process close all stdio with code ${code}`)
-      console.log(dataToSend)
+      // console.log(`child process close all stdio with code ${code}`)
+      // console.log(dataToSend)
       // send data to browser
       // res.send('Dati:' + dataToSend)
       res.json(dataToSend)
@@ -168,7 +154,6 @@ function init () {
   // POST TO COMPUTE STATISTICS
   app.post('/filtering/postACFDs', (req, res) => {
     let dataToSend
-    console.log('Input statistics params: ', req.body)
     const { spawn } = require('child_process')
     const subprocess = spawn('pipenv', ['run', 'python', 'statisticsScript.py', JSON.stringify(req.body)], { cwd: 'nodePythonApp' })
     // collect data from script
@@ -176,14 +161,13 @@ function init () {
       dataToSend = data.toString()
     })
     subprocess.stderr.on('data', (data) => {
-      console.error(`stderr: ${data}`)
+      // console.error(`stderr: ${data}`)
     })
     // in close event we are sure that stream from child process is closed
     subprocess.on('close', (code) => {
-      console.log(`child process close all stdio with code ${code}`)
-      console.log(dataToSend)
+      // console.log(`child process close all stdio with code ${code}`)
+      // console.log(dataToSend)
       // send data to browser
-      // res.send('Dati:' + dataToSend)
       res.json(dataToSend)
     })
   })

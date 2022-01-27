@@ -34,25 +34,6 @@
       Input Dataset
     </h4>
     <PrintTable url="/USCensus.json" p="A few tuples from the input dataset" />
-    <!-- TO DO: DATA VISUALIZATION
-    <div class="container">
-      <h4 class="ui horizontal divider header">
-        <i class="chart area icon" />
-        Data Visualization
-      </h4>
-      <div v-for="(item) in headers" :key="item" class="ui grid">
-        <div class="four wide column">
-          <input v-model="params.visualize_attribute" type="button" class="ui purple button">
-          {{ item }}
-        </div>
-      </div>
-    </div> -->
-    <!-- Protected attribute div -->
-
-    <!--<div class="required field">
-        <label>Last name</label>
-        <input type="text" placeholder="Full Name">
-      </div>-->
     <div class="container">
       <h4 class="ui horizontal divider header">
         <i class="bar chart icon" />
@@ -157,9 +138,10 @@
         </tbody>
       </table>
     </div>
-    <div>
-      <!-- INPUT VALIDATION -->
-      <p v-if="!formIsValid" class="ui message">
+
+    <!-- INPUT VALIDATION -->
+    <div class="container">
+      <p v-if="!formIsValid" class="ui error message">
         <b>Please correct the following error(s):</b>
         <ul>
           <li v-if="!protectedAttributesAreValid">
@@ -169,23 +151,23 @@
             Target Attribute is required! (It should be binary)
           </li>
           <li v-if="!confidenceIsValid">
-            Confidence  > 0 is required
+            Confidence greater than 0 and less than 1 is required
           </li>
           <li v-if="!supportCountIsValid">
-            Support Count  > 0 is required
+            Support Count greater than 0 and less than the dataset length is required
           </li>
           <li v-if="!differenceIsValid">
-            Difference  > 0 is required
+            Difference greater than 0 and less than 1 is required
           </li>
           <li v-if="!maxSizeAntIsValid">
-            Maximum Antecedent Size  > 0 is required
+            Maximum Antecedent Size  greater than 0 is required
           </li>
         </ul>
       </p>
     </div>
 
     <div class="container">
-      <button v-if="show_compute" class="ui purple button" @click="postParams()">
+      <button v-if="show_compute" class="ui purple button" :disabled="!formIsValid" @click="postParams()">
         Compute Dependencies!
       </button>
       <div v-if="show_loading" class="ui purple bottom attached loading tab">
@@ -236,16 +218,16 @@ export default {
       return !(!this.params.target)
     },
     confidenceIsValid () {
-      return (!(!this.params.confidence)) && this.params.confidence > 0
+      return (!(!this.params.confidence)) && this.params.confidence > 0 && this.params.confidence < 1
     },
     supportCountIsValid () {
       return (!(!this.params.supportCount)) && this.params.supportCount > 0
     },
     differenceIsValid () {
-      return (!(!this.params.difference)) && this.params.difference > 0.01
+      return (!(!this.params.difference)) && this.params.difference > 0.01 && this.params.difference < 1
     },
     maxSizeAntIsValid () {
-      return (!(!this.params.confidence)) && this.params.maxAntSize > 0
+      return (!(!this.params.confidence)) && this.params.maxAntSize > 0 && this.params.maxAntSize <= this.params.protected_attr.length
     }
   },
   async mounted () {
@@ -277,20 +259,11 @@ export default {
       e.preventDefault()
     },
     async postParams () {
-      // console.warn(this.params)
-      // const self = this
       this.show_loading = true
       this.show_compute = false
       await axios.post('/api/preprocessing/postParams', this.params)
-      // axios.get('/api/preprocessingApi')
-      // .then(function (response) {
-      // Handle success
-      // this.$router.push('/filtering')
-      // console.log('----------', response.body)
       this.show_loading = false
       this.show_next = true
-      // response.redirect('/filtering')
-      // })
     }
   }
 }

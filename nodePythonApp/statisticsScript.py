@@ -8,6 +8,8 @@ try:
 except NameError:
     to_unicode = str
 
+########## SCRIPT TO COMPUTE THE STATISTICS GIVEN THE USER-SELECTED DEPENDENCIES ##########
+
 ### Functions ###
 
 def extractProblematicTuples(dfMarked):
@@ -32,8 +34,8 @@ def computeStatistics(df6, selectedDependencies, dfMarked, indexArray):
     dfM = dfMarked[dfMarked.marked != 0]
     #print(All tuples interested by the rules: ', marks)
 
-    print('Number of tuples interested by the rules: ', len(dfM), ". Total number of tuples: ", len(df), "\n")
-    print( "Cumulative Support: ", len(dfM)/len(df), ". Difference Mean: ", diffMean, "\n")
+    #print('Number of tuples interested by the rules: ', len(dfM), ". Total number of tuples: ", len(df), "\n")
+    #print( "Cumulative Support: ", len(dfM)/len(df), ". Difference Mean: ", diffMean, "\n")
 
     metrics['cumulativeSupport'] = len(dfM)/len(df)
     metrics['differenceMean'] = diffMean
@@ -52,12 +54,12 @@ def computeStatistics(df6, selectedDependencies, dfMarked, indexArray):
                     deps = deps+1
             if(pMean != 0):
                 pMean = (pMean/deps)
-                print(attribute, '-Difference Mean: ', pMean, "\n")
+                #print(attribute, '-Difference Mean: ', pMean, "\n")
                 pDiffs[attribute] = pMean
 
     metrics['pDiffs'] = pDiffs
     finalRules =  df6[df6.index.isin(indexArray)]
-    print("Total number of ACFDs selected: ", len(finalRules), "\n")
+    #print("Total number of ACFDs selected: ", len(finalRules), "\n")
     return finalRules, metrics
 
 #for every rule = elem, iter over all rows and add one if the tuple respect the rule
@@ -118,7 +120,7 @@ for dep in dependencies:
 
     
 dfEthicalProblems = extractProblematicTuples(dfMarked)
-print("Problematic tuples: ", len(dfEthicalProblems))
+#print("Problematic tuples: ", len(dfEthicalProblems))
 
 dfEthicalProblems.to_json(path_or_buf='../static/'+dataset+'ProblematicTuples.json', orient="split")
 
@@ -188,17 +190,14 @@ def selectAttributeValues(ACFDList, protected_attr):
 with open('../static/'+dataset+'Params.json') as f:
   params = json.load(f)
 
-#params = json.loads(file_path_params)
 target = params['target']
 protected_attr = params['protected_attr']
 binaryValues = df[target].unique()
 if (dataset == 'dataset'): 
-    print(binaryValues)
     negativeTargetValue = params['negativeTargetValue']
     if (binaryValues[0] != negativeTargetValue):
         binaryValues[1] = binaryValues[0]
         binaryValues[0] = negativeTargetValue
-    print(binaryValues)
 
 rules = selectRulesOnTargetValue(dependencies)
 positiveRules = rules[0]
@@ -216,7 +215,7 @@ discriminated_groups= selectAttributeValues(negativeRules, protected_attr)
 metrics['favoured'] = favoured_groups
 metrics['discriminated'] = discriminated_groups
 
-print("FINAL METRICS:", metrics)
+#print("FINAL METRICS:", metrics)
 
 with io.open('../static/'+dataset+'Metrics.json', 'w', encoding='utf8') as outfile:
     str_ = json.dumps(metrics,

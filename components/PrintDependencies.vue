@@ -1,3 +1,4 @@
+<!-- NO USED ANYMORE -->
 <template>
   <div class="container">
     <div class="container">
@@ -59,7 +60,8 @@ export default {
     this.data = obj.data.slice(0, 10)
     this.headers = obj.columns
   }
-  /* methods: {
+  /* OLD VERSION
+  methods: {
     async getHeaders () {
       const json = await this.$axios.get('/dataTitanic.json')
       // console.log(Object.keys(obj))

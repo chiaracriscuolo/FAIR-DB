@@ -1,3 +1,4 @@
+<!-- THE DEFAULT STYLE -->
 <template>
   <div>
     <the-header />

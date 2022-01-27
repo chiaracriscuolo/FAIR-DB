@@ -1,3 +1,4 @@
+<!-- TO PRINT TABLES -->
 <template>
   <div>
     <div class="ui two column grid">
@@ -77,7 +78,8 @@ export default {
       this.headers = obj.columns
     }
   }
-  /* methods: {
+  /* OLD VERSION
+  methods: {
     async getHeaders () {
       const json = await this.$axios.get('/dataTitanic.json')
       // console.log(Object.keys(obj))

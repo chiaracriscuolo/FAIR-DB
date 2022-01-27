@@ -63,13 +63,9 @@
               </button>
             </a>
           </div>
-          <!-- <div class="three wide column">
-          <button class="ui purple button">
-            Dataset 2
-          </button>
-        </div>-->
           <div class="center aligned five wide column">
-            <!--<input id="fileUpload" type="file" hidden>
+            <!-- OLD VERSION
+              <input id="fileUpload" type="file" hidden>
             <button v-if="show" class="ui purple button" @click="chooseFiles()">-->
             <button v-if="show" class="ui purple button" @click="onPickFile">
               Upload your dataset
@@ -110,8 +106,8 @@ export default {
   methods: {
     chooseFiles () {
       this.params.dataset = document.getElementById('fileUpload').click()
-      console.log('dataset pre invio: ')
-      console.log(this.params.dataset)
+      // console.log('dataset pre invio: ')
+      // console.log(this.params.dataset)
     },
     onPickFile () {
       this.$refs.fileInput.click()
@@ -124,38 +120,19 @@ export default {
         this.imageUrl = fileReader.result
       })
       fileReader.readAsDataURL(files[0])
-      console.log(files)
+      // console.log(files)
       this.params.dataset.append('dataset', files[0])
-      console.log('dataset pre invio: ')
+      // console.log('dataset pre invio: ')
       // console.log(this.params.dataset)
-      console.log(this.params.dataset)
       this.params.filename = files[0].name
-      // console.log(this.filename)
       await axios.post('/api/import/postDataset', this.params.dataset, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
       })
-      // this.$store.commit('updateFile', this.dataset)
       this.show_next = true
       this.show = false
     }
-    // async postDataset () {
-    // console.warn(this.params)
-    // const self = this
-    // this.show_loading = true
-    // this.show_compute = false
-    // const response = await axios.post('/api/selection/postParams', this.dataset, this.name)
-    // axios.get('/api/preprocessingApi')
-    // .then(function (response) {
-    // Handle success
-    // this.$router.push('/filtering')
-    // console.log('----------', response.body)
-    // this.show_loading = false
-    // this.show_next = true
-    // response.redirect('/filtering')
-    // })
-    // }
   }
 }
 </script>

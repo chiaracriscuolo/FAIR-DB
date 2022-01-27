@@ -34,7 +34,7 @@
       <i class="search icon" />
       Table of computed ACFDs
     </h4>
-    <p> This is the list of ACFDs that are extracted given the input parameters, select the ones that are more interesting for your research purpose. </p>
+    <p> This is the list of ACFDs that are extracted given the input parameters, select the ones that are more interesting for your research purpose.  <span class="ui purple text"><b>Please choose at least one dependency</b></span></p>
     <div class="ui two column grid">
       <div class="two column row">
         <div class="center aligned nine wide column">
@@ -95,12 +95,6 @@
         </tr>
       </tbody>
     </table>
-    <!--<div class="container">
-      <p v-if="!formIsValid" class="ui message">
-        <b>Please choose at least one dependency</b>
-      </p>
-    </div>-->
-
     <div class="container">
       <button v-if="show_compute" class="ui purple button" @click="postACFDs()">
         Compute Statistics on the selected ACFDs!
@@ -124,12 +118,6 @@
 import axios from 'axios'
 
 function parseACFD (value) {
-  /* value = value.replace('{', '')
-  value = value.replace('},', '=>')
-  value = value.replace('},', '')
-  value = value.replace('"lhs":', '')
-  value = value.replace('"rhs":', '') */
-
   return ' ' + JSON.stringify(value.lhs) + ' => ' + JSON.stringify(value.rhs)
 }
 export default {
@@ -150,9 +138,6 @@ export default {
     }
   },
   computed: {
-    // formisValid () {
-    //  return this.params.acfds.length !== 0
-    // },
     selectAll: {
       get () {
         return this.all ? this.params.acfds.length === this.all.length : false
@@ -170,7 +155,6 @@ export default {
   },
   async mounted () {
     const json = await this.$axios.get('/ACFDsTitanicComputed.json')
-    // const obj = JSON.parse(json.data)
     const obj = json.data
     this.all = json.data.index
     this.data = obj.data.slice(0, this.nTuples)
@@ -197,32 +181,24 @@ export default {
       this.headers = obj.columns
     },
     async sorted () {
-      // console.warn(this.params)
-      // const self = this
-      console.log('---Order:', this.params.orderingCriterion)
-      const response = await axios.post('/api/filtering/sortACFDs', this.params)
-      // axios.get('/api/preprocessingApi')
-      // .then(function (response) {
-      // Handle success
-      // this.$router.push('/filtering')
-      console.log('----------', response.body)
+      // console.log('---Order:', this.params.orderingCriterion)
+      // const response =
+      await axios.post('/api/filtering/sortACFDs', this.params)
+      // console.log('----------', response.body)
       this.params.acfds = []
       // To update the dataset
       const json = await this.$axios.get('/ACFDsTitanicComputed.json')
       const obj = json.data
       this.data = obj.data.slice(0, this.nTuples)
       this.headers = obj.columns
-      // window.location.reload(true)
-      // this.show = true
-      // response.redirect('/filtering')
-      // })
       return this.data
     },
     async postACFDs () {
       this.show_compute = false
       this.show_loading = true
-      const response = await axios.post('/api/filtering/postACFDs', this.params)
-      console.log('----------', response.body)
+      // const response =
+      await axios.post('/api/filtering/postACFDs', this.params)
+      // console.log('----------', response.body)
       this.show_loading = false
       this.show_next = true
       return this.data
