@@ -48,6 +48,11 @@
       </div>
     </div> -->
     <!-- Protected attribute div -->
+
+    <!--<div class="required field">
+        <label>Last name</label>
+        <input type="text" placeholder="Full Name">
+      </div>-->
     <div class="container">
       <h4 class="ui horizontal divider header">
         <i class="bar chart icon" />
@@ -124,7 +129,7 @@
               ACFD SupportCount threshold
             </td>
             <td class="five wide column">
-              <input id="supportCount" v-model.number="params.supportCount" type="text" placeholder="80">
+              <input id="supportCount" v-model.number="params.supportCount" type="text" placeholder="10">
             </td>
           </tr>
           <tr>
@@ -152,10 +157,34 @@
         </tbody>
       </table>
     </div>
+    <div>
+      <!-- INPUT VALIDATION -->
+      <p v-if="!formIsValid" class="ui message">
+        <b>Please correct the following error(s):</b>
+        <ul>
+          <li v-if="!protectedAttributesAreValid">
+            Protected Attributes are required! They should not contain the target class
+          </li>
+          <li v-if="!targetIsValid">
+            Target Attribute is required! (It should be binary)
+          </li>
+          <li v-if="!confidenceIsValid">
+            Confidence  > 0 is required
+          </li>
+          <li v-if="!supportCountIsValid">
+            Support Count  > 0 is required
+          </li>
+          <li v-if="!differenceIsValid">
+            Difference  > 0 is required
+          </li>
+          <li v-if="!maxSizeAntIsValid">
+            Maximum Antecedent Size  > 0 is required
+          </li>
+        </ul>
+      </p>
+    </div>
+
     <div class="container">
-      <!--<a href="/api/filtering" aria-current="page" class="nuxt-link-exact-active nuxt-link-active">
-          <button class="fluid ui purple button">Compute Dependencies!</button>
-        </a>-->
       <button v-if="show_compute" class="ui purple button" @click="postParams()">
         Compute Dependencies!
       </button>
@@ -179,6 +208,7 @@ import axios from 'axios'
 export default {
   data () {
     return {
+      errors: [],
       headers: null,
       show_compute: true,
       show_next: false,
@@ -192,14 +222,30 @@ export default {
         maxAntSize: 2.0,
         difference: 0.07,
         dataset: 'Census'
-      },
-      chartOptions: {
-        series: [
-          {
-            data: [1, 2, 3]
-          }
-        ]
       }
+    }
+  },
+  computed: {
+    formIsValid () {
+      return this.protectedAttributesAreValid && this.targetIsValid && this.confidenceIsValid && this.supportCountIsValid && this.differenceIsValid && this.maxSizeAntIsValid
+    },
+    protectedAttributesAreValid () {
+      return (this.params.protected_attr.length !== 0) && !(this.params.protected_attr.includes(this.params.target))
+    },
+    targetIsValid () {
+      return !(!this.params.target)
+    },
+    confidenceIsValid () {
+      return (!(!this.params.confidence)) && this.params.confidence > 0
+    },
+    supportCountIsValid () {
+      return (!(!this.params.supportCount)) && this.params.supportCount > 0
+    },
+    differenceIsValid () {
+      return (!(!this.params.difference)) && this.params.difference > 0.01
+    },
+    maxSizeAntIsValid () {
+      return (!(!this.params.confidence)) && this.params.maxAntSize > 0
     }
   },
   async mounted () {
@@ -208,6 +254,28 @@ export default {
     this.headers = obj.columns
   },
   methods: {
+    checkForm (e) {
+      if (this.params.confidence && this.params.supportCount && this.params.difference && this.params.maxAntSize) {
+        return true
+      }
+
+      this.errors = []
+
+      if (!this.params.confidence) {
+        this.errors.push('Confidence required.')
+      }
+      if (!this.params.supportCount) {
+        this.errors.push('Support Count required.')
+      }
+      if (!this.params.difference) {
+        this.errors.push('Difference required.')
+      }
+      if (!this.params.maxAntSize) {
+        this.errors.push('Max Antecedent Size required.')
+      }
+
+      e.preventDefault()
+    },
     async postParams () {
       // console.warn(this.params)
       // const self = this

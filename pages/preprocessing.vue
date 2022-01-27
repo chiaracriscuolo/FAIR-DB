@@ -155,9 +155,32 @@
       </table>
     </div>
     <div class="container">
-      <!--<a href="/api/filtering" aria-current="page" class="nuxt-link-exact-active nuxt-link-active">
-          <button class="fluid ui purple button">Compute Dependencies!</button>
-        </a>-->
+      <!-- INPUT VALIDATION -->
+      <p v-if="!formIsValid" class="ui message">
+        <b>Please correct the following error(s):</b>
+        <ul>
+          <li v-if="!protectedAttributesAreValid">
+            Protected Attributes are required! They should not contain the target class
+          </li>
+          <li v-if="!targetIsValid">
+            Target Attribute is required! (It should be binary)
+          </li>
+          <li v-if="!confidenceIsValid">
+            Confidence  > 0 is required
+          </li>
+          <li v-if="!supportCountIsValid">
+            Support Count  > 0 is required
+          </li>
+          <li v-if="!differenceIsValid">
+            Difference  > 0 is required
+          </li>
+          <li v-if="!maxSizeAntIsValid">
+            Maximum Antecedent Size  > 0 is required
+          </li>
+        </ul>
+      </p>
+    </div>
+    <div class="container">
       <button v-if="show_compute" class="ui purple button" @click="postParams()">
         Compute Dependencies!
       </button>
@@ -194,14 +217,30 @@ export default {
         maxAntSize: 2.0,
         difference: 0.07,
         dataset: 'Titanic'
-      },
-      chartOptions: {
-        series: [
-          {
-            data: [1, 2, 3]
-          }
-        ]
       }
+    }
+  },
+  computed: {
+    formIsValid () {
+      return this.protectedAttributesAreValid && this.targetIsValid && this.confidenceIsValid && this.supportCountIsValid && this.differenceIsValid && this.maxSizeAntIsValid
+    },
+    protectedAttributesAreValid () {
+      return (this.params.protected_attr.length !== 0) && !(this.params.protected_attr.includes(this.params.target))
+    },
+    targetIsValid () {
+      return !(!this.params.target)
+    },
+    confidenceIsValid () {
+      return (!(!this.params.confidence)) && this.params.confidence > 0
+    },
+    supportCountIsValid () {
+      return (!(!this.params.supportCount)) && this.params.supportCount > 0
+    },
+    differenceIsValid () {
+      return (!(!this.params.difference)) && this.params.difference > 0.01
+    },
+    maxSizeAntIsValid () {
+      return (!(!this.params.confidence)) && this.params.maxAntSize > 0
     }
   },
   async mounted () {

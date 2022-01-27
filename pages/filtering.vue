@@ -95,6 +95,11 @@
         </tr>
       </tbody>
     </table>
+    <!--<div class="container">
+      <p v-if="!formIsValid" class="ui message">
+        <b>Please choose at least one dependency</b>
+      </p>
+    </div>-->
 
     <div class="container">
       <button v-if="show_compute" class="ui purple button" @click="postACFDs()">
@@ -145,6 +150,9 @@ export default {
     }
   },
   computed: {
+    // formisValid () {
+    //  return this.params.acfds.length !== 0
+    // },
     selectAll: {
       get () {
         return this.all ? this.params.acfds.length === this.all.length : false

@@ -33,7 +33,7 @@
       <i class="search icon" />
       Table of Functional Dependencies
     </h4>
-    <p> This is the list of ACFDs that are extracted given the input parameters, select the ones that are more interesting for your research purpose. </p>
+    <p> This is the list of ACFDs that are extracted given the input parameters, select the ones that are more interesting for your research purpose. Please choose at least one dependency</p>
     <div class="ui two column grid">
       <div class="two column row">
         <div class="center aligned nine wide column">

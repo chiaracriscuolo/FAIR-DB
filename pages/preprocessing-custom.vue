@@ -99,7 +99,7 @@
             <div class="field">
               <div type="ui radio checkbox">
                 <td class="two wide column">
-                  <input v-model="params.target" type="radio" :value="item" name="example2">
+                  <input v-model="params.target" type="radio" :value="item" name="example2" @click="getAnswer(item)">
                 </td>
                 <td>
                   {{ item }}
@@ -111,8 +111,41 @@
       </table>
     </div>
 
+    <!-- Target class values div -->
+    <div v-if="show_targetValues" class="container">
+      <h4 class="ui horizontal divider header">
+        <i class="bar chart icon" />
+        Select one target class value
+      </h4>
+      <p>You should select the negative value that indicates discrimination</p>
+      <table class="ui definition table">
+        <tbody>
+          <tr v-for="(i) in targetValues" :key="i">
+            <div class="field">
+              <div type="ui radio checkbox">
+                <td class="two wide column">
+                  <input v-model="params.negativeTargetValue" type="radio" :value="i" name="example3">
+                </td>
+                <td>
+                  {{ i }}
+                </td>
+              </div>
+            </div>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
     <!-- INPUT PARAMETERS CONTAINER -->
     <div class="container">
+      <p v-if="errors.length">
+        <b>Please correct the following error(s):</b>
+        <ul>
+          <li v-for="error in errors" :key="error.id">
+            {{ error }}
+          </li>
+        </ul>
+      </p>
       <h4 class="ui horizontal divider header">
         <i class="bar chart icon" />
         Input Parameters
@@ -170,16 +203,38 @@
       </table>
     </div>
     <div class="container">
-      <!--<a href="/api/filtering" aria-current="page" class="nuxt-link-exact-active nuxt-link-active">
-          <button class="fluid ui purple button">Compute Dependencies!</button>
-        </a>-->
+      <p v-if="!formIsValid" class="ui message">
+        <b>Please correct the following error(s):</b>
+        <ul>
+          <li v-if="!protectedAttributesAreValid">
+            Protected Attributes are required! They should not contain the target class
+          </li>
+          <li v-if="!targetIsValid">
+            Target Attribute is required! (It should be binary)
+          </li>
+          <li v-if="!confidenceIsValid">
+            Confidence  > 0 is required
+          </li>
+          <li v-if="!supportCountIsValid">
+            Support Count  > 0 is required
+          </li>
+          <li v-if="!differenceIsValid">
+            Difference  > 0 is required
+          </li>
+          <li v-if="!maxSizeAntIsValid">
+            Maximum Antecedent Size  > 0 is required
+          </li>
+        </ul>
+      </p>
+    </div>
+    <div class="container">
       <button v-if="show_compute" class="ui purple button" @click="postParams()">
         Compute Dependencies!
       </button>
       <div v-if="show_loading" class="ui purple bottom attached loading tab" />
     </div>
     <div class="container">
-      <a v-if="show_next" href="/filtering-custom" aria-current="page" class="nuxt-link-exact-active nuxt-link-active">
+      <a v-if="show_next" href="/filtering-custom" aria-current="page" class="nuxt-link-exact-active nuxt-link-active" @click="checkForm()">
         <button class="fluid ui purple button">
           See Dependencies!
         </button>
@@ -193,10 +248,13 @@ import axios from 'axios'
 export default {
   data () {
     return {
+      errors: [],
       headers: null,
       show_compute: true,
       show_next: false,
       show_loading: false,
+      show_targetValues: false,
+      targetValues: [],
       params: {
         protected_attr: [],
         target: null,
@@ -204,13 +262,32 @@ export default {
         supportCount: null,
         maxAntSize: null,
         difference: null,
+        negativeTargetValue: null,
         dataset: 'dataset'
-      },
-      chartOptions: {
-        series: [{
-          data: [1, 2, 3] // sample data
-        }]
       }
+    }
+  },
+  computed: {
+    formIsValid () {
+      return this.protectedAttributesAreValid && this.targetIsValid && this.confidenceIsValid && this.supportCountIsValid && this.differenceIsValid && this.maxSizeAntIsValid
+    },
+    protectedAttributesAreValid () {
+      return (this.params.protected_attr.length !== 0) && !(this.params.protected_attr.includes(this.params.target))
+    },
+    targetIsValid () {
+      return !(!this.params.target)
+    },
+    confidenceIsValid () {
+      return (!(!this.params.confidence)) && this.params.confidence > 0
+    },
+    supportCountIsValid () {
+      return (!(!this.params.supportCount)) && this.params.supportCount > 0
+    },
+    differenceIsValid () {
+      return (!(!this.params.difference)) && this.params.difference > 0.01
+    },
+    maxSizeAntIsValid () {
+      return (!(!this.params.confidence)) && this.params.maxAntSize > 0
     }
   },
   async mounted () {
@@ -219,6 +296,33 @@ export default {
     this.headers = obj.columns
   },
   methods: {
+    checkForm () {
+      if (this.params.protected_attr && this.params.target && this.params.confidence && this.params.supportCount) {
+        return true
+      }
+
+      this.errors = []
+
+      if (!this.params.protected_attr) {
+        this.errors.push('Protected attribute required.')
+      }
+      if (!this.params.target) {
+        this.errors.push('Target required.')
+      }
+      alert(this.errors)
+    },
+    async getAnswer (target) {
+      console.log('entrato')
+      if (target != null) {
+        console.log(target)
+        const json = await this.$axios.get('/datasetColumnsValues.json')
+        console.log(json.data[target])
+        this.targetValues = json.data[target]
+        this.show_targetValues = true
+        return null
+      }
+      return null
+    },
     async postParams () {
       // console.warn(this.params)
       // const self = this
