@@ -34,7 +34,7 @@
       <i class="search icon" />
       Table of computed ACFDs
     </h4>
-    <p> This is the list of ACFDs that are extracted given the input parameters, select the ones that are more interesting for your research purpose. Please choose at least one dependency</p>
+    <p> This is the list of ACFDs that are extracted given the input parameters, select the ones that are more interesting for your research purpose. <span class="ui purple text"><b>Please choose at least one dependency</b></span></p>
     <div class="ui two column grid">
       <div class="two column row">
         <div class="center aligned nine wide column">
@@ -191,7 +191,7 @@ export default {
     async sorted () {
       // console.warn(this.params)
       // const self = this
-      console.log('---Order:', this.params.orderingCriterion)
+      // console.log('---Order:', this.params.orderingCriterion)
       const response = await axios.post('/api/filtering/sortACFDs', this.params)
       // axios.get('/api/preprocessingApi')
       // .then(function (response) {

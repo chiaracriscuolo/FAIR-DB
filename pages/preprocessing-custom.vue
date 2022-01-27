@@ -203,7 +203,7 @@
       </table>
     </div>
     <div class="container">
-      <p v-if="!formIsValid" class="ui message">
+      <p v-if="!formIsValid" class="ui error message">
         <b>Please correct the following error(s):</b>
         <ul>
           <li v-if="!protectedAttributesAreValid">
@@ -228,7 +228,7 @@
       </p>
     </div>
     <div class="container">
-      <button v-if="show_compute" class="ui purple button" @click="postParams()">
+      <button v-if="show_compute" class="ui purple button" :disabled="!formIsValid" @click="postParams()">
         Compute Dependencies!
       </button>
       <div v-if="show_loading" class="ui purple bottom attached loading tab" />

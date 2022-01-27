@@ -45,7 +45,7 @@ export default {
 .footer {
   height: 50px;
   background: #9627ba;
-  color: black;
+  color: white;
   display: flex;
   justify-content: space-between;
   text-align: center;
