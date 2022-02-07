@@ -16,11 +16,8 @@
     "express": "^4.17.1",
     "fomantic-ui": "^2.8.8",
     "form-data": "^4.0.0",
-    "highcharts": "^9.3.0",
-    "highcharts-vue": "^1.4.0",
     "multer": "^1.4.4",
     "nuxt": "^2.15.7",
-    "nuxt-highcharts": "^2.0.2",
     "papaparse": "^5.3.1",
     "vue-papa-parse": "^2.0.0"
   },
