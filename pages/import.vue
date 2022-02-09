@@ -47,6 +47,9 @@
       </section>
     </div>
     <section>
+      <div v-if="show_loading" class="ui purple bottom attached loading tab">
+        The process will take a few seconds
+      </div>
       <div class="ui three column grid">
         <div class="three column row">
           <div class="center aligned five wide column">
@@ -100,6 +103,7 @@ export default {
         filename: null
       },
       show: true,
+      show_loading: false,
       show_next: false
     }
   },
@@ -113,6 +117,8 @@ export default {
       this.$refs.fileInput.click()
     },
     async onFilePicked (event) {
+      this.show = false
+      this.show_loading = true
       const files = event.target.files
       // const filename = files[0].name
       const fileReader = new FileReader()
@@ -130,8 +136,8 @@ export default {
           'Content-Type': 'multipart/form-data'
         }
       })
+      this.show_loading = false
       this.show_next = true
-      this.show = false
     }
   }
 }

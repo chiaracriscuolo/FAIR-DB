@@ -231,7 +231,9 @@
       <button v-if="show_compute" class="ui purple button" :disabled="!formIsValid" @click="postParams()">
         Compute Dependencies!
       </button>
-      <div v-if="show_loading" class="ui purple bottom attached loading tab" />
+      <div v-if="show_loading" class="ui purple bottom attached loading tab">
+        The process will take a few seconds
+      </div>
     </div>
     <div class="container">
       <a v-if="show_next" href="/filtering-custom" aria-current="page" class="nuxt-link-exact-active nuxt-link-active" @click="checkForm()">

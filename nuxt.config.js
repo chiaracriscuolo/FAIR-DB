@@ -77,9 +77,16 @@ export default {
   options: {
     fix: true
   },
+  // ADDED TO DEPLOY ON DOCKER
+  server: {
+    port: process.env.PORT || 3000, // default : 3000
+    host: '0.0.0.0' // do not put localhost (only accessible from the host machine)
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    baseUrl: '/'
+  },
 
   highcharts: {
     /* module options */
