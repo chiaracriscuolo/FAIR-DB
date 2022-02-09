@@ -221,7 +221,7 @@ export default {
     const jsonMetrics = await this.$axios.get('/CensusMetrics.json')
     const objMetrics = jsonMetrics.data
     this.params.cumulativeSupport = objMetrics.cumulativeSupport
-    if (this.params.cumulativeSupport > 0.5) { this.show_support = true }
+    if (this.params.cumulativeSupport > 0.3) { this.show_support = true }
     this.params.differenceMean = objMetrics.differenceMean
     if (this.params.differenceMean > 0.05) { this.show_difference = true }
     this.params.totTuples = objMetrics.totTuples
