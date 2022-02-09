@@ -1,5 +1,7 @@
 # FAIR-DB Website
 
+Website URL: https://fair-db.herokuapp.com/
+
 ## Paper Abstract
 
 In our everyday lives, technologies based on data play an increasingly important role. With the widespread adoption of decision making systems also in very sensitive environments, Fairness has become a very important topic of discussion within the data science community. In this context, it is crucial to ensure that the data on which we base these decisions, are fair, and do not reflect historical biases.  
