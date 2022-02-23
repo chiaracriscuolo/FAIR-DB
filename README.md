@@ -4,7 +4,7 @@ Website URL: https://fair-db.herokuapp.com/
 
 ## Paper Abstract
 
-In our everyday lives, technologies based on data play an increasingly important role. With the widespread adoption of decision making systems also in very sensitive environments, Fairness has become a very important topic of discussion within the data science community. In this context, it is crucial to ensure that the data on which we base these decisions, are fair, and do not reflect historical biases.  
+In our everyday lives, technologies based on data play an increasingly important role. With the widespread adoption of decision making systems also in very sensitive environments, fairness has become a very important topic of discussion within the data science community. In this context, it is crucial to ensure that the data on which we base these decisions, are fair, and do not reflect historical biases.  
 
 In this demo we propose FAIR-DB (FunctionAl dependencIes to discoveR Data Bias), a system that exploiting the notion of Functional Dependency, a particular type of constraint on the data, can discover unethical behaviours in a dataset.
 
@@ -13,7 +13,7 @@ Our tool uses a novel metric to evaluate the unfairness present in datasets, ide
 
 ## User Section
 
-Are you confused? Why don't you look at our demo video? It could be helpful in understanding how the system works.
+Are you confused? Why don't you look at our demo video? It could be helpful to understand how the system works.
 
 https://user-images.githubusercontent.com/37806290/151364199-9791e511-e7c7-452d-ab44-61e8970ecd33.mp4
 
@@ -23,7 +23,7 @@ https://user-images.githubusercontent.com/37806290/151364199-9791e511-e7c7-452d-
 
 ### Requirements
 
-If you want to collaborate few requirements are needed: cfd Discovery algorithm (to download it follow the instructions here: https://github.com/j-r77/cfddiscovery), nodejs, npm, pyhton, pipenv. 
+If you want to collaborate few requirements are needed: cfd Discovery algorithm (to download it follow the instructions here: https://github.com/j-r77/cfddiscovery), node js, npm, pyhton, pipenv. 
 
 ### Build Setup
 
