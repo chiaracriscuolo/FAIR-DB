@@ -14,6 +14,7 @@ Are you confused? Why don't you look at our demo video? It could be helpful in u
 https://user-images.githubusercontent.com/37806290/151364199-9791e511-e7c7-452d-ab44-61e8970ecd33.mp4
 
 
+If you want to use the python notebook version here is the Github repository link: https://github.com/chiaracriscuolo/FAIR-DB-Notebook.
 
 ## Developer Section
 ## Build Setup
