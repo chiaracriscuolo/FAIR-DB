@@ -1,3 +1,4 @@
+import path from 'path'
 import express from 'express'
 import multer from 'multer'
 // const fs = require('fs')
@@ -6,7 +7,7 @@ const app = express()
 // to save custom dataset
 const storage = multer.diskStorage({
   destination (req, file, cb) {
-    cb(null, './static')
+    cb(null, path.join(__dirname, '../static'))
   },
   filename (req, file, cb) {
     // const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1e9)

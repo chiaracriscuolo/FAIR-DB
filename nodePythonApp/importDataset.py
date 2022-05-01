@@ -2,6 +2,7 @@ import sys
 import json
 import pandas 
 import io
+import utils
 try:
     to_unicode = unicode
 except NameError:
@@ -24,8 +25,10 @@ print(columnValues)
 a_file = open('../static/'+dataset+'ColumnsValues.json', "w")
 a_file = json.dump(columnValues, a_file)  
 
-df.to_json(path_or_buf='../static/dataset.json', orient="split")
+to_save_path_json = utils.get_absolute_path(__file__,'../static/dataset.json')
+df.to_json(path_or_buf=to_save_path_json, orient="split")
 
-df.to_csv('../cdfAlgorithm/cfddiscovery/datasets/preprocesseddataset.csv', index=False)
+to_save_path_csv = utils.get_absolute_path(__file__, '../cdfAlgorithm/cfddiscovery/datasets/preprocesseddataset.csv')
+df.to_csv(to_save_path_csv, index=False)
 
 

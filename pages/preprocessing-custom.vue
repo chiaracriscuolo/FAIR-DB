@@ -289,7 +289,7 @@ export default {
       return (!(!this.params.difference)) && this.params.difference > 0.01 && this.params.difference < 1
     },
     maxSizeAntIsValid () {
-      return (!(!this.params.confidence)) && this.params.maxAntSize > 0 && this.params.maxAntSize <= this.params.protected_attr.length
+      return (!(!this.params.confidence)) && this.params.maxAntSize > 0
     }
   },
   async mounted () {

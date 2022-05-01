@@ -1,7 +1,7 @@
 <template>
   <header class="footer">
     <div class="footer-content">
-      <h5>Chiara Criscuolo, Fabio Azzalini and Letizia Tanca, 2021</h5>
+      <h5>Chiara Criscuolo, Fabio Azzalini and Letizia Tanca, 2022</h5>
       <!-- NO USED
         <nav class="right">
         <div

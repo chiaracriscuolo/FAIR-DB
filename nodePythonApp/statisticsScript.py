@@ -3,6 +3,7 @@ import sys
 import json
 import pandas 
 import io
+import utils
 try:
     to_unicode = unicode
 except NameError:
@@ -122,13 +123,15 @@ for dep in dependencies:
 dfEthicalProblems = extractProblematicTuples(dfMarked)
 #print("Problematic tuples: ", len(dfEthicalProblems))
 
-dfEthicalProblems.to_json(path_or_buf='../static/'+dataset+'ProblematicTuples.json', orient="split")
+to_save_path_json = utils.get_absolute_path(__file__,'../static/'+dataset+'ProblematicTuples.json')
+dfEthicalProblems.to_json(path_or_buf=to_save_path_json, orient="split")
 
 statistics = computeStatistics(df6, dependencies, dfMarked, indexArray)
 
 finalRules = statistics[0]
 
-finalRules.to_json(path_or_buf='../static/'+dataset+'FinalACFDs.json', orient="split")
+to_save_path2_json = utils.get_absolute_path(__file__,'../static/'+dataset+'FinalACFDs.json')
+finalRules.to_json(path_or_buf=to_save_path2_json, orient="split")
 
 metrics = statistics[1]
 
@@ -216,7 +219,6 @@ metrics['favoured'] = favoured_groups
 metrics['discriminated'] = discriminated_groups
 
 #print("FINAL METRICS:", metrics)
-
 with io.open('../static/'+dataset+'Metrics.json', 'w', encoding='utf8') as outfile:
     str_ = json.dumps(metrics,
                      indent=4, sort_keys=True,

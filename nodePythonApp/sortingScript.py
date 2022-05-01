@@ -3,6 +3,7 @@ import sys
 import json
 import pandas 
 import io
+import utils
 try:
     to_unicode = unicode
 except NameError:
@@ -31,4 +32,5 @@ else:
     #print('Ordered by Mean')
 
 # Write JSON file
-df6.to_json(path_or_buf='../static/ACFDs'+dataset+'Computed.json', orient="split")
+to_save_path_json = utils.get_absolute_path(__file__,'../static/ACFDs'+dataset+'Computed.json')
+df6.to_json(path_or_buf=to_save_path_json, orient="split")

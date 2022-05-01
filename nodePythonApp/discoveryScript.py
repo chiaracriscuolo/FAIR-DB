@@ -3,6 +3,7 @@
 import sys
 import json
 import pandas
+import utils
 #import numpy as np
 
 ########## SCRIPT TO DISCOVER ACFDS AND FILTER THEM ##########
@@ -520,9 +521,14 @@ except NameError:
     to_unicode = str
 
 df6 = df6.reset_index(drop=True)
-df6.to_csv('../static/ACFDs'+dataset+'Computed.csv',index=True)
+to_save_path_csv = utils.get_absolute_path(__file__, '../static/ACFDs'+dataset+'Computed.csv')
+#print("path*** "+ to_save_path_csv)
+df6.to_csv(to_save_path_csv,index=True)
+#df6.to_csv('../static/ACFDs'+dataset+'Computed.csv',index=True)
 
-df6.to_json(path_or_buf='../static/ACFDs'+dataset+'Computed.json', orient="split")
+to_save_path_json = utils.get_absolute_path(__file__, '../static/ACFDs'+dataset+'Computed.json')
+df6.to_json(path_or_buf=to_save_path_json, orient="split")
+#df6.to_json(path_or_buf='../static/ACFDs'+dataset+'Computed.json', orient="split")
 
 with io.open('../static/'+dataset+'Params.json', 'w', encoding='utf8') as outfile:
     str_ = json.dumps(y,
