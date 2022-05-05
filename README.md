@@ -23,6 +23,7 @@ https://user-images.githubusercontent.com/37806290/151364199-9791e511-e7c7-452d-
 If you want to use the python notebook version here is the Github repository link: https://github.com/chiaracriscuolo/FAIR-DB-Notebook.
 
 ## Developer Section
+The software is provided "as is", without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. in no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from, out of or in connection with the software or the use or other dealings in the software. 
 
 ### Requirements
 

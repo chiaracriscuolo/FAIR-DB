@@ -91,9 +91,13 @@ def validates(df,elem):
 
 params = json.loads(sys.argv[1])
 dataset = params['dataset']
-file_path_acfds_json = '../static/ACFDs'+dataset+'Computed.json'
-file_path = '../cdfAlgorithm/cfddiscovery/datasets/preprocessed'+dataset+'.csv'
+
+file_path_acfds_json = utils.get_absolute_path(__file__, '../static/ACFDs'+dataset+'Computed.json')
+#file_path_acfds_json = '../static/ACFDs'+dataset+'Computed.json'
+file_path = utils.get_absolute_path(__file__, '../cdfAlgorithm/cfddiscovery/datasets/preprocessed'+dataset+'.csv')
+#file_path = '../cdfAlgorithm/cfddiscovery/datasets/preprocessed'+dataset+'.csv'
 df = pandas.read_csv(file_path)
+
 df6 = pandas.read_json(file_path_acfds_json, orient='split')
 columns = df.columns
 #add column 'marked'

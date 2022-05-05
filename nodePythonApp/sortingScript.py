@@ -12,7 +12,8 @@ except NameError:
 ########## SCRIPT TO ORDER THE DEPENDENCIES ##########
 params = json.loads(sys.argv[1])
 dataset = params['dataset']
-file_path_acfds_json = '../static/ACFDs'+dataset+'Computed.json'
+file_path_acfds_json = utils.get_absolute_path(__file__,'../static/ACFDs'+dataset+'Computed.json')
+#file_path_acfds_json = '../static/ACFDs'+dataset+'Computed.json'
 
 orderingCriterion = params['orderingCriterion']
 #print("Ord criterion: ", type(orderingCriterion), orderingCriterion)
